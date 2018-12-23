@@ -1,0 +1,33 @@
+@import 'variables';
+@import 'utils/fonts';
+
+@include custom-font-mixin('Roboto Condensed', 'robotocondensed-light', 300, normal, $path-roboto-condensed);
+@include custom-font-mixin('Roboto Condensed', 'robotocondensed-regular', 400, normal, $path-roboto-condensed);
+@include custom-font-mixin('Roboto Condensed', 'robotocondensed-bold', 700, italic, $path-roboto-condensed);
+
+@include custom-font-mixin('VremyaFWF', 'vremf___', 400, normal, $path-vremya-fwf);
+@include custom-font-mixin('VremyaFWF', 'vremfi__', 400, italic, $path-vremya-fwf);
+@include custom-font-mixin('VremyaFWF', 'vremfb__', 700, normal, $path-vremya-fwf);
+@include custom-font-mixin('VremyaFWF', 'vremfbi_', 700, italic, $path-vremya-fwf);
+
+@mixin roboto {
+  font-family: 'Roboto Condensed', 'Consolas', sans-serif;
+}
+
+@mixin vremya {
+  font-family: 'VremyaFWF', 'Times New Roman', serif;
+}
+
+*,
+html,
+body {
+  @include roboto;
+  @include set-to-zero;
+  color: $text-color;
+}
+
+ul {
+  display: block;
+  list-style-type: none;
+}
+

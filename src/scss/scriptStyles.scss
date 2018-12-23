@@ -1,0 +1,123 @@
+@import 'variables';
+@import 'mixins';
+@import 'common';
+
+#experiments {
+  height: 30px;
+  width: 30px;
+  background-color: brown;
+  display: block;
+}
+
+@mixin selected {
+  &.selected {
+    font-weight: 700;
+    color: $text-color;
+
+    sup {
+      font-weight: 400;
+    }
+
+    &::after {
+      font-weight: 400;
+    }
+
+  }
+}
+
+%list-template {
+  padding: 0 0 1.5em;
+
+  li {
+    @include selected;
+    user-select: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding-bottom: .5em;
+    color: $lighter-text;
+
+    sup {
+      color: $lightest-text;
+    }
+  }
+}
+
+.ordinary-list {
+  @extend %list-template;
+}
+
+.tags-list {
+  @extend %list-template;
+
+  & > li {
+    width: auto;
+    display: inline-block;
+
+    &:last-of-type {
+      &::after {
+        content: '';
+      }
+    }
+
+    &::after {
+      color: $lightest-text;
+      margin-right: 3px;
+      content: ',';
+    }
+  }
+}
+
+.small-title {
+  padding: .5em 0;
+  font-weight: 400;
+  font-size: 1.3em;
+}
+
+.c-picker {
+  @include block-border-box;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 3px;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  position: relative;
+
+  & > .icon {
+    display: block;
+    position: absolute;
+    text-align: center;
+    padding-top: 5px;
+    font-size: 20px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &.red {
+    background-color: rgba(255, 7, 10, .33);
+  }
+
+  &.blue {
+    background-color: rgba(79, 91, 255, .33);
+  }
+
+  &.green {
+    background-color: rgba(84, 255, 94, .33);
+  }
+
+  &.white {
+    border: 1px solid $border-color;
+  }
+
+  &.grey {
+    background-color: $text-color;
+
+    & > .icon {
+      color: lighten($text-color, 60%);
+    }
+  }
+
+}

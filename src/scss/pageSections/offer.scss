@@ -1,0 +1,171 @@
+@import '../variables';
+@import '../mixins';
+
+.offer {
+  @include block-border-box;
+  width: 80%;
+  margin: 0 auto;
+  padding: 2em 0;
+  overflow: hidden;
+
+  &::after {
+    clear: both;
+  }
+
+  .side-element {
+    @include block-border-box;
+    width: 20%;
+    float: left;
+    padding: 0 .5em;
+
+    .filters {
+      border-bottom: 2px solid $lighter-text;
+      border-top: 2px solid $lighter-text;
+    }
+
+    .side-subtitle {
+      font-size: 1.6em;
+      padding: 1em 0;
+      font-weight: 400;
+      letter-spacing: 3px;
+    }
+  }
+
+  .main-element {
+    width: 80%;
+    float: right;
+
+    .result-filter {
+      @include block-border-box;
+      width: 100%;
+      overflow: hidden;
+
+      &::after {
+        clear: both;
+      }
+
+      .filter-input {
+        float: left;
+        font-size: 1.5em;
+        padding-top: 1em;
+        padding-left: 1em;
+      }
+
+      .results-count {
+        color: $lightest-text;
+        float: right;
+        padding-top: 2em;
+      }
+
+    }
+
+    .products {
+      width: 100%;
+      overflow: hidden;
+
+      .product-upper-info {
+        @include block-border-box;
+        width: 100%;
+        overflow: hidden;
+
+        &::after {
+          clear: both;
+        }
+
+        .fav-info {
+          float: right;
+          font-size: 1.5em;
+          font-weight: 700;
+        }
+
+        .new-info {
+          font-size: 1.5em;
+          float: left;
+        }
+      }
+
+      .product-lower-info {
+        @include block-border-box;
+        width: 100%;
+        overflow: hidden;
+
+        &::after {
+          clear: both;
+        }
+      }
+
+      .product-price {
+        display: block;
+        float: left;
+        font-size: 1.1em;
+      }
+
+      .product-to-cart {
+        display: block;
+        float: right;
+        font-size: 1.1em;
+
+        i {
+          margin-right: .25em;
+        }
+      }
+
+      .product-name {
+        font-size: 1.2em;
+        font-weight: 700;
+      }
+
+      .product-info {
+        @include block-border-box;
+        width: 50%;
+        padding: 2em;
+        float: left;
+        background-color: $background-color;
+        border: 2em solid white;
+        border-right: 0;
+        border-bottom: 0;
+      }
+
+      img {
+        display: block;
+        width: 80%;
+        margin: auto;
+      }
+    }
+
+    .page-filter {
+      @include block-border-box;
+      padding: 1em 0 0 2em;
+      overflow: hidden;
+
+      &::after {
+        clear: both;
+      }
+
+      ul {
+        float: right;
+
+        li {
+          font-size: 1.2em;
+          display: inline-block;
+          padding: .5em 1em;
+          color: $lighter-text;
+
+          &.active {
+            color: $text-color;
+          }
+        }
+      }
+
+      span {
+        display: block;
+        float: right;
+        font-weight: 700;
+        color: $text-color;
+        padding: .5em 1em;
+        font-size: 1.2em;
+      }
+    }
+  }
+
+}
