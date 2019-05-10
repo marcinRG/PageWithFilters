@@ -1,3 +1,7 @@
+files:
+    ignore:
+      - 'node_modules/**/*.scss'
+      - 'node_modules/**/*.sass'
 rules:
   bem-depth:
     - 0
