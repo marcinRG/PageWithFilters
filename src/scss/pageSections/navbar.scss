@@ -2,34 +2,74 @@
 @import '../mixins';
 
 .navbar {
-  @include block-border-box;
-  width: 80%;
-  margin: 0 auto;
-  padding: .5em 0;
-  overflow: hidden;
-
-  &::after {
-    clear: both;
-  }
+  width: 100%;
+  display: flex;
+  flex-flow: row;
+  align-items: center;
+  justify-items: flex-start;
+  flex-wrap: wrap;
 
   .navbar-logo {
-    padding-top: .25em;
-    display: block;
-    float: left;
+    display: none;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        order: 1;
+        display: inherit;
+        padding-left: .25em;
+      }
+    }
+
   }
 
   .navbar-button {
     background-color: transparent;
-    display: block;
-    //display: none;
-    float: left;
     font-size: 2em;
+    order: 1;
+    padding: .25em;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        display: none;
+      }
+    }
+
+  }
+
+  .navbar-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    order: 2;
+    margin: 0 auto;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        display: none;
+      }
+    }
+
+  }
+
+  .navbar-cart {
+    font-size: 2em;
+    order: 3;
+    padding: .25em;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        order: 4;
+      }
+    }
+
   }
 
   .navbar-menu {
-    display: block;
-    float: right;
-    width: 35%;
+    order: 4;
+    flex-basis: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-items: center;
 
     li {
       display: inline-block;
@@ -48,14 +88,17 @@
           color: $text-color;
         }
       }
-
     }
-  }
 
-  .navbar-cart {
-    display: block;
-    font-size: 2em;
-    float: right;
-  }
+    @media screen {
+      @media (min-width: $media-br-1) {
+        order: 3;
+        flex-flow: row;
+        flex-basis: auto;
+        margin-left: auto;
+      }
+    }
 
+  }
 }
+

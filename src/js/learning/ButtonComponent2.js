@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Button } from './Button';
+import { TextLabel } from './TextLabel';
 
-export class ButtonComponent extends Component {
-    //simple state Component
-    constructor() {
-        super();
+export class ButtonComponent2 extends Component {
+    constructor(props) {
+        super(props);
         this.state = {
             counter: 1
         };
@@ -19,11 +20,9 @@ export class ButtonComponent extends Component {
     render() {
         return (
             <div>
-                <button onClick={this.inc}>Klik +++</button>
-                <br/>
-                <button onClick={this.dec}>Klik ---</button>
-                <br/>
-                <span>Numer of clicks:</span><span>{this.state.counter}</span>
+                <Button title="Klik +++" action={this.inc}/>
+                <Button title="Klik ---" action={this.dec}/>
+                <TextLabel counter={this.state.counter}/>
             </div>
         );
     }
@@ -43,4 +42,5 @@ export class ButtonComponent extends Component {
             }
         });
     }
+
 }
