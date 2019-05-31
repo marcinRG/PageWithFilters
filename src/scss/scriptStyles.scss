@@ -2,13 +2,6 @@
 @import 'mixins';
 @import 'common';
 
-#experiments {
-  height: 30px;
-  width: 30px;
-  background-color: brown;
-  display: block;
-}
-
 @mixin selected {
   &.selected {
     font-weight: 700;

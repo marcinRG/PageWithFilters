@@ -1,0 +1,73 @@
+@import '../variables';
+@import '../mixins';
+
+.slider {
+  @include block-border-box;
+  @include set-to-zero;
+  width: 100%;
+  position: relative;
+  background-color: magenta;
+
+  .nav {
+    @include pos-absolute(5);
+    padding-bottom: 1em;
+    display: inline-block;
+    text-align: center;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: yellow;
+  }
+
+  .prev {
+    @include pos-absolute(6);
+    top: 40%;
+    left: 2%;
+    font-size: 2em;
+    background-color: orange;
+  }
+
+  .next {
+    @include pos-absolute(6);
+    top: 40%;
+    right: 2%;
+    font-size: 2em;
+    background-color: orange;
+  }
+
+  .slider-view {
+    @include set-to-zero;
+    position: relative;
+    width: 100%;
+    height: 700px;
+    overflow: hidden;
+  }
+
+  .slides {
+    @include set-to-zero;
+    position: absolute;
+    white-space: nowrap;
+    text-align: center;
+    height: 700px;
+    font-size: 0;
+    width: 100%;
+    overflow: hidden;
+
+    .slide {
+      @include set-to-zero;
+      box-sizing: border-box;
+      display: inline-block;
+      vertical-align: top;
+      text-align: left;
+      white-space: normal;
+      height: 700px;
+      width: 100%;
+
+      .image {
+        height: 100%;
+      }
+
+    }
+  }
+
+}

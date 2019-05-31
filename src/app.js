@@ -3,6 +3,7 @@ import style from './scss/style.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navbar } from './js/components/Navbar';
+import { Slider } from './js/components/Slider/Slider';
 
 const slides = [
     {

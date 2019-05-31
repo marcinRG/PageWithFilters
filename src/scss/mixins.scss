@@ -10,3 +10,8 @@
   box-sizing: border-box;
   display: block;
 }
+
+@mixin pos-absolute($index) {
+  position: absolute;
+  z-index: $index;
+}

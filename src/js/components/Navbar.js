@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 
+import img from '../../images/logo.png';
+
 export class Navbar extends Component {
     render() {
         return (
             <nav className="navbar">
                 <span className="navbar-logo">
-                    <img src="images/logo.png" alt="page logo"/>
+                    <img src={img} alt="page logo"/>
                 </span>
                 <span className="navbar-title">Top Designers</span>
                 <button className="navbar-button"><i className="icon ion-navicon"></i></button>
