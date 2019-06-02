@@ -52,8 +52,15 @@
     @include set-to-zero;
     position: relative;
     width: 100%;
-    height: 700px;
+    height: 350px;
     overflow: hidden;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        height: 700px;
+      }
+    }
+
   }
 
   .slides {
@@ -61,7 +68,7 @@
     position: absolute;
     white-space: nowrap;
     text-align: center;
-    height: 700px;
+    height: 100%;
     font-size: 0;
     width: 100%;
 
@@ -75,7 +82,7 @@
       vertical-align: top;
       text-align: left;
       white-space: normal;
-      height: 700px;
+      height: 100%;
       width: 100%;
 
       .image {
@@ -90,10 +97,23 @@
         font-size: 1em;
         position: absolute;
         z-index: 2;
-        top: 45%;
-        right: 0;
-        height: 50%;
-        width: 50%;
+        top: 30%;
+        left: 10%;
+        height: 60%;
+        width: 80%;
+        background-color: rgba(245, 245, 245, 0.5);
+
+        @media screen {
+          @media (min-width: $media-br-1) {
+            top: 45%;
+            left: inherit;
+            right: 0;
+            height: 50%;
+            width: 50%;
+            background-color: transparent;
+          }
+        }
+
 
         .info-title {
           @include set-to-zero;
