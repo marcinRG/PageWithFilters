@@ -4,5 +4,8 @@ export const AppSettings = {
         slideDelay: 1000,
         autoPlay: true,
         currentElem: 0
+    },
+    navBarSettings: {
+        breakPoint: 768
     }
 };
