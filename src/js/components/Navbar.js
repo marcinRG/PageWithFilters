@@ -9,34 +9,40 @@ export class Navbar extends Component {
         this.menuRef = React.createRef();
         this.state = {
             width: window.innerWidth,
-            menuHidden: false
+            showMenu: false
         };
         this.resize = () => {
             this.changeSize();
-        }
-    }
-
-    isMenuHidden(width) {
-        if (this.break>width) {
-            return true;
-        }
-        else {
-            console.log('sss');
-        }
+        };
+        this.changeVisibility = () => {
+            this.changeMenuVisibility();
+        };
     }
 
     changeSize() {
         const width = window.innerWidth;
         console.log(calculateElementHeight(this.menuRef.current));
         this.setState((previousState) => {
-            console.log(previousState);
-            console.log(`new size: ${width}`);
+            const prevWidth = previousState.width;
+            const showMenu = isMenuShown(prevWidth, previousState.showMenu);
+            if ((prevWidth > this.break && width <= this.break) || (prevWidth <= this.break && width > this.break)) {
+                return {
+                    width,
+                    showMenu
+                }
+            }
+        });
+    }
+
+    changeMenuVisibility() {
+        this.setState((previousState) => {
+            return {
+                showMenu: !previousState.showMenu
+            }
         });
     }
 
     componentDidMount() {
-        console.log('mounted');
-        console.log(this.menuRef.current);
         window.addEventListener('resize', this.resize);
     }
 
@@ -47,7 +53,7 @@ export class Navbar extends Component {
                     <img src={img} alt="page logo"/>
                 </span>
                 <span className="navbar-title">Top Designers</span>
-                <button className="navbar-button"><i className="icon ion-navicon"></i></button>
+                <button className="navbar-button" onClick={this.changeVisibility}><i className="icon ion-navicon"></i></button>
                 <span className="navbar-cart"><i className="icon ion-bag"></i></span>
                 <ul className="navbar-menu" ref={this.menuRef}>
                     <li><a href="#">Home</a></li>
@@ -57,6 +63,16 @@ export class Navbar extends Component {
                 </ul>
             </nav>
         );
+    }
+}
+
+function isMenuShown(width, menuState) {
+    const breakP = AppSettings.navBarSettings.breakPoint;
+    if (breakP > width) {
+        return true;
+    }
+    else {
+        return menuState;
     }
 }
 
