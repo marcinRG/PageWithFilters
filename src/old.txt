@@ -1,0 +1,65 @@
+// changeSize() {
+//     const width = window.innerWidth;
+//     console.log(calculateElementHeight(this.menuRef.current));
+//     this.setState((previousState) => {
+//         const prevWidth = previousState.width;
+//         const showMenu = isMenuShown(prevWidth, previousState.showMenu);
+//         if ((prevWidth > this.break && width <= this.break) || (prevWidth <= this.break && width > this.break)) {
+//             return {
+//                 width,
+//                 showMenu
+//             }
+//         }
+//     });
+// }
+
+// this.resize = () => {
+//     //this.changeSize();
+// };
+
+// componentDidMount() {
+//     window.addEventListener('resize', this.resize);
+// }
+
+
+// function isMenuShown(width, menuState) {
+//     const breakP = AppSettings.navBarSettings.breakPoint;
+//     if (breakP > width) {
+//         return true;
+//     }
+//     else {
+//         return menuState;
+//     }
+// }
+//
+// function getElementVisbilityAndDisplay(element) {
+//     if (element) {
+//         return {
+//             visibility: element.style.visibility,
+//             display: element.style.display
+//         }
+//     }
+// }
+//
+// function setElementVisibilityAndDisplay(element, displayVisibility) {
+//     if (element) {
+//         element.style.visibility = displayVisibility.visibility;
+//         element.style.display = displayVisibility.display;
+//         return element;
+//     }
+// }
+//
+// function calculateElementHeight(element) {
+//     if (element) {
+//         const prevDisplayVisibility = getElementVisbilityAndDisplay(element);
+//         setElementVisibilityAndDisplay(element, {
+//             visibility: 'hidden',
+//             display: 'flex'
+//         });
+//         const height = element.getBoundingClientRect().height;
+//         setElementVisibilityAndDisplay(element, prevDisplayVisibility);
+//         return height;
+//     }
+// }
+//this.break = AppSettings.navBarSettings.breakPoint;
+//this.menuRef = React.createRef();

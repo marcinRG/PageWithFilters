@@ -2,7 +2,10 @@
 @import '../mixins';
 
 .navbar {
-  width: 100%;
+  width: 90%;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
   display: flex;
   flex-flow: row;
   align-items: center;
@@ -27,6 +30,8 @@
     font-size: 2em;
     order: 1;
     padding: .25em;
+    outline: 0;
+    cursor: pointer;
 
     @media screen {
       @media (min-width: $media-br-1) {
@@ -55,6 +60,8 @@
     font-size: 2em;
     order: 3;
     padding: .25em;
+    outline: 0;
+    cursor: pointer;
 
     @media screen {
       @media (min-width: $media-br-1) {
@@ -66,10 +73,32 @@
 
   .navbar-menu {
     order: 4;
+    position: relative;
     flex-basis: 100%;
     display: flex;
     flex-flow: column;
     justify-items: center;
+    transition-duration: 500ms;
+    transition-property: height;
+    overflow: hidden;
+    height: 0;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        transition-duration: 0s;
+        transition-property: none;
+        height: inherit;
+      }
+    }
+
+    &.visible {
+      height: 150px;
+      @media screen {
+        @media (min-width: $media-br-1) {
+          height: inherit;
+        }
+      }
+    }
 
     li {
       display: inline-block;
@@ -98,7 +127,6 @@
         margin-left: auto;
       }
     }
-
   }
 }
 

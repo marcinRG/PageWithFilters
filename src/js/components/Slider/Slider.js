@@ -8,18 +8,45 @@ export class Slider extends Component {
     constructor(props) {
         super(props);
         this.currentImage = 0;
+        this.slidesRef = React.createRef();
+        this.images = this.prepareImagesArray(props.images);
         this.nextImgButton = () => {
             console.log('next');
         };
         this.previousImgButton = () => {
             console.log('previous');
         };
+
+        this.resize = () => {
+            this.changeSize();
+        };
+
+    }
+
+    componentDidMount() {
+        window.addEventListener('resize', this.resize);
+    }
+
+    prepareImagesArray(images) {
+        const array = [...images];
+        const first = images[images.length - 1];
+        array.unshift(first);
+        const last = images[0];
+        array.push(last);
+        return array;
+    }
+
+    changeSize() {
+        const newWidth = calculateElementWidth(this.slidesRef.current);
+        this.setState({
+            sliderWidth: newWidth
+        });
     }
 
     createSlides() {
         return (
-            <div className="slides">
-                {this.props.images.map((image, i) =>
+            <div className="slides" ref={this.slidesRef}>
+                {this.images.map((image, i) =>
                     <Slide key={i} title={image.title} description={image.description}
                            image={image.image} imageAlt={image.imageAlt}/>
                 )}
@@ -61,3 +88,10 @@ Slider.propTypes = {
     images: PropTypes.array.isRequired,
     settings: PropTypes.object.isRequired
 };
+
+function calculateElementWidth(element) {
+    if (element) {
+        const width = element.getBoundingClientRect().width;
+        return width;
+    }
+}
