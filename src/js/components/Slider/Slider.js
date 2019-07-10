@@ -9,21 +9,45 @@ export class Slider extends Component {
         super(props);
         this.currentImage = 0;
         this.slidesRef = React.createRef();
-        this.images = this.prepareImagesArray(props.images);
-        this.nextImgButton = () => {
-            console.log('next');
+        this.state = {
+            currentSlide: 1,
+            sliderWidth: 0
         };
+        this.images = this.prepareImagesArray(props.images);
+
+        this.nextImgButton = () => {
+
+            this.setState((prevState)=>{
+                const next = findNextElem(prevState.currentSlide, this.images);
+                this.setToSlide(this.state.sliderWidth, next);
+                console.log(next);
+                return {
+                    currentSlide: next
+                }
+            });
+        };
+
         this.previousImgButton = () => {
-            console.log('previous');
+            console.log('prev');
+            this.setState((prevState)=>{
+                const next = findPreviousElem(prevState.currentSlide, this.images);
+                this.setToSlide(this.state.sliderWidth, next);
+                console.log(next);
+                return {
+                    currentSlide: next
+                }
+            });
         };
 
         this.resize = () => {
+            console.log('resize called');
             this.changeSize();
         };
-
     }
 
     componentDidMount() {
+        console.log('component Mounted!');
+        this.changeSize();
         window.addEventListener('resize', this.resize);
     }
 
@@ -37,10 +61,17 @@ export class Slider extends Component {
     }
 
     changeSize() {
-        const newWidth = calculateElementWidth(this.slidesRef.current);
-        this.setState({
-            sliderWidth: newWidth
+        this.setState(() => {
+            const newWidth = calculateElementWidth(this.slidesRef.current);
+            this.setToSlide(newWidth,this.state.currentSlide);
+            return {
+                sliderWidth: newWidth
+            }
         });
+    }
+
+    setToSlide(width, slideNumber) {
+        this.slidesRef.current.style.left = `-${width * slideNumber}px`;
     }
 
     createSlides() {
@@ -52,22 +83,6 @@ export class Slider extends Component {
                 )}
             </div>
         );
-    }
-
-    findNextElem() {
-        if (this.currentImage < this.props.images.length - 1) {
-            this.currentImage = this.currentImage + 1;
-        } else {
-            this.currentImage = 0;
-        }
-    }
-
-    findPreviousElem() {
-        if (this.currentImage > 0) {
-            this.currentImage = this.currentImage - 1;
-        } else {
-            this.currentImage = this.props.images.length - 1;
-        }
     }
 
     render() {
@@ -88,6 +103,22 @@ Slider.propTypes = {
     images: PropTypes.array.isRequired,
     settings: PropTypes.object.isRequired
 };
+
+function findNextElem(currentElement, array) {
+    if (currentElement < array.length - 1) {
+        return currentElement + 1;
+    } else {
+        return 0;
+    }
+}
+
+function findPreviousElem(currentElement, array) {
+    if (currentElement > 0) {
+        return currentElement - 1;
+    } else {
+        return array.length - 1;
+    }
+}
 
 function calculateElementWidth(element) {
     if (element) {
