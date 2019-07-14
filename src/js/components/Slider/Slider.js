@@ -8,72 +8,63 @@ export class Slider extends Component {
     constructor(props) {
         super(props);
         this.slidesRef = React.createRef();
+        this.timerId;
+        this.autoPlay = props.settings.autoPlay;
+        this.delay = props.settings.delay;
+        console.log(this.autoPlay);
+        console.log(this.delay)
         const firstSlide = this.setFirstImage(props.settings);
         this.state = {
             currentSlide: firstSlide,
             sliderWidth: 0
         };
+
         this.continuous = props.settings.continuous;
         this.images = this.prepareImagesArray(props.images, this.continuous);
-        console.log(this.images);
 
         this.nextImgButton = () => {
-            this.next();
+            this.next(findNextElem, 'up');
         };
 
         this.previousImgButton = () => {
-            this.previous();
+            this.next(findPreviousElem, 'down');
         };
 
         this.resize = () => {
-            console.log('resize called');
             this.changeSize();
         };
     }
 
-    previous() {
-        let next = findPreviousElem(this.state.currentSlide, this.images);
+    next(nextFunction, direction) {
+        this.timerId = clearTimeout(this.timerId);
+        let next = nextFunction(this.state.currentSlide, this.images);
         this.slidesRef.current.classList.remove('transition');
         this.animate(next).then((value) => {
-            console.log('animation completed');
-            if (this.continuous) {
-                if ((this.state.currentSlide === 1)) {
-                    next = this.images.length - 2;
-                }
+            const firstLast = this.getFirstOrLast(direction);
+            if (firstLast) {
+                next = firstLast;
                 this.slidesRef.current.classList.remove('transition');
                 this.moveToSlide(this.state.sliderWidth, next);
             }
             this.setState({ currentSlide: next });
+            this.autoPlaySlides();
         });
+
     }
 
-    getFirstOrLast() {
-        let next = undefined;
+    getFirstOrLast(direction) {
         if (this.continuous) {
-            if ((this.state.currentSlide === this.images.length - 2)) {
-                next = 1;
+            if (direction === 'up') {
+                if ((this.state.currentSlide === this.images.length - 2)) {
+                    return 1;
+                }
             }
-            if ((this.state.currentSlide === 1)) {
-                next = this.images.length - 2;
+            if (direction === 'down') {
+                if ((this.state.currentSlide === 1)) {
+                    return this.images.length - 2;
+                }
             }
         }
-        return next;
-    }
-
-    next() {
-        let next = findNextElem(this.state.currentSlide, this.images);
-        this.slidesRef.current.classList.remove('transition');
-        this.animate(next).then((value) => {
-            console.log('animation completed');
-            if (this.continuous) {
-                if ((this.state.currentSlide === this.images.length - 2)) {
-                    next = 1;
-                }
-                this.slidesRef.current.classList.remove('transition');
-                this.moveToSlide(this.state.sliderWidth, next);
-            }
-            this.setState({ currentSlide: next });
-        });
     }
 
     animate(next) {
@@ -90,9 +81,8 @@ export class Slider extends Component {
     }
 
     componentDidMount() {
-        console.log('component Mounted!');
         this.changeSize();
-        console.log('events');
+        this.autoPlaySlides();
         window.addEventListener('resize', this.resize);
     }
 
@@ -101,6 +91,20 @@ export class Slider extends Component {
             return settings.currentElem + 1;
         }
         return settings.currentElem;
+    }
+
+    getSlideNumber() {
+        if (this.continuous) {
+            return this.state.currentSlide;
+        } else {
+            return this.state.currentSlide + 1;
+        }
+    }
+
+    autoPlaySlides() {
+        if (this.autoPlay) {
+            this.timerId = executeInFuture(this.timerId, this.nextImgButton, this.delay);
+        }
     }
 
     prepareImagesArray(images, continuous) {
@@ -115,7 +119,6 @@ export class Slider extends Component {
     }
 
     changeSize() {
-        console.log(this.state.currentSlide);
         this.setState(() => {
             const newWidth = calculateElementWidth(this.slidesRef.current);
             this.slidesRef.current.classList.remove('transition');
@@ -146,7 +149,7 @@ export class Slider extends Component {
             <section className="slider">
                 <SliderNavButton buttonClass="prev" iconClass="ion-chevron-left" action={this.previousImgButton}/>
                 <SliderNavButton buttonClass="next" iconClass="ion-chevron-right" action={this.nextImgButton}/>
-                <SliderNavBar current={this.state.currentSlide + 1} all={this.props.images.length}/>
+                <SliderNavBar current={this.getSlideNumber()} all={this.props.images.length}/>
                 <div className="slider-view">
                     {this.createSlides()}
                 </div>
@@ -183,73 +186,8 @@ function calculateElementWidth(element) {
     }
 }
 
-// console.log('next click');
-// this.animate(next).then((value) => {
-//     console.log(value);
-//     console.log('animation completed');
-// });
-// this.animate(next)().then(() => {
-//     console.log('animation completed');
-// });
-// this.costam(next).then(() => {
-//     return this.transitionEndPromise;
-// }).then(() => {
-//     console.log('transition completed');
-//     this.setState({ currentSlide: next });
-// });
-// this.slidesRef.current.classList.add('transition');
-// this.setToSlide(this.state.sliderWidth, next);
-// this.transitionEndPromise().then(() => {
-//     console.log('transition completed');
-//     if (this.continuous) {
-//         if ((this.state.currentSlide === this.images.length - 2)) {
-//             this.slidesRef.current.classList.remove('transition');
-//             next = 1;
-//             this.setToSlide(this.state.sliderWidth, next);
-//             console.log(next);
-//         }
-//     }
-//
-// });
-// onAnimationComplete(resolve) {
-//     console.log('removing ')
-//     this.slidesRef.current.removeEventListener('transitionend', this.onAnimationComplete);
-//     resolve();
-// }
-
-// onAnimationComplete(currentElement) {
-//     let current = 0;
-//     if (this.continuous) {
-//          else {
-//             if ((currentElement === this.images.length - 1)) {
-//                 current = 1;
-//             }
-//         }
-//      return current;
-//     }
-// }
-
-// this.transitionEndPromise = new Promise((resolve) => {
-//     this.slidesRef.current.addEventListener('transitionend', () => {
-//         resolve('transition ended');
-//     })
-// });
-
-// costam(next) {
-//     return new Promise((resolve, reject) => {
-//         this.slidesRef.current.classList.add('transition');
-//         this.setToSlide(this.state.sliderWidth, next);
-//         resolve(this.slidesRef.current);
-//     });
-// }
-
-// return new Promise((resolve) => {
-//     this.slidesRef.current.addEventListener('transitionend',
-//         () => {
-//             console.log(this);
-//             this.onAnimationComplete(resolve);
-//         },
-//         false);
-//     this.slidesRef.current.classList.add('transition');
-//     this.setToSlide(this.state.sliderWidth, next);
-// });
+function executeInFuture(timeOutId, func, time) {
+    clearTimeout(timeOutId);
+    timeOutId = setTimeout(func, time);
+    return timeOutId;
+}
