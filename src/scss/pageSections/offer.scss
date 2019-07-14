@@ -81,6 +81,11 @@
         .new-info {
           font-size: 1.5em;
           float: left;
+          visibility: inherit;
+
+          &.hidden {
+            visibility: hidden;
+          }
         }
       }
 

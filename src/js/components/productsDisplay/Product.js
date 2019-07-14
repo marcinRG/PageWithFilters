@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import imgP2 from '../../../images/items/5.png';
 
 export function Product(props) {
     return (
         <div className="product-info">
             <div className="product-upper-info">
-                <span className="new-info">New</span>
-                <span className="fav-info"><i className="icon ion-ios-heart-outline"></i></span>
+                <span className={toggleNewClass(props.isNew)}>New</span>
+                <span className="fav-info"><i className={toggleFavoriteClass(props.isFavorite)}></i></span>
             </div>
 
             <img src={props.imagePath} alt={props.name} />
@@ -20,11 +19,18 @@ export function Product(props) {
     );
 }
 
-function toggleHaertClass(isFavorite) {
+function toggleFavoriteClass(isFavorite) {
     if (isFavorite) {
-        return "icon ion-ios-heart-outline"
+        return "icon ion-ios-heart"
     }
     return "icon ion-ios-heart-outline";
+}
+
+function toggleNewClass(isNew) {
+    if (isNew) {
+        return "new-info"
+    }
+    return "new-info hidden";
 }
 
 Product.propTypes = {

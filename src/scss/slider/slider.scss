@@ -36,6 +36,7 @@
 
   .prev {
     @include pos-absolute(6);
+    cursor: pointer;
     top: 40%;
     left: 2%;
     font-size: 2em;
@@ -43,6 +44,7 @@
 
   .next {
     @include pos-absolute(6);
+    cursor: pointer;
     top: 40%;
     right: 2%;
     font-size: 2em;
@@ -71,6 +73,14 @@
     height: 100%;
     font-size: 0;
     width: 100%;
+    transition-duration: 0s;
+    transition-property: none;
+
+    &.transition {
+      transition-duration: 2s;
+      transition-property: left;
+    }
+
 
     .slide {
       @include set-to-zero;
