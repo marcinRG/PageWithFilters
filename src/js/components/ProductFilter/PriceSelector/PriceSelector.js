@@ -1,3 +1,4 @@
+import React from 'react';
 export function PriceSelector() {
     return (
         <div className="price-filter">

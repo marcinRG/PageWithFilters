@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import img from '../../images/logo.png';
+import img from '../../../images/logo.png';
 
 export class Navbar extends Component {
     constructor(props) {

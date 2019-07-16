@@ -1,3 +1,4 @@
+import React from 'react';
 export function ColorSelector() {
     return (
         <div className="color-filter">
@@ -10,5 +11,5 @@ export function ColorSelector() {
                 <li className="c-picker green"></li>
             </ul>
         </div>
-    )
-};
+    );
+}

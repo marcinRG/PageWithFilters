@@ -1,6 +1,10 @@
 //images products
 import imgP1 from './../../images/items/3.png';
 import imgP2 from './../../images/items/5.png';
+import imgP3 from './../../images/items/7.png';
+import imgP4 from './../../images/items/8.png';
+import imgP5 from './../../images/items/9.png';
+import imgP6 from './../../images/items/10.png';
 //images slider
 import img1 from './../../images/slides/1.png';
 import img2 from './../../images/slides/2.png';
@@ -11,7 +15,7 @@ export const AppData = {
         {
             id: 1,
             name: 'Scissors',
-            price: 25.88,
+            price: '25.88',
             isNew: true,
             isFavorite: true,
             imagePath: imgP1
@@ -19,11 +23,44 @@ export const AppData = {
         {
             id: 2,
             name: 'Watch',
-            price: 45.73,
+            price: '45.73',
             isNew: false,
             isFavorite: false,
             imagePath: imgP2
         },
+        {
+            id: 3,
+            name: 'Lamp',
+            price: '55.73',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP3
+        },
+        {
+            id: 4,
+            name: 'Kettle',
+            price: '145.31',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP4
+        },
+        {
+            id: 5,
+            name: 'Paper Towel Holder',
+            price: '5.99',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP5
+        },
+        {
+            id: 6,
+            name: 'Piggy Bank',
+            price: '17.03',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP6
+        },
+
     ],
     slides: [
         {

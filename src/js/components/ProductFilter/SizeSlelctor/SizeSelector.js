@@ -1,4 +1,5 @@
-export function BrandsSelector() {
+import React from 'react';
+export function SizeSelector() {
     return (
         <div className="size-filter">
             <h4 className="small-title">Size</h4>

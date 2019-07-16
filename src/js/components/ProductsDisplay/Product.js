@@ -21,16 +21,16 @@ export function Product(props) {
 
 function toggleFavoriteClass(isFavorite) {
     if (isFavorite) {
-        return "icon ion-ios-heart"
+        return 'icon ion-ios-heart'
     }
-    return "icon ion-ios-heart-outline";
+    return 'icon ion-ios-heart-outline';
 }
 
 function toggleNewClass(isNew) {
     if (isNew) {
-        return "new-info"
+        return 'new-info'
     }
-    return "new-info hidden";
+    return 'new-info hidden';
 }
 
 Product.propTypes = {

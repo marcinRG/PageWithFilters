@@ -11,8 +11,6 @@ export class Slider extends Component {
         this.timerId;
         this.autoPlay = props.settings.autoPlay;
         this.delay = props.settings.delay;
-        console.log(this.autoPlay);
-        console.log(this.delay)
         const firstSlide = this.setFirstImage(props.settings);
         this.state = {
             currentSlide: firstSlide,
@@ -39,7 +37,7 @@ export class Slider extends Component {
         this.timerId = clearTimeout(this.timerId);
         let next = nextFunction(this.state.currentSlide, this.images);
         this.slidesRef.current.classList.remove('transition');
-        this.animate(next).then((value) => {
+        this.animate(next).then(() => {
             const firstLast = this.getFirstOrLast(direction);
             if (firstLast) {
                 next = firstLast;
