@@ -1,15 +1,19 @@
 import React from 'react';
-export function ColorSelector() {
+import PropTypes from 'prop-types';
+import { ColorPicker } from './ColorPicker';
+
+export function ColorSelector(props) {
     return (
         <div className="color-filter">
             <h4 className="small-title">Color</h4>
             <ul className="color-selector-list">
-                <li className="c-picker grey"></li>
-                <li className="c-picker red"></li>
-                <li className="c-picker white"></li>
-                <li className="c-picker blue"></li>
-                <li className="c-picker green"></li>
+                {props.colors.map((color, i) =>
+                    <ColorPicker key={i} value={color.value} colorLight={color.colorLight}/>
+                )}
             </ul>
         </div>
     );
 }
+ColorSelector.propTypes = {
+    colors: PropTypes.array.isRequired
+};

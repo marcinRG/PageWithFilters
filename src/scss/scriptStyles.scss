@@ -89,28 +89,15 @@
     bottom: 0;
   }
 
-  &.red {
-    background-color: rgba(255, 7, 10, .33);
-  }
-
-  &.blue {
-    background-color: rgba(79, 91, 255, .33);
-  }
-
-  &.green {
-    background-color: rgba(84, 255, 94, .33);
-  }
-
-  &.white {
+  &.light {
     border: 1px solid $border-color;
   }
 
-  &.grey {
+  &.dark {
     background-color: $text-color;
 
     & > .icon {
       color: lighten($text-color, 60%);
     }
   }
-
 }

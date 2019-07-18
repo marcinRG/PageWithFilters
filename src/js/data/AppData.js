@@ -84,5 +84,79 @@ export const AppData = {
             image: img3,
             imageAlt: 'kettle'
         }
-    ]
+    ],
+    filters: {
+        colors: [
+            {
+                name: 'red',
+                value: 'rgba(255, 7, 10, .33)',
+                colorLight: true
+            },
+            {
+                name: 'green',
+                value: 'rgba(84, 255, 94, .33)',
+                colorLight: true
+            },
+            {
+                name: 'blue',
+                value: 'rgba(79, 91, 255, .33)',
+                colorLight: true
+            },
+            {
+                name: 'white',
+                value: 'white',
+                colorLight: true
+            },
+            {
+                name: 'black',
+                value: 'black',
+                colorLight: false
+            }
+
+        ],
+        sizes: [
+            {
+                name: 'Small',
+                count: 12
+            },
+            {
+                name: 'Medium',
+                count: 5
+            },
+            {
+                name: 'Big',
+                count: 9
+            }
+        ],
+        brands: [
+            {
+                name: 'Banshu Hamono',
+                count: 12
+            },
+            {
+                name: 'Bower',
+                count: 7
+            },
+            {
+                name: 'Braun',
+                count: 19
+            },
+            {
+                name: 'ElevenPlus',
+                count: 11
+            },
+            {
+                name: 'Field',
+                count: 8
+            },
+            {
+                name: 'Henry Wilson',
+                count: 4
+            },
+            {
+                name: 'XeMenu',
+                count: 2
+            }
+        ]
+    }
 };
