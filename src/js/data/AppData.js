@@ -90,72 +90,77 @@ export const AppData = {
             {
                 name: 'red',
                 value: 'rgba(255, 7, 10, .33)',
-                colorLight: true
+                colorLight: true,
+                selected: false
             },
             {
                 name: 'green',
                 value: 'rgba(84, 255, 94, .33)',
-                colorLight: true
+                colorLight: true,
+                selected: false
             },
             {
                 name: 'blue',
                 value: 'rgba(79, 91, 255, .33)',
-                colorLight: true
+                colorLight: true,
+                selected: false
             },
             {
                 name: 'white',
                 value: 'white',
-                colorLight: true
+                colorLight: true,
+                selected: false
             },
             {
                 name: 'black',
                 value: 'black',
-                colorLight: false
+                colorLight: false,
+                selected: false
             }
 
         ],
         sizes: [
             {
                 name: 'Small',
-                count: 12
+                value: 12
             },
             {
                 name: 'Medium',
-                count: 5
+                value: 5
             },
             {
                 name: 'Big',
-                count: 9
+                value: 9
             }
         ],
         brands: [
             {
                 name: 'Banshu Hamono',
-                count: 12
+                value: 12
             },
             {
                 name: 'Bower',
-                count: 7
+                value: 7
             },
             {
                 name: 'Braun',
-                count: 19
+                value: 19
             },
             {
                 name: 'ElevenPlus',
-                count: 11
+                value: 11
             },
             {
                 name: 'Field',
-                count: 8
+                value: 8
             },
             {
                 name: 'Henry Wilson',
-                count: 4
+                value: 4
             },
             {
                 name: 'XeMenu',
-                count: 2
+                value: 2
             }
         ]
     }

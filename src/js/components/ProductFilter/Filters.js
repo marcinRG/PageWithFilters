@@ -1,17 +1,23 @@
-import React from 'react';
-import { PriceSelector } from './PriceSelector/PriceSelector';
+import React, { Component } from 'react';
 import { ColorSelector } from './ColorSelector/ColorSelector';
-import { SizeSelector } from './SizeSlelctor/SizeSelector';
-import { BrandSelector } from './BrandSelector/BrandSelector';
 import { AppData } from '../../data/AppData';
-export function Filters() {
-    return (
-        <div className="filters">
-            <h3 className="side-subtitle">Filter by</h3>
-            <PriceSelector/>
-            <ColorSelector colors={AppData.filters.colors}/>
-            <SizeSelector sizes={AppData.filters.sizes}/>
-            <BrandSelector/>
-        </div>
-    );
+import { ElementsList } from '../ElementsList/ElementsList';
+
+export class Filters extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="filters">
+                <h3 className="side-subtitle">Filter by</h3>
+                <ColorSelector array={AppData.filters.colors} multipleSelection={false}/>
+                <ElementsList array={AppData.filters.sizes} multipleSelection={false} className={'size-filter'}
+                              title={'Size'}/>
+                <ElementsList array={AppData.filters.brands} multipleSelection={true} className={'brands-filter'}
+                              title={'Brands'}/>
+            </div>
+        );
+    }
 }
