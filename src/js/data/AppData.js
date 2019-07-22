@@ -162,6 +162,42 @@ export const AppData = {
                 name: 'XeMenu',
                 value: 2
             }
-        ]
+        ],
+        categories: [
+            {
+                name: 'All products',
+                value: 50
+            },
+            {
+                name: 'Living',
+                value: 12
+            },
+            {
+                name: 'Dining',
+                value: 25
+            },
+            {
+                name: 'Furniture',
+                value: 5
+            },
+            {
+                name: 'Lighting',
+                value: 9
+            },
+            {
+                name: 'Accessories',
+                value: 11
+            },
+        ],
+        prices: {
+            max: 2520,
+            min: 30,
+        },
+        tags: [{ name: 'Simple' }, { name: 'Minimalism' }, { name: 'Furniture' }, { name: 'White' },
+            { name: 'Black' }, { name: 'Accessories' }]
+    },
+    results: {
+        productPerPage: 10,
+
     }
 };

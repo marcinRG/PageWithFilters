@@ -105,3 +105,64 @@
     }
   }
 }
+
+.price-filter {
+  width: 100%;
+
+  .inputs-row {
+    width: 90%;
+    margin: 0 auto;
+    padding: 1em 0;
+    overflow: hidden;
+    &::after {
+      clear: both;
+    }
+
+    .input-value {
+      @include roboto;
+      font-size: 1em;
+      width: 40%;
+      float: left;
+      outline: 0;
+      margin-right: .5em;
+      color: $lighter-text;
+      border: 1px solid $border-color;
+      padding: .2em .3em;
+    }
+
+  }
+
+  .field {
+    width: 90%;
+    height: 1.5em;
+    margin: .2em auto 0;
+    position: relative;
+  }
+
+  .beam {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    background-color: grey;
+    position: absolute;
+    transform: translateY(-50%);
+  }
+
+  .pointer {
+    height: 20px;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    width: 20px;
+    top: 0;
+    left: 0;
+
+    &.pointer-max {
+      left: 90%;
+    }
+
+  }
+
+}

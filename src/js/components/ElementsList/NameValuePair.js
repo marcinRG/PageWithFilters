@@ -9,7 +9,7 @@ export function NameValuePair(props) {
     );
 }
 
-function setSelectedClass(isSelected) {
+export function setSelectedClass(isSelected) {
     if (isSelected) {
         return 'selected';
     }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Filters } from '../ProductFilter/Filters';
-import { Tags } from '../ProductFilter/Tags';
-import { Categories } from '../ProductFilter/Categories';
+import { Tags } from '../ProductFilter/TagsSelector/Tags';
+import { Categories } from '../ProductFilter/CategoriesSelector/Categories';
 import { AppData } from '../../data/AppData';
 import { Product } from './Product';
 
@@ -10,9 +10,11 @@ export class ProductsDisplay extends Component {
         return (
             <section className="offer">
                 <div className="side-element">
-                    <Categories/>
+                    <Categories multipleSelection={false} array={AppData.filters.categories}
+                                className={'category-selectors'} title={'Categories'}/>
                     <Filters/>
-                    <Tags/>
+                    <Tags array={AppData.filters.tags} multipleSelection={true} title={'Popular Tags'}
+                    className={'tag-selector'}/>
                 </div>
                 <div className="main-element">
                     <div className="result-filter">
