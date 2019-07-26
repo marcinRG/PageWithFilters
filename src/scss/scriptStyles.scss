@@ -133,9 +133,10 @@
   }
 
   .field {
+    @include block-border-box;
     width: 90%;
-    height: 1.5em;
-    margin: .2em auto 0;
+    height: 20px;
+    margin: 0 auto;
     position: relative;
   }
 
@@ -149,7 +150,18 @@
     transform: translateY(-50%);
   }
 
+  .beam-progress {
+    width: 100%;
+    height: 2px;
+    top: 50%;
+    left: 0;
+    background-color: black;
+    position: absolute;
+    transform: translateY(-50%);
+  }
+
   .pointer {
+    @include block-border-box;
     height: 20px;
     background-color: white;
     border: 2px solid black;

@@ -13,7 +13,8 @@ export class Filters extends Component {
         return (
             <div className="filters">
                 <h3 className="side-subtitle">Filter by</h3>
-                <PriceSelector min={AppData.filters.prices.min} max={AppData.filters.prices.max}/>
+                <PriceSelector min={AppData.filters.prices.min} max={AppData.filters.prices.max}
+                               pointerSize={AppData.filters.prices.pointerSize}/>
                 <ColorSelector array={AppData.filters.colors} multipleSelection={false}/>
                 <ElementsList array={AppData.filters.sizes} multipleSelection={false} className={'size-filter'}
                               title={'Size'}/>

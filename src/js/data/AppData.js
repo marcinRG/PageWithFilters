@@ -192,6 +192,7 @@ export const AppData = {
         prices: {
             max: 2520,
             min: 30,
+            pointerSize: 20
         },
         tags: [{ name: 'Simple' }, { name: 'Minimalism' }, { name: 'Furniture' }, { name: 'White' },
             { name: 'Black' }, { name: 'Accessories' }]
