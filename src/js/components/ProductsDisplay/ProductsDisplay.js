@@ -4,8 +4,42 @@ import { Tags } from '../ProductFilter/TagsSelector/Tags';
 import { Categories } from '../ProductFilter/CategoriesSelector/Categories';
 import { AppData } from '../../data/AppData';
 import { Product } from './Product';
+import { ProductSortMethodSelector } from './ProductSortMethodSelector/ProductSortMethodSelector';
+import { ProductsCount } from './ProductsCount/ProductsCount';
+import { getPageNumber, PageSelector } from './PageSelector/PageSelector';
+import PropTypes from 'prop-types';
 
 export class ProductsDisplay extends Component {
+    constructor(props) {
+        super(props);
+        this.filterMethods = props.settings.filterMethods;
+        this.state = {
+            selectedFilterMethod: 0,
+            productsPerPage: props.settings.productsPerPage,
+            selectedPage: 2,
+            count: 51
+        };
+
+        this.changePage = (pageNumber) => {
+            if (pageNumber) {
+                this.setState({
+                    selectedPage: pageNumber
+                });
+            } else {
+                if (this.state.selectedPage < getPageNumber(this.state.count, this.state.productsPerPage)) {
+                    this.setState((previousState) => {
+                        return {
+                            selectedPage: previousState.selectedPage + 1
+                        };
+                    })
+                }
+            }
+        }
+        this.changeOrder = (number) =>{
+            console.log(number);
+        }
+    }
+
     render() {
         return (
             <section className="offer">
@@ -14,23 +48,15 @@ export class ProductsDisplay extends Component {
                                 className={'category-selectors'} title={'Categories'}/>
                     <Filters/>
                     <Tags array={AppData.filters.tags} multipleSelection={true} title={'Popular Tags'}
-                    className={'tag-selector'}/>
+                          className={'tag-selector'}/>
                 </div>
                 <div className="main-element">
                     <div className="result-filter">
-                        <div className="filter-input">
-                            <span>Sort by:</span>
-                            <span>name</span>
-                            <span><i className="icon ion-arrow-down-b"></i></span>
-                        </div>
-                        <div className="results-count">
-                            <span>Showing</span>
-                            <span>1-12</span>
-                            <span>of</span>
-                            <span>24</span>
-                            <span>results</span>
-                        </div>
-
+                        <ProductSortMethodSelector methods={this.filterMethods}
+                                                   selectedMethod={this.state.selectedFilterMethod}
+                        action={this.changeOrder}/>
+                        <ProductsCount selectedPage={this.state.selectedPage} count={this.state.count}
+                                       itemsPerPage={this.state.productsPerPage}/>
                     </div>
                     <div className="products">
 
@@ -59,17 +85,15 @@ export class ProductsDisplay extends Component {
                                  isFavorite={AppData.products[5].isFavorite}/>
 
                     </div>
-                    <div className="page-filter">
-                        <span><i className="icon ion-ios-arrow-thin-right"></i></span>
-                        <ul>
-                            <li className="active">1</li>
-                            <li>2</li>
-                            <li>3</li>
-                            <li>4</li>
-                        </ul>
-                    </div>
+                    <PageSelector selectedPage={this.state.selectedPage} count={this.state.count}
+                                  itemsPerPage={this.state.productsPerPage}
+                                  action={this.changePage}/>
                 </div>
             </section>
         );
     }
 }
+
+ProductsDisplay.propTypes = {
+    settings: PropTypes.object.isRequired
+};

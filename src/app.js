@@ -14,7 +14,7 @@ ReactDOM.render(
     <React.Fragment>
         <Navbar/>
         <Slider images={AppData.slides} settings={AppSettings.sliderSettings}/>
-        <ProductsDisplay/>
+        <ProductsDisplay settings={AppSettings.productDisplaySettings}/>
         <SmallForm/>
         <Footer/>
     </React.Fragment>,

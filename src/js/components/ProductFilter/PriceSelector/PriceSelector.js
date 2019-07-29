@@ -21,26 +21,33 @@ export class PriceSelector extends Component {
         };
 
         this.changeMinValue = (keyEvent) => {
-            return this.changeValueOnInput(keyEvent, this.inputMinRef.current,
-                this.pointerMinRef.current, 'min', this.setX1);
+            return this.changeValueOnInput(keyEvent, this.inputMinRef.current, 'min', this.setUIAndStateX1);
         };
 
         this.changeMaxValue = (keyEvent) => {
-            return this.changeValueOnInput(keyEvent, this.inputMaxRef.current,
-                this.pointerMaxRef.current, 'max', this.setX2);
+            return this.changeValueOnInput(keyEvent, this.inputMaxRef.current, 'max', this.setUIAndStateX2);
         };
 
-        this.setX1 = (value) => {
+        this.setUIAndStateX1 = (value) => {
+            this.setUIElements(value, this.pointerMinRef.current, this.inputMinRef.current);
+            this.setBeamLengthAndOffset({ offset: value });
             this.setState({
                 x1: value
             });
         };
 
-        this.setX2 = (value) => {
+        this.setUIAndStateX2 = (value) => {
+            this.setUIElements(value, this.pointerMaxRef.current, this.inputMaxRef.current);
+            this.setBeamLengthAndOffset({ width: value });
             this.setState({
                 x2: value
             })
         };
+
+        this.change = () => {
+            this.changeSize();
+        }
+
     }
 
     getSliderMinMaxWidth() {
@@ -52,6 +59,7 @@ export class PriceSelector extends Component {
     changeSize() {
         this.setPointerPosition(this.pointerMinRef.current, this.state.x1);
         this.setPointerPosition(this.pointerMaxRef.current, this.state.x2);
+        this.setBeamLengthAndOffset();
     }
 
     getPointerValue() {
@@ -61,27 +69,50 @@ export class PriceSelector extends Component {
         return pointerValue;
     }
 
-    changeValueOnInput(keyEvent, input, pointer, name, func) {
+    setUIElements(value, pointer, input) {
+        this.setPointerPosition(pointer, value);
+        input.value = value;
+    }
+
+    setBeamLengthAndOffset(valuePair) {
+        let offset = this.state.x1;
+        let width = this.state.x2;
+        if (valuePair) {
+            if (valuePair.offset) {
+                offset = valuePair.offset;
+            }
+            if (valuePair.width) {
+                width = valuePair.width;
+            }
+        }
+        const minMax = this.getSliderMinMaxWidth();
+        offset = this.getPointerPosition(this.pointerMinRef.current, offset);
+        width = this.getPointerPosition(this.pointerMaxRef.current, width);
+        const widthPx = width - offset - this.pointerSize;
+        const offsetPx = offset - minMax.minWidth + this.pointerSize;
+        if (widthPx && offsetPx) {
+            this.progressBeamRef.current.style.left =  offsetPx+ 'px';
+            this.progressBeamRef.current.style.width = widthPx + 'px';
+        }
+    }
+
+    changeValueOnInput(keyEvent, input, name, func) {
         if (keyEvent.which == 13 || keyEvent.keyCode == 13) {
             let val = input.value;
             val = this.getLimitedValues(val, name);
-            input.value = val;
-            this.setPointerPosition(pointer, val);
             func(val);
             return false;
         }
         return true;
     }
 
-    changeValueOnPointerMove(mouseEvent, input, pointer, name, func) {
+    changeValueOnPointerMove(mouseEvent, name, func) {
         if (this.state.isMouseDown) {
             const minMax = this.getSliderMinMaxWidth();
             let position = mouseEvent.clientX;
             position = this.getLimitedPosition(position, name, minMax);
             const value = transformation(position, minMax.minWidth,
-                 minMax.maxWidth, this.state.minValue, this.state.maxValue);
-            this.setPointerPosition(pointer, value);
-            input.value = value;
+                minMax.maxWidth, this.state.minValue, this.state.maxValue);
             func(value);
         }
     }
@@ -107,25 +138,28 @@ export class PriceSelector extends Component {
     }
 
     componentDidMount() {
-        window.addEventListener('resize', this.changeSize);
+        window.addEventListener('resize', this.change);
         this.changeSize();
         this.fillInputs();
         this.setMouseUpDownLeaveListener(this.pointerMinRef.current);
         this.setMouseUpDownLeaveListener(this.pointerMaxRef.current);
         this.pointerMinRef.current.addEventListener('mousemove', (mouseEvent) => {
-            this.changeValueOnPointerMove(mouseEvent, this.inputMinRef.current,
-                this.pointerMinRef.current, 'min', this.setX1);
+            this.changeValueOnPointerMove(mouseEvent, 'min', this.setUIAndStateX1);
         });
         this.pointerMaxRef.current.addEventListener('mousemove', (mouseEvent) => {
-            this.changeValueOnPointerMove(mouseEvent, this.inputMaxRef.current,
-                this.pointerMaxRef.current, 'max', this.setX2);
+            this.changeValueOnPointerMove(mouseEvent, 'max', this.setUIAndStateX2);
         });
+    }
+
+    getPointerPosition(element, value) {
+        const minMax = this.getSliderMinMaxWidth();
+        return transformation(value, this.state.minValue, this.state.maxValue,
+            minMax.minWidth, minMax.maxWidth);
     }
 
     setPointerPosition(element, value) {
         const minMax = this.getSliderMinMaxWidth();
-        const position = transformation(value, this.state.minValue, this.state.maxValue,
-            minMax.minWidth, minMax.maxWidth);
+        const position = this.getPointerPosition(element, value);
         const elemLeftStyle = getStyleLeft(position, minMax.minWidth, minMax.maxWidth);
         if (elemLeftStyle) {
             element.style.left = elemLeftStyle;
@@ -138,13 +172,11 @@ export class PriceSelector extends Component {
     }
 
     setMouseUpDownLeaveListener(element) {
-
         element.addEventListener('mousedown', () => {
             this.setState({
                 isMouseDown: true
             });
         });
-
         element.addEventListener('mouseup', () => {
             this.setState({
                 isMouseDown: false
@@ -168,7 +200,6 @@ export class PriceSelector extends Component {
                     <input className="input-value" type="text" ref={this.inputMaxRef}
                            onKeyDown={this.changeMaxValue}/>
                 </div>
-
             </div>
         );
     }

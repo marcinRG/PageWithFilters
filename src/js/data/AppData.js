@@ -197,8 +197,4 @@ export const AppData = {
         tags: [{ name: 'Simple' }, { name: 'Minimalism' }, { name: 'Furniture' }, { name: 'White' },
             { name: 'Black' }, { name: 'Accessories' }]
     },
-    results: {
-        productPerPage: 10,
-
-    }
 };

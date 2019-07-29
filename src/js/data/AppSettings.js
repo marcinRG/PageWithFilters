@@ -7,5 +7,9 @@ export const AppSettings = {
     },
     navBarSettings: {
         breakPoint: 768
+    },
+    productDisplaySettings: {
+            productsPerPage: 12,
+            filterMethods: ['name asc', 'name desc', 'price asc', 'price desc', 'date']
     }
 };
