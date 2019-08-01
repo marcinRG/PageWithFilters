@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export class ProductSortMethodSelector extends Component {
     constructor(props) {
         super(props);
-        console.log(props.methods);
         this.listOptions = props.methods;
         this.state = {
             showOptions: false,
@@ -12,34 +11,54 @@ export class ProductSortMethodSelector extends Component {
         };
 
         this.action = (i) => {
-            console.log('action:' + i);
-            this.setState({ selected: i });
-            //props.action(i);
+            this.setState({
+                selected: i,
+                showOptions: false
+            });
+            props.action(i);
         };
+
+        this.toggleList = () => {
+            this.setState((prevState => {
+                return {
+                    showOptions: !prevState.showOptions
+                }
+            }));
+        }
     }
 
     render() {
         return (
             <div className="filter-input">
-                <span>Sort by:</span>
-                <span className="selected">{this.listOptions[this.state.selected]}</span>
-                <span><i className="icon ion-arrow-down-b"></i></span>
-                <ul className="sort-methods">
-                    {this.listOptions.map((elem, i) =>
-                        <MethodItem key={i} nrId={i} name={elem} action={this.action}></MethodItem>
-                    )}
-                </ul>
+                <div className="filter-container">
+                    <span>Sort by:</span>
+                    <span className="selected">{this.listOptions[this.state.selected]}</span>
+                    <span className="button" onClick={this.toggleList}><i className={getButtonClassName(this.state.showOptions)}></i></span>
+                    <ul className="sort-methods" style={getStyleHeight(this.state.showOptions,this.listOptions.length,28)}>
+                        {this.listOptions.map((elem, i) =>
+                            <MethodItem key={i} nrId={i} name={elem} action={this.action}></MethodItem>
+                        )}
+                    </ul>
+                </div>
             </div>
         );
     }
 }
 
-function getListClassName() {
-    console.log('get list name');
+function getStyleHeight(isVisble, count, height) {
+    const h = isVisble ? count * height : 0;
+    return {
+        height: h + 'px'
+    };
 }
 
-function setButtonClassName() {
-    console.log('get button class');
+function getButtonClassName(isVisible) {
+    const className='icon ion-arrow-down-b';
+    if (isVisible) {
+        return `${className} rotated`;
+    }
+    return className;
+
 }
 
 function MethodItem(props) {

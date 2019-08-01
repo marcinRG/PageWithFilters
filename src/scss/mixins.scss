@@ -15,3 +15,38 @@
   position: absolute;
   z-index: $index;
 }
+
+@mixin selected {
+  &.selected {
+    font-weight: 700;
+    color: $text-color;
+
+    sup {
+      font-weight: 400;
+    }
+
+    &::after {
+      font-weight: 400;
+    }
+
+  }
+}
+
+%list-template {
+  padding: 0 0 1.5em;
+
+  li {
+    @include selected;
+    user-select: none;
+    cursor: pointer;
+    display: block;
+    width: 100%;
+    padding-bottom: .5em;
+    color: $lighter-text;
+
+    sup {
+      color: $lightest-text;
+    }
+  }
+}
+

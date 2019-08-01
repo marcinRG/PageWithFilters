@@ -1,0 +1,13 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../common';
+
+.results-count {
+  float: right;
+  padding-top: 2em;
+
+  & span {
+    margin: 0 .1em;
+    color: $light-text;
+  }
+}

@@ -1,0 +1,24 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../common';
+
+.tags-list {
+  @extend %list-template;
+
+  & > li {
+    width: auto;
+    display: inline-block;
+
+    &:last-of-type {
+      &::after {
+        content: '';
+      }
+    }
+
+    &::after {
+      color: $lightest-text;
+      margin-right: 3px;
+      content: ',';
+    }
+  }
+}

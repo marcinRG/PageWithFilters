@@ -43,24 +43,6 @@
       &::after {
         clear: both;
       }
-
-      .filter-input {
-        float: left;
-        font-size: 1.5em;
-        padding-top: 1em;
-        padding-left: 1em;
-      }
-
-      .results-count {
-        color: $lightest-text;
-        float: right;
-        padding-top: 2em;
-
-        & span {
-          margin: 0 .1em;
-        }
-      }
-
     }
 
     .products {
@@ -139,42 +121,6 @@
         display: block;
         width: 80%;
         margin: auto;
-      }
-    }
-
-    .page-filter {
-      @include block-border-box;
-      padding: 1em 0 0 2em;
-      overflow: hidden;
-
-      &::after {
-        clear: both;
-      }
-
-      ul {
-        float: right;
-
-        li {
-          font-size: 1.2em;
-          display: inline-block;
-          padding: .5em 1em;
-          color: $lighter-text;
-          cursor: pointer;
-
-          &.active {
-            color: $text-color;
-          }
-        }
-      }
-
-      span {
-        cursor: pointer;
-        display: block;
-        float: right;
-        font-weight: 700;
-        color: $text-color;
-        padding: .5em 1em;
-        font-size: 1.2em;
       }
     }
   }
