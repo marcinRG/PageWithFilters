@@ -1,20 +1,45 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-export function ProductSortMethodSelector(props) {
-    console.log(props.methods);
-    return (
-        <div className="filter-input">
-            <span>Sort by:</span>
-            <span className="selected">{props.methods[props.selectedMethod]}</span>
-            <span><i className="icon ion-arrow-down-b"></i></span>
-            <ul className="sort-methods">
-                {props.methods.map((elem, i) =>
-                    <MethodItem key={i} nrId={i} name={elem} action={props.action}></MethodItem>
-                )}
-            </ul>
-        </div>
-    );
+export class ProductSortMethodSelector extends Component {
+    constructor(props) {
+        super(props);
+        console.log(props.methods);
+        this.listOptions = props.methods;
+        this.state = {
+            showOptions: false,
+            selected: props.selectedMethod
+        };
+
+        this.action = (i) => {
+            console.log('action:' + i);
+            this.setState({ selected: i });
+            //props.action(i);
+        };
+    }
+
+    render() {
+        return (
+            <div className="filter-input">
+                <span>Sort by:</span>
+                <span className="selected">{this.listOptions[this.state.selected]}</span>
+                <span><i className="icon ion-arrow-down-b"></i></span>
+                <ul className="sort-methods">
+                    {this.listOptions.map((elem, i) =>
+                        <MethodItem key={i} nrId={i} name={elem} action={this.action}></MethodItem>
+                    )}
+                </ul>
+            </div>
+        );
+    }
+}
+
+function getListClassName() {
+    console.log('get list name');
+}
+
+function setButtonClassName() {
+    console.log('get button class');
 }
 
 function MethodItem(props) {
