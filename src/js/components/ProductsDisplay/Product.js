@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 export function Product(props) {
     return (
@@ -8,8 +9,9 @@ export function Product(props) {
                 <span className={toggleNewClass(props.isNew)}>New</span>
                 <span className="fav-info"><i className={toggleFavoriteClass(props.isFavorite)}></i></span>
             </div>
-
-            <img src={props.imagePath} alt={props.name} />
+            <Link to={'/item/'}>
+                <img src={props.imagePath} alt={props.name} />
+            </Link>
             <h5 className="product-name">{props.name}</h5>
             <div className="product-lower-info">
                 <span className="product-price">{props.price}</span>

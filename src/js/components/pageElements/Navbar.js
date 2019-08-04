@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import img from '../../../images/logo.png';
+import { LinkList } from './LinkList';
+import { Link } from 'react-router-dom';
 
 export class Navbar extends Component {
     constructor(props) {
@@ -36,12 +38,11 @@ export class Navbar extends Component {
                 </span>
                 <span className="navbar-title">Top Designers</span>
                 <button className="navbar-button" onClick={this.changeVisibility}><i className="icon ion-navicon"></i></button>
-                <span className="navbar-cart"><i className="icon ion-bag"></i></span>
+                <span className="navbar-cart"><Link to={'/basket/'}>
+                    <i className="icon ion-bag"></i>
+                </Link></span>
                 <ul className={this.setNavMenuClass()}>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">Elements</a></li>
-                    <li><a href="#">Pages</a></li>
+                   <LinkList/>
                 </ul>
             </nav>
         );
