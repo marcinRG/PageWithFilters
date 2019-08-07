@@ -31,22 +31,3 @@
 
   }
 }
-
-%list-template {
-  padding: 0 0 1.5em;
-
-  li {
-    @include selected;
-    user-select: none;
-    cursor: pointer;
-    display: block;
-    width: 100%;
-    padding-bottom: .5em;
-    color: $lighter-text;
-
-    sup {
-      color: $lightest-text;
-    }
-  }
-}
-
