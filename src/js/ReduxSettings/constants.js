@@ -1,4 +1,4 @@
-export const constants = {
+export const actionNames = {
     //basket constants
     ADD_TO_BASKET: 'add item to basket',
     REMOVE_FROM_BASKET: 'remove item form basket',
@@ -9,5 +9,9 @@ export const constants = {
     GET_BRANDS_NAMES: 'get brands names',
     GET_TAGS: 'get tags',
     GET_CATEGORIES: 'get categories',
-    GET_PRICE_RANGE: 'get price range'
+    GET_PRICE_RANGE: 'get price range',
+    SET_PRICE_RANGE: 'set price range',
+    SET_MAX_PRICE_RANGE: 'set max price',
+    SET_MIN_PRICE_RANGE: 'set min price'
 };
+

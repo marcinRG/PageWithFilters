@@ -1,4 +1,4 @@
-//images products
+//images productsOld
 import imgP1 from './../../images/items/3.png';
 import imgP2 from './../../images/items/5.png';
 import imgP3 from './../../images/items/7.png';
@@ -11,7 +11,46 @@ import img2 from './../../images/slides/2.png';
 import img3 from './../../images/slides/3.png';
 
 export const AppData = {
-    products: [
+    slider: {
+        slides: [
+            {
+                title: 'Lorem ipsum 1',
+                description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Aliquid architecto atque corporis dolorum`,
+                image: img1,
+                imageAlt: 'hanging plant in a pot'
+            },
+            {
+                title: 'Lorem ipsum 2',
+                description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Aliquid architecto atque corporis dolorum`,
+                image: img2,
+                imageAlt: 'hanging plant in a pot, upside down'
+            },
+            {
+                title: 'Lorem ipsum 3',
+                description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Aliquid architecto atque corporis dolorum`,
+                image: img3,
+                imageAlt: 'kettle'
+            }
+        ],
+        settings: {
+            delay: 8000,
+            autoPlay: true,
+            continuous: true,
+            currentElem: 0
+        }
+    },
+    filters: {
+        priceFilter: {
+            max: 2520,
+            min: 30,
+            pointerSize: 20
+        }
+    },
+    basket: {},
+    productsOld: [
         {
             id: 1,
             name: 'Scissors',
@@ -62,7 +101,7 @@ export const AppData = {
         },
 
     ],
-    slides: [
+    slidesOld: [
         {
             title: 'Lorem ipsum 1',
             description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
@@ -85,7 +124,7 @@ export const AppData = {
             imageAlt: 'kettle'
         }
     ],
-    filters: {
+    filtersOld: {
         colors: [
             {
                 name: 'red',
@@ -165,7 +204,7 @@ export const AppData = {
         ],
         categories: [
             {
-                name: 'All products',
+                name: 'All productsOld',
                 value: 50
             },
             {

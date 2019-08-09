@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux';
+import { addMaxPriceRange, addMinPriceRange } from '../../../ReduxSettings/actions/filterActions';
 
-export class PriceSelector extends Component {
+class PriceSelector extends Component {
     constructor(props) {
         super(props);
         this.pointerMinRef = React.createRef();
@@ -34,6 +37,7 @@ export class PriceSelector extends Component {
             this.setState({
                 x1: value
             });
+            this.props.setMinRange((value-0));
         };
 
         this.setUIAndStateX2 = (value) => {
@@ -41,7 +45,8 @@ export class PriceSelector extends Component {
             this.setBeamLengthAndOffset({ width: value });
             this.setState({
                 x2: value
-            })
+            });
+            this.props.setMaxRange((value-0));
         };
 
         this.change = () => {
@@ -91,7 +96,7 @@ export class PriceSelector extends Component {
         const widthPx = width - offset - this.pointerSize;
         const offsetPx = offset - minMax.minWidth + this.pointerSize;
         if (widthPx && offsetPx) {
-            this.progressBeamRef.current.style.left =  offsetPx+ 'px';
+            this.progressBeamRef.current.style.left = offsetPx + 'px';
             this.progressBeamRef.current.style.width = widthPx + 'px';
         }
     }
@@ -208,8 +213,27 @@ export class PriceSelector extends Component {
 PriceSelector.propTypes = {
     min: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
-    pointerSize: PropTypes.number.isRequired
+    pointerSize: PropTypes.number.isRequired,
+    setMaxRange: PropTypes.func.isRequired,
+    setMinRange: PropTypes.func.isRequired
 };
+
+function mapStateToProps(state) {
+    return {
+        min: state.priceFilters.min,
+        max: state.priceFilters.max,
+        pointerSize: state.priceFilters.pointerSize
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        setMaxRange: bindActionCreators(addMaxPriceRange,dispatch),
+        setMinRange: bindActionCreators(addMinPriceRange,dispatch)
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(PriceSelector);
 
 function transformation(xValue, xMin, xMax, yMin, yMax) {
     const yValue = Math.round(yMin + (yMax - yMin) * (xValue - xMin) / (xMax - xMin));

@@ -3,8 +3,9 @@ import { SliderNavButton } from './SliderNavButton';
 import PropTypes from 'prop-types';
 import { Slide } from './Slide';
 import { SliderNavBar } from './SliderNavBar';
+import {connect} from 'react-redux';
 
-export class Slider extends Component {
+class Slider extends Component {
     constructor(props) {
         super(props);
         this.slidesRef = React.createRef();
@@ -33,7 +34,8 @@ export class Slider extends Component {
         };
     }
 
-    next(nextFunction, direction) {
+
+   next(nextFunction, direction) {
         this.timerId = clearTimeout(this.timerId);
         let next = nextFunction(this.state.currentSlide, this.images);
         this.slidesRef.current.classList.remove('transition');
@@ -160,6 +162,15 @@ Slider.propTypes = {
     images: PropTypes.array.isRequired,
     settings: PropTypes.object.isRequired,
 };
+
+function mapStateToProps(state) {
+    return {
+        images: state.slider.slides,
+        settings: state.slider.settings,
+    }
+}
+
+export default connect(mapStateToProps)(Slider);
 
 function findNextElem(currentElement, array) {
     if (currentElement < array.length - 1) {
