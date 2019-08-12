@@ -1,24 +1,52 @@
-import React from 'react';
+import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import connect from 'react-redux/es/connect/connect';
+import { addItemToBasket, updateItemCount } from '../../ReduxSettings/actions/basketActions';
 
-export function Product(props) {
-    return (
-        <div className="product-info">
-            <div className="product-upper-info">
-                <span className={toggleNewClass(props.isNew)}>New</span>
-                <span className="fav-info"><i className={toggleFavoriteClass(props.isFavorite)}></i></span>
+class Product extends Component {
+    constructor(props) {
+        super(props);
+        this.addToBasket = () => {
+            if (this.props.items) {
+                if (this.props.items[this.props.item.id]) {
+                    this.props.updateCount({
+                        count: this.getItemCount() + 1,
+                        id: this.props.item.id
+                    });
+                } else {
+                    const item = Object.assign({},this.props.item, {count: 1});
+                    this.props.addToBasket(item);
+                }
+            }
+        }
+    }
+
+    getItemCount() {
+        return this.props.items[this.props.item.id].count ?
+            this.props.items[this.props.item.id].count : 0;
+    }
+
+    render() {
+        return (
+            <div className="product-info">
+                <div className="product-upper-info">
+                    <span className={toggleNewClass(this.props.item.isNew)}>New</span>
+                    <span className="fav-info"><i className={toggleFavoriteClass(this.props.item.isFavorite)}></i></span>
+                </div>
+                <Link to={'/item/'}>
+                    <img src={this.props.item.imagePath} alt={this.props.item.name} />
+                </Link>
+                <h5 className="product-name">{this.props.item.name}</h5>
+                <div className="product-lower-info">
+                    <span className="product-price">{this.props.item.price}</span>
+                    <span className="product-to-cart" onClick={this.addToBasket}><i className="icon ion-bag"></i>Add to Cart</span>
+                </div>
             </div>
-            <Link to={'/item/'}>
-                <img src={props.imagePath} alt={props.name} />
-            </Link>
-            <h5 className="product-name">{props.name}</h5>
-            <div className="product-lower-info">
-                <span className="product-price">{props.price}</span>
-                <span className="product-to-cart"><i className="icon ion-bag"></i>Add to Cart</span>
-            </div>
-        </div>
-    );
+        );
+    }
+
 }
 
 function toggleFavoriteClass(isFavorite) {
@@ -35,11 +63,25 @@ function toggleNewClass(isNew) {
     return 'new-info hidden';
 }
 
+function mapStateToProps(state) {
+    return {
+        items: state.basket.items,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToBasket: bindActionCreators(addItemToBasket, dispatch),
+        updateCount: bindActionCreators(updateItemCount, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product);
+
 Product.propTypes = {
-    name: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    isNew: PropTypes.bool.isRequired,
-    isFavorite: PropTypes.bool.isRequired
+    item: PropTypes.object.isRequired,
+    items: PropTypes.object,
+    addToBasket: PropTypes.func.isRequired,
+    updateCount: PropTypes.func.isRequired
 };
 

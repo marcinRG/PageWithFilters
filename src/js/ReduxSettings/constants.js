@@ -1,8 +1,9 @@
 export const actionNames = {
     //basket constants
-    ADD_TO_BASKET: 'add item to basket',
-    REMOVE_FROM_BASKET: 'remove item form basket',
-    UPDATE_ITEM_COUNT: 'update item count in basket',
+    ADD_TO_BASKET: 'ADD_TO_BASKET',
+    REMOVE_FROM_BASKET: 'REMOVE_FROM_BASKET',
+    UPDATE_ITEM_COUNT: 'UPDATE_ITEM_COUNT',
+
     //item's filter constants
     SET_MAX_PRICE_RANGE: 'set max price',
     SET_MIN_PRICE_RANGE: 'set min price',

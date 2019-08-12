@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import img from '../../../images/logo.png';
 import { LinkList } from '../pageElements/LinkList';
-import { BasketSmallDisplay } from '../BasketSmallDisplay/BasketSmallDisplay';
+import BasketSmallDisplay from '../BasketSmallDisplay/BasketSmallDisplay';
 
 export class Navbar extends Component {
     constructor(props) {

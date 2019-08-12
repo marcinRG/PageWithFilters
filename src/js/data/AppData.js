@@ -165,7 +165,10 @@ export const AppData = {
         }
 
     },
-    basket: {},
+    basket: {
+        items: {
+        }
+    },
     products: {
         1: {
             id: 1,
@@ -216,54 +219,4 @@ export const AppData = {
                 imagePath: imgP6
             }
     },
-    productsOld: [
-        {
-            id: 1,
-            name: 'Scissors',
-            price: '25.88',
-            isNew: true,
-            isFavorite: true,
-            imagePath: imgP1
-        },
-        {
-            id: 2,
-            name: 'Watch',
-            price: '45.73',
-            isNew: false,
-            isFavorite: false,
-            imagePath: imgP2
-        },
-        {
-            id: 3,
-            name: 'Lamp',
-            price: '55.73',
-            isNew: false,
-            isFavorite: false,
-            imagePath: imgP3
-        },
-        {
-            id: 4,
-            name: 'Kettle',
-            price: '145.31',
-            isNew: false,
-            isFavorite: false,
-            imagePath: imgP4
-        },
-        {
-            id: 5,
-            name: 'Paper Towel Holder',
-            price: '5.99',
-            isNew: false,
-            isFavorite: false,
-            imagePath: imgP5
-        },
-        {
-            id: 6,
-            name: 'Piggy Bank',
-            price: '17.03',
-            isNew: false,
-            isFavorite: false,
-            imagePath: imgP6
-        },
-    ]
 };

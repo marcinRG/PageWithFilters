@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Filters } from '../ProductFilter/Filters';
 import { AppData } from '../../data/AppData';
-import { Product } from './Product';
+import Product from './Product';
 import { ProductSortMethodSelector } from '../ProductSortMethodSelector/ProductSortMethodSelector';
 import { ProductsCount } from '../ProductsCount/ProductsCount';
 import { getPageNumber, PageSelector } from '../PageSelector/PageSelector';
@@ -51,31 +51,9 @@ export class ProductsDisplay extends Component {
                                        itemsPerPage={this.state.productsPerPage}/>
                     </div>
                     <div className="products">
-
-                        <Product name={AppData.productsOld[0].name} price={AppData.productsOld[0].price}
-                                 imagePath={AppData.productsOld[0].imagePath} isNew={AppData.productsOld[0].isNew}
-                                 isFavorite={AppData.productsOld[0].isFavorite}/>
-
-                        <Product name={AppData.productsOld[1].name} price={AppData.productsOld[1].price}
-                                 imagePath={AppData.productsOld[1].imagePath} isNew={AppData.productsOld[1].isNew}
-                                 isFavorite={AppData.productsOld[1].isFavorite}/>
-
-                        <Product name={AppData.productsOld[2].name} price={AppData.productsOld[2].price}
-                                 imagePath={AppData.productsOld[2].imagePath} isNew={AppData.productsOld[2].isNew}
-                                 isFavorite={AppData.productsOld[2].isFavorite}/>
-
-                        <Product name={AppData.productsOld[3].name} price={AppData.productsOld[3].price}
-                                 imagePath={AppData.productsOld[3].imagePath} isNew={AppData.productsOld[3].isNew}
-                                 isFavorite={AppData.productsOld[3].isFavorite}/>
-
-                        <Product name={AppData.productsOld[4].name} price={AppData.productsOld[4].price}
-                                 imagePath={AppData.productsOld[4].imagePath} isNew={AppData.productsOld[4].isNew}
-                                 isFavorite={AppData.productsOld[4].isFavorite}/>
-
-                        <Product name={AppData.productsOld[5].name} price={AppData.productsOld[5].price}
-                                 imagePath={AppData.productsOld[5].imagePath} isNew={AppData.productsOld[5].isNew}
-                                 isFavorite={AppData.productsOld[5].isFavorite}/>
-
+                        {Object.keys(AppData.products).map((id)=>
+                           <Product item={AppData.products[id]}  key={id} />
+                        )}
                     </div>
                     <PageSelector selectedPage={this.state.selectedPage} count={this.state.count}
                                   itemsPerPage={this.state.productsPerPage}
