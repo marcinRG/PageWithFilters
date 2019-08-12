@@ -56,21 +56,6 @@
 
   }
 
-  .navbar-cart {
-    font-size: 2em;
-    order: 3;
-    padding: .25em;
-    outline: 0;
-    cursor: pointer;
-
-    @media screen {
-      @media (min-width: $media-br-1) {
-        order: 4;
-      }
-    }
-
-  }
-
   .navbar-menu {
     order: 4;
     position: relative;

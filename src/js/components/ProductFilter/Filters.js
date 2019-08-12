@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import { ColorSelector } from './ColorSelector/ColorSelector';
-import { AppData } from '../../data/AppData';
-import { ElementsList } from '../ElementsList/ElementsList';
-import PriceSelector from './PriceSelector/PriceSelector';
+import PriceSelector from '../PriceSelector/PriceSelector';
+import ColorList from '../ColorList/ColorList';
+import SizesList from '../SizesList/SizesList';
+import TagList from '../TagsList/TagList';
+import CategoriesList from '../CategoriesList/CategoriesList';
+import BrandsList from '../BrandsList/BrandsList';
 
 export class Filters extends Component {
     constructor(props) {
@@ -11,18 +13,17 @@ export class Filters extends Component {
 
     render() {
         return (
-            <div className="filters">
-                <h3 className="side-subtitle">Filter by</h3>
-                <PriceSelector/>
-{/*
-                <PriceSelector min={AppData.filtersOld.prices.min} max={AppData.filtersOld.prices.max}
-                               pointerSize={AppData.filtersOld.prices.pointerSize}/>
-                <ColorSelector array={AppData.filtersOld.colors} multipleSelection={false}/>
-                <ElementsList array={AppData.filtersOld.sizes} multipleSelection={false} className={'size-filter'}
-                              title={'Size'}/>
-                <ElementsList array={AppData.filtersOld.brands} multipleSelection={true} className={'brands-filter'}
-                              title={'Brands'}/>
-*/}
+            <div className="side-element">
+                <CategoriesList className={'category-selectors'} title={'Categories'}/>
+                <div className="filters">
+                    <h3 className="side-subtitle">Filter by</h3>
+                    <PriceSelector/>
+                    <SizesList className={'size-filter'} title={'Size'}/>
+                    <ColorList className={'color-filter'} title={'Color'}/>
+                    <BrandsList className={'brands-filter'}
+                                title={'Brands'}/>
+                </div>
+                <TagList title={'Popular Tags'} className={'tag-selector'}/>
             </div>
         );
     }

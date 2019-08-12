@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { getSelected } from '../utils';
 
 export function ColorPicker(props) {
     const handleClick = () => {
@@ -7,7 +8,7 @@ export function ColorPicker(props) {
     };
     return (
         <li className={setStyleClass(props.colorLight)} style={{ backgroundColor: props.value }} onClick={handleClick}>
-            <span className={setCheckMarkClass(props.selected)}></span>
+            <span className={setCheckMarkClass(getSelected(props.selected))}/>
         </li>
     );
 }
@@ -31,7 +32,7 @@ function setCheckMarkClass(isSelected) {
 ColorPicker.propTypes = {
     value: PropTypes.string.isRequired,
     colorLight: PropTypes.bool.isRequired,
-    selected: PropTypes.bool.isRequired,
+    selected: PropTypes.bool,
     id: PropTypes.number.isRequired,
     action: PropTypes.func.isRequired
 };

@@ -1,0 +1,36 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../common';
+
+.navbar-cart {
+  font-size: 2em;
+  order: 3;
+  padding: .25em;
+  outline: 0;
+  cursor: pointer;
+  position: relative;
+
+  .items-in-basket {
+    display: block;
+    background-color: white;
+    box-sizing: border-box;
+    margin: 0;
+    border: 2px solid black;
+    border-radius: 50%;
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    right: 10%;
+    bottom: 10%;
+    font-weight: bolder;
+    font-size: .37em;
+    text-align: center;
+  }
+
+  @media screen {
+    @media (min-width: $media-br-1) {
+      order: 4;
+    }
+  }
+
+}

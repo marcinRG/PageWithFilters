@@ -9,6 +9,7 @@
     @include selected;
     user-select: none;
     width: auto;
+    cursor: pointer;
     display: inline-block;
     padding-bottom: .5em;
     color: $lighter-text;

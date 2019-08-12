@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import img from '../../../images/logo.png';
-import { LinkList } from './LinkList';
-import { Link } from 'react-router-dom';
+import { LinkList } from '../pageElements/LinkList';
+import { BasketSmallDisplay } from '../BasketSmallDisplay/BasketSmallDisplay';
 
 export class Navbar extends Component {
     constructor(props) {
@@ -38,9 +38,7 @@ export class Navbar extends Component {
                 </span>
                 <span className="navbar-title">Top Designers</span>
                 <button className="navbar-button" onClick={this.changeVisibility}><i className="icon ion-navicon"></i></button>
-                <span className="navbar-cart"><Link to={'/basket/'}>
-                    <i className="icon ion-bag"></i>
-                </Link></span>
+                <BasketSmallDisplay />
                 <ul className={this.setNavMenuClass()}>
                    <LinkList/>
                 </ul>

@@ -3,7 +3,7 @@ import style from './scss/style.scss';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Navbar } from './js/components/pageElements/Navbar';
+import { Navbar } from './js/components/Navbar/Navbar';
 import { Footer } from './js/components/pageElements/Footer';
 // import { AboutPage } from './js/components/Pages/About/AboutPage'
 import { ItemsBrowserPage } from './js/components/Pages/ItemsBrowser/ItemsBrowserPage';

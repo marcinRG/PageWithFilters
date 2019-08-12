@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { Filters } from '../ProductFilter/Filters';
-import { Tags } from '../ProductFilter/TagsSelector/Tags';
-import { Categories } from '../ProductFilter/CategoriesSelector/Categories';
 import { AppData } from '../../data/AppData';
 import { Product } from './Product';
-import { ProductSortMethodSelector } from './ProductSortMethodSelector/ProductSortMethodSelector';
-import { ProductsCount } from './ProductsCount/ProductsCount';
-import { getPageNumber, PageSelector } from './PageSelector/PageSelector';
+import { ProductSortMethodSelector } from '../ProductSortMethodSelector/ProductSortMethodSelector';
+import { ProductsCount } from '../ProductsCount/ProductsCount';
+import { getPageNumber, PageSelector } from '../PageSelector/PageSelector';
 import PropTypes from 'prop-types';
 
 export class ProductsDisplay extends Component {
@@ -16,7 +14,7 @@ export class ProductsDisplay extends Component {
         this.state = {
             selectedFilterMethod: 0,
             productsPerPage: props.settings.productsPerPage,
-            selectedPage: 2,
+            selectedPage: 1,
             count: 51
         };
 
@@ -34,27 +32,21 @@ export class ProductsDisplay extends Component {
                     })
                 }
             }
-        }
-        this.changeOrder = (number) =>{
+        };
+        this.changeOrder = (number) => {
             console.log(number);
-        }
+        };
     }
 
     render() {
         return (
             <section className="offer">
-                <div className="side-element">
-                    <Categories multipleSelection={false} array={AppData.filtersOld.categories}
-                                className={'category-selectors'} title={'Categories'}/>
-                    <Filters/>
-                    <Tags array={AppData.filtersOld.tags} multipleSelection={true} title={'Popular Tags'}
-                          className={'tag-selector'}/>
-                </div>
+                <Filters/>
                 <div className="main-element">
                     <div className="result-filter">
                         <ProductSortMethodSelector methods={this.filterMethods}
                                                    selectedMethod={this.state.selectedFilterMethod}
-                        action={this.changeOrder}/>
+                                                   action={this.changeOrder}/>
                         <ProductsCount selectedPage={this.state.selectedPage} count={this.state.count}
                                        itemsPerPage={this.state.productsPerPage}/>
                     </div>

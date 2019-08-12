@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { setSelectedClass } from '../../ElementsList/NameValuePair';
+import { getSelected, setSelectedClass } from '../utils';
 
 export function Tag(props) {
     const handleClick = () => {
         props.action(props.id);
     };
     return (
-        <li className={setSelectedClass(props.selected)} onClick={handleClick}>{props.name}</li>
+        <li className={setSelectedClass(getSelected(props.selected))} onClick={handleClick}>{props.name}</li>
     );
 }
 
 Tag.propTypes = {
     name: PropTypes.string.isRequired,
-    selected: PropTypes.bool.isRequired,
+    selected: PropTypes.bool,
     id: PropTypes.number.isRequired,
     action: PropTypes.func.isRequired
 };

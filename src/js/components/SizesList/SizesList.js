@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { NameValuePair } from '../NameValuePair/NameValuePair';
 import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { changeSelectedSizes, resetSelectedSizes } from '../../ReduxSettings/actions/sizeFilterActions';
+import connect from 'react-redux/es/connect/connect';
+import { setAllElementsSelectedPropertyToFalse, setSelectedProperty } from '../utils';
 
-class ElementsList extends Component {
+class SizesList extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -35,25 +39,7 @@ class ElementsList extends Component {
     }
 }
 
-function setSelectedProperty(obj) {
-    if (obj.hasOwnProperty('selected')) {
-        obj['selected'] = !obj['selected'];
-    } else {
-        obj.selected = true;
-    }
-    return obj;
-}
-
-function setAllElementsSelectedPropertyToFalse(array) {
-   return array.map((element) => {
-        if (element.selected) {
-            delete element.selected;
-        }
-        return element;
-    });
-}
-
-ElementsList.propTypes = {
+SizesList.propTypes = {
     values: PropTypes.array.isRequired,
     multipleSelection: PropTypes.bool.isRequired,
     className: PropTypes.string.isRequired,
@@ -62,3 +48,18 @@ ElementsList.propTypes = {
     resetSelected: PropTypes.func
 };
 
+function mapStateToProps(state) {
+    return {
+        multipleSelection: state.sizeFilters.multiSelect,
+        values: state.sizeFilters.values,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        changeSelected: bindActionCreators(changeSelectedSizes, dispatch),
+        resetSelected: bindActionCreators(resetSelectedSizes, dispatch)
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SizesList);
