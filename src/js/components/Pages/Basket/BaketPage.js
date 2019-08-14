@@ -1,8 +1,11 @@
 import React from 'react';
+import BasketFullDisplay from '../../BasketFullDisplay/BasketFullDisplay';
 
 export function BasketPage() {
     return (
-        <h1>
-            Basket page
-        </h1>);
+        <div>
+            <h1>Basket page</h1>
+            <BasketFullDisplay/>
+        </div>
+    );
 }

@@ -7,7 +7,7 @@ import { Navbar } from './js/components/Navbar/Navbar';
 import { Footer } from './js/components/pageElements/Footer';
 // import { AboutPage } from './js/components/Pages/About/AboutPage'
 import { ItemsBrowserPage } from './js/components/Pages/ItemsBrowser/ItemsBrowserPage';
-// import { BasketPage } from './js/components/Pages/Basket/BaketPage';
+import { BasketPage } from './js/components/Pages/Basket/BaketPage';
 // import { InfoPage } from './js/components/Pages/Info/InfoPage';
 // import { DealsPage } from './js/components/Pages/Deals/DealsPage';
 // import { ItemPage } from './js/components/Pages/Item/ItemPage';
@@ -21,11 +21,10 @@ ReactDOM.render(
             <Navbar/>
             <Slider />
             <Route exact={true} path="/" component={ItemsBrowserPage}></Route>
+            <Route path="/basket/" component={BasketPage}></Route>
 {/*            <Route path="/about/" component={AboutPage}></Route>
-
             <Route path="/deals/" component={DealsPage}></Route>
             <Route path="/info/" component={InfoPage}></Route>
-            <Route path="/basket/" component={BasketPage}></Route>
             <Route path="/item/" component={ItemPage}></Route>*/}
             <Footer/>
         </Router>
