@@ -1,0 +1,89 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../common';
+
+.basket-full {
+  @include set-to-zero;
+  @include block-border-box;
+
+  .item-title {
+    @include set-to-zero;
+    @include block-border-box;
+    width: 100%;
+    border-bottom: 1px solid $lightest-text;
+    overflow: hidden;
+
+    &::after {
+      clear: both;
+    }
+  }
+
+  .title {
+    display: inline-block;
+    text-align: left;
+    width: 15%;
+    min-width: 100px;
+    color: $light-text;
+
+    &.left {
+      float: left
+    }
+
+    &.right {
+      float: right;
+    }
+  }
+
+
+  .basket-title {
+    font-weight: normal;
+  }
+
+  .item {
+    @include set-to-zero;
+    @include block-border-box;
+    border-bottom: 1px solid $lightest-text;
+    overflow: hidden;
+
+    &::after {
+      clear: both;
+    }
+  }
+
+  .item-image {
+    @include set-to-zero;
+    @include block-border-box;
+    width: 10%;
+    max-width: 150px;
+    height: auto;
+    float: left;
+  }
+
+  .item-detail {
+    @include set-to-zero;
+    @include block-border-box;
+    width: 40%;
+    float: left;
+
+    .item-name {
+      width: 100%;
+      font-size: 1.5em;
+      font-weight: normal;
+      color: $light-text;
+      padding: .2em;
+    }
+
+  }
+
+   .item-price {
+     @include set-to-zero;
+     @include block-border-box;
+     width: 15%;
+     float: right;
+     font-size: 1.5em;
+     font-weight: normal;
+     color: $light-text;
+     padding: .2em;
+   }
+
+}

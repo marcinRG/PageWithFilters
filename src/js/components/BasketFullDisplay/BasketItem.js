@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 export function BasketItem(props) {
     return (
         <React.Fragment>
-            <h1>Basket item</h1>
             <div>
                 <img src={'../' + props.item.imagePath} alt={props.item.name} />
                 <span>{props.item.name}</span>

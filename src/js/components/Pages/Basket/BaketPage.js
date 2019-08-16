@@ -3,9 +3,8 @@ import BasketFullDisplay from '../../BasketFullDisplay/BasketFullDisplay';
 
 export function BasketPage() {
     return (
-        <div>
-            <h1>Basket page</h1>
+        <React.Fragment>
             <BasketFullDisplay/>
-        </div>
+        </React.Fragment>
     );
 }

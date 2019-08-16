@@ -13,9 +13,11 @@ class BasketFullDisplay extends Component {
         return (
             <React.Fragment>
                 <div>Basket</div>
-                {Object.keys(this.props.items).map(i =>
-                    <BasketItem key={i} item={this.props.items[i]}/>
-                )}
+                <div>
+                    {Object.keys(this.props.items).map(i =>
+                        <BasketItem key={i} item={this.props.items[i]}/>
+                    )}
+                </div>
             </React.Fragment>);
     }
 }
