@@ -13,6 +13,13 @@ export function basketReducers(state = AppData.basket, action) {
             return Object.assign({}, state, {items: updatedItems});
 
         }
+
+        case actionNames.REMOVE_FROM_BASKET: {
+            const updatedItems = Object.assign({}, state.items);
+            delete updatedItems[action.value];
+            return Object.assign({}, state, {items: updatedItems});
+        }
+
         default: {
             return state;
         }

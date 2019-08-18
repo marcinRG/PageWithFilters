@@ -10,6 +10,7 @@
     @include set-to-zero;
     @include block-border-box;
     width: 100%;
+    padding-top: 1em;
     border-bottom: 1px solid $lightest-text;
     overflow: hidden;
 
@@ -26,7 +27,7 @@
     color: $light-text;
 
     &.left {
-      float: left
+      float: left;
     }
 
     &.right {
@@ -39,11 +40,15 @@
     font-weight: normal;
   }
 
-  .item {
+  .row-container {
     @include set-to-zero;
     @include block-border-box;
-    border-bottom: 1px solid $lightest-text;
     overflow: hidden;
+    margin: .4em 0;
+
+    &.item {
+      border-bottom: 1px solid $lightest-text;
+    }
 
     &::after {
       clear: both;
@@ -70,20 +75,129 @@
       font-size: 1.5em;
       font-weight: normal;
       color: $light-text;
-      padding: .2em;
+      padding: .2em 0 0 .2em;
     }
 
   }
 
-   .item-price {
-     @include set-to-zero;
-     @include block-border-box;
-     width: 15%;
-     float: right;
-     font-size: 1.5em;
-     font-weight: normal;
-     color: $light-text;
-     padding: .2em;
-   }
+  .item-price {
+    @include set-to-zero;
+    @include block-border-box;
+    width: 15%;
+    float: right;
+    font-size: 1.5em;
+    font-weight: normal;
+    color: $light-text;
+    padding: .2em;
+  }
+
+  .item-additional-info {
+    @include set-to-zero;
+    @include block-border-box;
+    padding-left: .2em;
+
+    span {
+      font-size: .8em;
+      display: block;
+      width: 100%;
+    }
+
+  }
+
+  .items-count-form {
+    width: 50%;
+    overflow: hidden;
+    height: 2em;
+    padding: .2em;
+
+    &::after {
+      clear: both;
+    }
+  }
+
+  .input-txt {
+    @include block-border-box;
+    font-size: 1.5em;
+    padding: .25em;
+    outline: 0;
+    height: 100%;
+    float: left;
+    width: 80%;
+    color: $light-text;
+    border: 1px solid $border-color;
+  }
+
+  .button-action {
+    @include set-to-zero;
+    @include block-border-box;
+    outline: 0;
+    height: 50%;
+    width: 100%;
+    font-size: .5em;
+    cursor: pointer;
+    background-color: $border-color;
+
+    i {
+      font-size: 1.2em;
+      color: $light-text;
+    }
+
+    &.up {
+      border-bottom: 1px solid $lightest-text;
+    }
+
+  }
+
+  .button-wrapper {
+    @include block-border-box;
+    width: 20%;
+    height: 100%;
+    float: right;
+  }
+
+  .remove-row {
+    @include block-border-box;
+    width: 100%;
+    padding-left: .2em;
+
+    .remove-action {
+      background-color: transparent;
+      font-size: .8em;
+      cursor: pointer;
+
+      i {
+        padding-right: .3em;
+      }
+    }
+  }
+
+  .total-price {
+    @include set-to-zero;
+    @include block-border-box;
+    width: 100%;
+  }
+
+  .checkout {
+    @include set-to-zero;
+    @include block-border-box;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+    padding: .5em 1em;
+    margin-top: 1em;
+    outline: 0;
+    float: left;
+    border: 3px solid $black-color;
+    background-color: white;
+
+    i {
+      margin-right: .3em;
+    }
+
+  }
+
+  .total {
+    margin-bottom: 6em;
+  }
 
 }
