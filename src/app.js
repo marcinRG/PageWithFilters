@@ -10,7 +10,7 @@ import { ItemsBrowserPage } from './js/components/Pages/ItemsBrowser/ItemsBrowse
 import { BasketPage } from './js/components/Pages/Basket/BaketPage';
 // import { InfoPage } from './js/components/Pages/Info/InfoPage';
 // import { DealsPage } from './js/components/Pages/Deals/DealsPage';
-// import { ItemPage } from './js/components/Pages/Item/ItemPage';
+import { ItemPage } from './js/components/Pages/Item/ItemPage';
 import { store } from './js/ReduxSettings/store';
 import Provider from 'react-redux/es/components/Provider';
 import Slider from './js/components/Slider/Slider';
@@ -22,6 +22,7 @@ ReactDOM.render(
             <Slider />
             <Route exact={true} path="/" component={ItemsBrowserPage}></Route>
             <Route path="/basket/" component={BasketPage}></Route>
+            <Route path="/item/" component={ItemPage}></Route>
 {/*            <Route path="/about/" component={AboutPage}></Route>
             <Route path="/deals/" component={DealsPage}></Route>
             <Route path="/info/" component={InfoPage}></Route>

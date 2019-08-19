@@ -5,6 +5,8 @@
 .basket-full {
   @include set-to-zero;
   @include block-border-box;
+  padding-top: 2em;
+  padding-bottom: 5em;
 
   .item-title {
     @include set-to-zero;

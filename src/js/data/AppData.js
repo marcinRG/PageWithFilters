@@ -166,13 +166,17 @@ export const AppData = {
 
     },
     basket: {
-        items: {
-        }
+        items: {}
     },
     products: {
         1: {
             id: 1,
             name: 'Scissors',
+            details: `Lorem ipsum 1 dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
+                    eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis deserunt dignissimos
+                    dolorem ipsum
+                    laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
             price: '25.88',
             isNew: true,
             isFavorite: true,
@@ -181,42 +185,67 @@ export const AppData = {
         2: {
             id: 2,
             name: 'Watch',
+            details: `Lorem ipsum 2 dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
+                    eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis deserunt dignissimos
+                    dolorem ipsum
+                    laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
             price: '45.73',
             isNew: false,
             isFavorite: false,
             imagePath: imgP2
         },
         3: {
-                id: 3,
-                name: 'Lamp',
-                price: '55.73',
-                isNew: false,
-                isFavorite: false,
-                imagePath: imgP3
-            },
+            id: 3,
+            name: 'Lamp',
+            details: `Lorem ipsum 3 dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
+                    eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis deserunt dignissimos
+                    dolorem ipsum
+                    laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
+            price: '55.73',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP3
+        },
         4: {
-                id: 4,
-                name: 'Kettle',
-                price: '145.31',
-                isNew: false,
-                isFavorite: false,
-                imagePath: imgP4
-            },
+            id: 4,
+            name: 'Kettle',
+            details: `Lorem ipsum 4 dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
+                    eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis deserunt dignissimos
+                    dolorem ipsum
+                    laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
+            price: '145.31',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP4
+        },
         5: {
-                id: 5,
-                name: 'Paper Towel Holder',
-                price: '5.99',
-                isNew: false,
-                isFavorite: false,
-                imagePath: imgP5
-            },
+            id: 5,
+            name: 'Paper Towel Holder',
+            details: `Lorem ipsum 5 dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
+                    eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis deserunt dignissimos
+                    dolorem ipsum
+                    laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
+            price: '5.99',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP5
+        },
         6: {
-                id: 6,
-                name: 'Piggy Bank',
-                price: '17.03',
-                isNew: false,
-                isFavorite: false,
-                imagePath: imgP6
-            }
+            id: 6,
+            name: 'Piggy Bank',
+            details: `Lorem ipsum 6 dolor sit amet, consectetur adipisicing elit. Ad amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
+                    eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis deserunt dignissimos
+                    dolorem ipsum
+                    laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
+            price: '17.03',
+            isNew: false,
+            isFavorite: false,
+            imagePath: imgP6
+        }
     },
 };

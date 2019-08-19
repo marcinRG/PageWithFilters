@@ -1,9 +1,10 @@
 import React from 'react';
+import { ItemDisplayFull } from '../../ItemDisplayFull/ItemDisplayFull';
 
 export function ItemPage() {
     return (
-        <h1>
-           Items Page
-        </h1>
+       <React.Fragment>
+         <ItemDisplayFull/>
+       </React.Fragment>
     );
 }
