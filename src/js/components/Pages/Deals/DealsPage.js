@@ -1,8 +1,10 @@
 import React from 'react';
+import { SmallForm } from '../../pageElements/SmallForm';
 
 export function DealsPage() {
     return (
-        <h1>
-            Deals page
-        </h1>);
+        <div className="page deals-component">
+            <h3 className="component-title">Deals</h3>
+            <SmallForm/>
+        </div>);
 }
