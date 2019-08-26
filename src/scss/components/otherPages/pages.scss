@@ -11,6 +11,7 @@
   }
 
   .txt-section {
+    @include block-border-box;
     width: 100%;
     overflow: hidden;
     padding: 3em;
@@ -156,7 +157,7 @@
     padding: 2em 0;
 
     p {
-      padding: 0.3em;
+      padding: .3em;
     }
   }
 }

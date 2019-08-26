@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
@@ -16,7 +16,7 @@ class Product extends Component {
                         id: this.props.item.id
                     });
                 } else {
-                    const item = Object.assign({},this.props.item, {count: 1});
+                    const item = Object.assign({}, this.props.item, { count: 1 });
                     this.props.addToBasket(item);
                 }
             }
@@ -33,10 +33,11 @@ class Product extends Component {
             <div className="product-info">
                 <div className="product-upper-info">
                     <span className={toggleNewClass(this.props.item.isNew)}>New</span>
-                    <span className="fav-info"><i className={toggleFavoriteClass(this.props.item.isFavorite)}></i></span>
+                    <span className="fav-info"><i
+                        className={toggleFavoriteClass(this.props.item.isFavorite)}></i></span>
                 </div>
-                <Link to={'/item/'}>
-                    <img src={this.props.item.imagePath} alt={this.props.item.name} />
+                <Link to={'/item/' + this.props.item.id}>
+                    <img src={this.props.item.imagePath} alt={this.props.item.name}/>
                 </Link>
                 <h5 className="product-name">{this.props.item.name}</h5>
                 <div className="product-lower-info">

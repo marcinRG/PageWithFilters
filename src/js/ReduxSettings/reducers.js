@@ -7,6 +7,7 @@ import { tagFilterReducers } from './reducers/tagFilterReducers';
 import { categoryFilterReducers } from './reducers/categoryFilterReducers';
 import { brandsFilterReducers } from './reducers/brandsFilterReducers';
 import { basketReducers } from './reducers/basketReducers';
+import { productsReducers } from './reducers/productsReducers';
 
 const mainReducer = combineReducers({
     priceFilters: priceFilterReducers,
@@ -16,7 +17,8 @@ const mainReducer = combineReducers({
     categoriesFilters: categoryFilterReducers,
     brandsFilters: brandsFilterReducers,
     slider: slidersReducers,
-    basket: basketReducers
+    basket: basketReducers,
+    products: productsReducers
 });
 
 //const mainReducer = initReducer;

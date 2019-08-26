@@ -1,40 +1,72 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { bindActionCreators } from 'redux';
+import { addItemToBasket, updateItemCount } from '../../ReduxSettings/actions/basketActions';
+import connect from 'react-redux/es/connect/connect';
 
-export class ItemDisplayFull extends Component {
+class ItemDisplayFull extends Component {
     constructor(props) {
         super(props);
+        const id = this.props.match.params.itemId;
+        if (id) {
+            this.state = {
+                item: Object.assign({}, this.props.items[id])
+            };
+        }
     }
+
     render() {
         return (
             <div className="item-display">
                 <h3 className="item-title">Item details</h3>
                 <div className="image-container">
-                    <img className="item-image" src="images/items/9.png" alt="xxx"/>
+                    <img className="item-image" src={'../' + this.state.item.imagePath} alt={this.state.item.name}/>
                 </div>
                 <div className="item-detail">
-                    <h4 className="detail item-name">Lorem ipsum</h4>
-                    <span className="detail item-brand"><span className="title">Brand:</span>AKME Inc.</span>
-                    <div className="detail item-details">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                        amet aspernatur blanditiis, cumque delectus deserunt dignissimos dolor
-                        eaque et expedita hic illum iste, minus nam omnis quasi saepe tempora ullam.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A adipisci, amet consequuntur debitis
-                        deserunt dignissimos
-                        dolorem ipsum
-                        laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.
+                    <h4 className="detail item-name">{this.state.item.name}</h4>
+                    <span className="detail item-brand"><span
+                        className="title">Brand:</span>{this.state.item.brand}</span>
+                    <div className="detail item-details">{this.state.item.details}
                     </div>
-                    <span className="detail item-size"><span className="title">Item size:</span>small</span>
+                    <span className="detail item-size"><span
+                        className="title">Item size:</span>{this.state.item.size}</span>
                     <div className="detail item-color"><span className="title">Available color:</span>
-                        <span className="color"></span>
+                        <span className="color" style={{ backgroundColor: this.state.item.color.value }}></span>
                     </div>
-                    <div className="detail item-category"><span className="title">Category:</span><span>Lamps</span>
+                    <div className="detail item-category"><span className="title">Category:</span>
+                        <span>{this.state.item.category}</span>
                     </div>
                     <div className=" detail item-tags"><span
-                        className="title">Tags:</span><span>Lamps</span>,<span>Accessories</span></div>
+                        className="title">Tags:</span>
+                        {this.state.item.tags.map((tag, i) =>
+                            <span key={i}>{tag}, </span>
+                        )}
+                    </div>
                     <div className="row">
-                        <span className="item-price">57.12</span>
+                        <span className="item-price">{this.state.item.price}</span>
                         <button className="item-add-to-basket"><i className="icon ion-bag"></i>Add to Cart</button>
                     </div>
                 </div>
             </div>);
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        items: state.products.items,
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        addToBasket: bindActionCreators(addItemToBasket, dispatch),
+        updateCount: bindActionCreators(updateItemCount, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ItemDisplayFull);
+
+ItemDisplayFull.propTypes = {
+    match: PropTypes.object,
+    items: PropTypes.object,
+};

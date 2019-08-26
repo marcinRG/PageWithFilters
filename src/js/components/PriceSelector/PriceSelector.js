@@ -55,6 +55,10 @@ class PriceSelector extends Component {
 
     }
 
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.change);
+    }
+
     getSliderMinMaxWidth() {
         const beamElem = this.backgroundBeamRef.current;
         const minMax = getMinMaxWidth(beamElem, this.pointerSize);

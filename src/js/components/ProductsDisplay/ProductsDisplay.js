@@ -51,8 +51,8 @@ export class ProductsDisplay extends Component {
                                        itemsPerPage={this.state.productsPerPage}/>
                     </div>
                     <div className="products">
-                        {Object.keys(AppData.products).map((id)=>
-                           <Product item={AppData.products[id]}  key={id} />
+                        {Object.keys(AppData.products.items).map((id)=>
+                           <Product item={AppData.products.items[id]}  key={id} />
                         )}
                     </div>
                     <PageSelector selectedPage={this.state.selectedPage} count={this.state.count}

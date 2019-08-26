@@ -26,7 +26,7 @@ export function BasketItem(props) {
             <div className="item-detail">
                 <h4 className="item-name">{props.item.name}</h4>
                 <div className="item-additional-info">
-                    <span>Brand, color, size</span>
+                    <span>{props.item.brand}, {props.item.color.name}, {props.item.size}</span>
                     <span>price per one: {props.item.price}</span>
                 </div>
                 <div className="items-count-form">
