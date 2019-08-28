@@ -47,6 +47,7 @@ import imgP47 from './../../images/items/47-min.png';
 import img1 from './../../images/slides/1.png';
 import img2 from './../../images/slides/2.png';
 import img3 from './../../images/slides/3.png';
+import { sortMethodsNames } from './sortMethodsNames';
 
 export const AppData = {
     slider: {
@@ -82,8 +83,8 @@ export const AppData = {
     },
     filters: {
         prices: {
-            max: 2520,
-            min: 30,
+            max: 1900,
+            min: 5,
             pointerSize: 20
         },
         sizes: {
@@ -213,7 +214,7 @@ export const AppData = {
                 id: 1,
                 name: 'Scissors',
                 brand: 'Banshu Hamono',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Simple', 'Black', 'Accessories'],
                 color: {
                     name: 'black',
                     value: 'black',
@@ -243,13 +244,13 @@ export const AppData = {
         vitae.`,
                 price: '45.73',
                 brand: 'Green',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Simple', 'Black', 'Accessories'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 category: 'Furniture',
                 isNew: false,
                 isFavorite: false,
@@ -265,7 +266,7 @@ export const AppData = {
                     laudantium magnam numquam omnis quidem quis sequi, similique tempora ut velit! Error, ipsa.`,
                 price: '55.73',
                 brand: 'Field',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Minimalism', 'Furniture', 'Black'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
@@ -289,13 +290,13 @@ export const AppData = {
         voluptatem.`,
                 price: '145.31',
                 brand: 'Banshu Hamono',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Simple', 'Minimalism', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 category: 'Accessories',
                 isNew: false,
                 isFavorite: false,
@@ -312,15 +313,15 @@ export const AppData = {
         tempore vel voluptatem.`,
                 price: '5.99',
                 brand: 'Henry Wilson',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['White', 'Black', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 category: 'Accessories',
-                isNew: false,
+                isNew: true,
                 isFavorite: false,
                 imagePath: imgP5
             },
@@ -333,9 +334,9 @@ export const AppData = {
     Adipisci architecto aut consequatur cumque dignissimos harum illum ipsa iure labore mollitia natus neque odit
         optio quae quaerat repellendus sunt, suscipit, voluptates. Atque consequuntur cum id in officiis praesentium
         veritatis.`,
-                price: '5.99',
+                price: '245.99',
                 brand: 'Banshu Hamono',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Simple', 'Minimalism', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
@@ -356,8 +357,8 @@ export const AppData = {
 
     Ab aliquid consequatur corporis deleniti doloremque, dolorum eaque excepturi fuga hic, ipsa ipsum labore libero
         maxime modi nostrum nulla odit officia praesentium quasi quis reprehenderit sed suscipit vel veniam voluptatum.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '99.43',
+                tags: ['Simple', 'White', 'Black'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
@@ -379,14 +380,14 @@ export const AppData = {
     Amet dignissimos ex ipsam nulla sunt voluptatem voluptatibus. Alias aut blanditiis deserunt, distinctio dolorem
         enim explicabo illum in inventore, iste itaque laboriosam laudantium, molestias nihil non pariatur placeat qui
         saepe.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '1517.75',
+                tags: ['Minimalism', 'Furniture', 'Accessories'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP12,
@@ -401,14 +402,14 @@ export const AppData = {
         ullam.
     Dicta in odio quae quaerat sapiente velit? Alias, aliquam amet at eaque exercitationem id illo ipsum maiores
         molestias, non optio placeat praesentium, qui reiciendis repudiandae totam veritatis? Dolor, eum, reiciendis.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '863.25',
+                tags: ['Black', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP13,
@@ -426,13 +427,13 @@ export const AppData = {
         voluptatum! A, accusamus amet, animi aspernatur consequuntur, dolorem est eum itaque necessitatibus non numquam
         tempore vel.`,
                 price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Simple', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP14,
@@ -449,14 +450,14 @@ export const AppData = {
     Amet, consectetur dolorem eligendi enim facere fuga ipsa labore, laborum modi necessitatibus nobis quos
         recusandae rem. Consequuntur cumque doloremque et expedita facilis fugit, laudantium molestias mollitia nesciunt
         placeat tenetur voluptate!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '45.25',
+                tags: ['White', 'Black', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP15,
@@ -473,14 +474,14 @@ export const AppData = {
     Cupiditate debitis dignissimos facere illum molestiae mollitia numquam quod sit! Iure maxime quam quos.
         Accusantium architecto aspernatur illo itaque, iusto labore laudantium magni neque nobis, officiis porro, sed
         temporibus. Libero.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '452.11',
+                tags: ['Simple'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
                     colorLight: true
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP16,
@@ -496,8 +497,8 @@ export const AppData = {
 
     Aut dignissimos, ea, excepturi facilis harum illo molestias mollitia, nemo neque nisi optio pariatur provident
         quaerat quibusdam sint tempora tempore temporibus? Culpa doloribus modi nisi optio, quis sed? Adipisci, iusto.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '251.78',
+                tags: ['Simple', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
@@ -519,8 +520,8 @@ export const AppData = {
     Accusantium aliquam, animi debitis delectus dignissimos dolorum eligendi hic ipsum, laboriosam minima officia
         rem reprehenderit repudiandae sunt tempore veritatis vero. Commodi dolor error iusto magnam, maxime neque
         officia possimus unde!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '63.22',
+                tags: ['Simple', 'Furniture'],
                 color: {
                     name: 'white',
                     value: 'white',
@@ -542,15 +543,15 @@ export const AppData = {
     Adipisci, aperiam assumenda aut commodi culpa delectus dolore enim est eum exercitationem facere fuga fugiat
         ipsum maiores odit placeat rem, repellendus repudiandae sunt tenetur velit veniam voluptas voluptate? Quisquam,
         ut.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '74.95',
+                tags: ['Simple', 'Minimalism', 'Furniture'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
                     colorLight: true,
                 },
-                size: 'small',
-                isNew: false,
+                size: 'big',
+                isNew: true,
                 isFavorite: false,
                 imagePath: imgP19,
                 category: 'Furniture'
@@ -565,14 +566,14 @@ export const AppData = {
     Aspernatur assumenda commodi enim excepturi facilis fuga ipsam iste itaque iure, laboriosam, laudantium maiores
         neque nihil officia officiis porro quidem reprehenderit repudiandae tempora voluptates? Enim facilis minus modi
         perspiciatis sequi.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '21.56',
+                tags: ['White', 'Black', 'Accessories'],
                 color: {
                     name: 'black',
                     value: 'black',
                     colorLight: false,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP20,
@@ -589,14 +590,14 @@ export const AppData = {
     Amet animi at consectetur consequatur debitis dignissimos, dolores eum eveniet incidunt laboriosam libero
         magnam natus nihil, quis quo quod quos recusandae sapiente soluta sunt tempora tempore totam unde veniam
         voluptatibus!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '87.45',
+                tags: ['Simple', 'Minimalism', 'Furniture', 'White', 'Black', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP21,
@@ -611,14 +612,14 @@ export const AppData = {
 
     A accusamus autem beatae eius esse harum illum maxime minima, mollitia quis quisquam tempore! A accusamus
         ducimus est facere fuga ipsam magnam maxime necessitatibus, non officiis reprehenderit saepe sapiente vel!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '83.77',
+                tags: ['Simple', 'Furniture', 'White', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP22,
@@ -635,14 +636,14 @@ export const AppData = {
     Aut ducimus magnam minima molestias? Amet aperiam, consectetur delectus excepturi facilis illum ipsam iure
         magni molestiae mollitia, numquam omnis perferendis perspiciatis quae quas quasi similique ullam, unde vel
         veniam voluptates!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '254.98',
+                tags: ['Minimalism', 'Furniture', 'White', 'Accessories'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
                     colorLight: true
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP23,
@@ -659,8 +660,8 @@ export const AppData = {
     Aut deleniti dolorum, eaque ex fuga mollitia nemo praesentium, provident quo sed sunt voluptatibus voluptatum!
         Debitis distinctio obcaecati optio quam qui quibusdam quisquam sint ullam. Amet dignissimos dolorem recusandae
         veniam?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '98.77',
+                tags: [ 'Minimalism', 'Furniture', 'Black', 'Accessories'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
@@ -684,14 +685,14 @@ export const AppData = {
         doloremque dolores eius, eos est facilis id illo, iure laboriosam minima numquam quia repellat tempore
         veritatis.`,
                 price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                tags: ['Simple', 'Minimalism','Accessories'],
                 color: {
                     name: 'black',
                     value: 'black',
                     colorLight: false,
                 },
-                size: 'small',
-                isNew: false,
+                size: 'big',
+                isNew: true,
                 isFavorite: false,
                 imagePath: imgP25,
                 category: 'Dining'
@@ -707,14 +708,14 @@ export const AppData = {
     Animi dolore eaque est id laborum numquam reiciendis, rem sunt ut velit. Enim maxime, repudiandae. Assumenda
         deleniti deserunt dolore, dolores eaque eligendi inventore, nemo neque possimus quaerat quidem similique
         suscipit.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '348.11',
+                tags: ['Minimalism', 'Furniture', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP26,
@@ -732,14 +733,14 @@ export const AppData = {
         quaerat repellendus soluta. Adipisci amet corporis cum doloremque laboriosam perspiciatis ratione. Atque iste
         nisi officiis sit tempore.
     `,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '786.99',
+                tags: ['White', 'Black', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP27,
@@ -756,14 +757,14 @@ export const AppData = {
     Amet blanditiis, cum esse eveniet fuga incidunt odit officia quod rem vero! Aspernatur doloribus ducimus, et
         eveniet incidunt magnam maiores mollitia neque nesciunt, officiis optio, perspiciatis quisquam rerum similique
         ut?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '1517.48',
+                tags: ['Simple', 'Furniture', 'Accessories'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
                     colorLight: true
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP28,
@@ -780,8 +781,8 @@ export const AppData = {
     Aliquid consequatur doloremque fugiat labore molestiae perspiciatis qui sed voluptas voluptatem voluptates! At
         aut consectetur dicta dignissimos distinctio, exercitationem magni maxime. Accusantium culpa dolorum, eius in
         ipsum modi veritatis. Placeat.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '1890.45',
+                tags: [ 'Minimalism', 'Furniture', 'Accessories'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
@@ -804,8 +805,8 @@ export const AppData = {
     Animi, aut culpa deleniti distinctio ea eveniet facilis in inventore ipsam laudantium, maiores maxime, mollitia
         necessitatibus numquam quod ullam veniam voluptate voluptates? Consequuntur dolore explicabo ipsa, iste officia
         optio quidem.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '786.45',
+                tags: ['White', 'Black', 'Accessories'],
                 color: {
                     name: 'black',
                     value: 'black',
@@ -827,14 +828,14 @@ export const AppData = {
     Asperiores eligendi facilis labore officia repellendus repudiandae sequi. Aspernatur dolores, facilis nemo
         perspiciatis porro quia quis sequi sit vel voluptate. Deleniti, dignissimos error esse expedita incidunt itaque
         necessitatibus non voluptas?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '66.74',
+                tags: ['Simple', 'Minimalism', 'Furniture'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP31,
@@ -850,14 +851,14 @@ export const AppData = {
     
     Animi, beatae corporis dicta doloremque ducimus eum id, magni nemo obcaecati optio recusandae rerum tempora
         tempore unde, voluptatum! Amet commodi iure labore nisi nulla, quasi qui quod voluptas. Ad, maxime?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '866.23',
+                tags: ['Simple', 'Minimalism', 'Furniture'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP32,
@@ -874,14 +875,14 @@ export const AppData = {
     Asperiores aspernatur autem consectetur deserunt dicta dolor error est itaque laboriosam, nam porro rerum,
         voluptate voluptatem. Assumenda aut, autem delectus dolorem doloremque explicabo illo, incidunt, maiores natus
         non quaerat temporibus?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '582.11',
+                tags: ['Simple', 'Minimalism', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP33,
@@ -897,15 +898,15 @@ export const AppData = {
 
     Distinctio eos nihil quos vitae? Accusamus architecto autem, consequuntur ea earum enim esse libero modi neque
         reprehenderit. Aliquid animi at blanditiis consectetur distinctio, error impedit modi odit omnis quasi sint.`,
-                price: '17.03',
+                price: '458.12',
                 tags: ['Simple', 'Minimalism'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
                     colorLight: true
                 },
-                size: 'small',
-                isNew: false,
+                size: 'medium',
+                isNew: true,
                 isFavorite: false,
                 imagePath: imgP34,
                 category: 'Furniture'
@@ -921,14 +922,14 @@ export const AppData = {
     Distinctio dolore error in minus molestiae sit suscipit. Adipisci aliquam delectus doloribus ducimus enim
         eveniet expedita explicabo impedit incidunt ipsum iste itaque molestias nesciunt odit omnis quam ratione,
         tempora tempore.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '77.23',
+                tags: ['Simple'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP35,
@@ -944,14 +945,14 @@ export const AppData = {
     Ad, blanditiis cupiditate earum hic quia quod quos repellat! Accusamus adipisci aliquid dolorem, esse illo
         iusto magnam minus necessitatibus officiis quaerat quibusdam reiciendis reprehenderit saepe sapiente tempora!
         Sequi, similique unde?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '890.32',
+                tags: ['Minimalism', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP36,
@@ -967,14 +968,14 @@ export const AppData = {
     Dolore doloribus eius facilis inventore quas rem tempora tempore voluptatem! Accusamus fugiat incidunt
         laudantium numquam officia quaerat quo sed soluta. A adipisci est laborum molestias odio provident. Harum in,
         libero!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '680.55',
+                tags: ['Minimalism', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP37,
@@ -991,14 +992,14 @@ export const AppData = {
     Doloremque dolores ipsam minima provident totam! Beatae, consequuntur est exercitationem fugiat illum molestias
         quisquam sapiente similique totam voluptate? At deleniti eius est eveniet illum molestiae nihil quibusdam
         quisquam sunt ullam!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '489.11',
+                tags: ['Simple', 'Minimalism', 'Furniture', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP38,
@@ -1014,14 +1015,14 @@ export const AppData = {
     Aliquam aut consectetur cumque delectus dignissimos facere fugiat impedit incidunt ipsam iure laudantium nobis
         nostrum quia quis, quos repellat repudiandae similique ullam. Accusantium illo modi nostrum sit temporibus unde
         vitae?`,
-                price: '17.03',
+                price: '397.58',
                 tags: ['Simple', 'Minimalism'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP39,
@@ -1037,8 +1038,8 @@ export const AppData = {
     Doloribus mollitia nihil officiis. Accusantium aliquam atque consequatur dicta esse, in ipsa nemo, nobis
         officia omnis quia sed, tempora temporibus. Accusantium, ad adipisci dolore dolorum excepturi optio pariatur.
         Iure, velit!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '631.78',
+                tags: ['Furniture', 'White', 'Black', 'Accessories'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
@@ -1059,14 +1060,14 @@ export const AppData = {
 
     Animi blanditiis debitis doloremque labore laudantium nulla numquam odio quia saepe voluptas. A alias atque hic
         in inventore ipsam iste minus natus necessitatibus odit optio provident, quam sunt tempora tempore?`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '687.66',
+                tags: ['Simple', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP41,
@@ -1083,14 +1084,14 @@ export const AppData = {
     Accusantium adipisci assumenda commodi consequuntur cum dicta doloremque illo, laboriosam optio perspiciatis
         qui repellat, vero! A aut culpa distinctio error, est, neque officiis optio provident quaerat quia tempore
         voluptates voluptatum!`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '298.03',
+                tags: ['Simple', 'Minimalism', 'Furniture', 'White', 'Black', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP42,
@@ -1106,15 +1107,15 @@ export const AppData = {
 
     Aliquam aliquid culpa, debitis deserunt eius enim eos excepturi fugiat inventore, minus modi nam placeat quos
         sunt tempora temporibus totam vero voluptatem. Aperiam atque incidunt, maxime nulla perferendis sequi suscipit.`,
-                price: '17.03',
+                price: '1320.39',
                 tags: ['Simple', 'Minimalism'],
                 color: {
                     name: 'blue',
                     value: 'rgba(79, 91, 255, .33)',
                     colorLight: true
                 },
-                size: 'small',
-                isNew: false,
+                size: 'medium',
+                isNew: true,
                 isFavorite: false,
                 imagePath: imgP43,
                 category: 'Furniture'
@@ -1130,14 +1131,14 @@ export const AppData = {
     Adipisci animi aperiam blanditiis fugit nobis nostrum officiis quam? Aliquid atque deserunt dicta dignissimos,
         doloremque dolores eaque fugit harum illo laborum nihil quas qui quidem ratione reprehenderit, rerum sequi
         vitae.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '872.15',
+                tags: ['Black', 'Accessories'],
                 color: {
                     name: 'white',
                     value: 'white',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP44,
@@ -1152,14 +1153,14 @@ export const AppData = {
 
     At aut blanditiis delectus magni maiores nulla optio quam repellendus. A ea obcaecati possimus quibusdam
         tempora vitae. Ab, amet atque, deserunt eaque incidunt nemo nobis quis rem sint voluptas voluptate.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '900.87',
+                tags: ['Minimalism', 'Accessories'],
                 color: {
                     name: 'red',
                     value: 'rgba(255, 7, 10, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'big',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP45,
@@ -1175,14 +1176,14 @@ export const AppData = {
     Amet architecto consectetur cumque debitis deserunt dolor eaque facere fuga in libero magnam maiores minus
         molestias neque nobis nulla repudiandae rerum saepe sint sunt tempora, tempore tenetur vero voluptatem
         voluptates.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '931.88',
+                tags: ['Simple', 'Accessories'],
                 color: {
                     name: 'green',
                     value: 'rgba(84, 255, 94, .33)',
                     colorLight: true,
                 },
-                size: 'small',
+                size: 'medium',
                 isNew: false,
                 isFavorite: false,
                 imagePath: imgP46,
@@ -1198,8 +1199,8 @@ export const AppData = {
     Aliquam aspernatur assumenda consequuntur dignissimos ea, eos et exercitationem harum hic ipsum, natus non
         veritatis voluptatibus. Amet aspernatur commodi consequuntur, ducimus explicabo maxime obcaecati possimus, quam
         quos saepe temporibus voluptas.`,
-                price: '17.03',
-                tags: ['Simple', 'Minimalism'],
+                price: '529.03',
+                tags: ['Simple', 'Black', 'Accessories'],
                 color: {
                     name: 'black',
                     value: 'black',
@@ -1216,8 +1217,7 @@ export const AppData = {
         settings: {
             itemsPerPage: 10,
             currentPage: 1,
-            sortMethod: 'DEFAULT'
+            sortMethod: sortMethodsNames.SORT_BY_NAME_ASC
         }
-
     },
 };
