@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { NameValuePair } from '../NameValuePair/NameValuePair';
 import PropTypes from 'prop-types';
+import { selectElementInArray } from '../utils';
 
 class ElementsList extends Component {
     constructor(props) {
@@ -11,12 +12,7 @@ class ElementsList extends Component {
         };
 
         this.change = (i) => {
-            let array = [...this.state.values];
-            if (!this.state.multipleSelection) {
-                array = setAllElementsSelectedPropertyToFalse(array);
-            }
-            array[i] = setSelectedProperty(array[i]);
-            this.setState({ values: array });
+            this.setState({ values: selectElementInArray(i,this.state.values,this.state.multipleSelection)});
             this.props.changeSelected(this.state.values);
         }
     }

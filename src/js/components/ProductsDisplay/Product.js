@@ -39,7 +39,13 @@ class Product extends Component {
                 <Link to={'/item/' + this.props.item.id}>
                     <img src={this.props.item.imagePath} alt={this.props.item.name}/>
                 </Link>
-                <h5 className="product-name">{this.props.item.name}</h5>
+                <h5>
+                    <Link to={'/item/' + this.props.item.id}>
+                        {this.props.item.name}
+                    </Link>
+                </h5>
+
+                {/*<h5 className="product-name">{this.props.item.name}</h5>*/}
                 <div className="product-lower-info">
                     <span className="product-price">{this.props.item.price}</span>
                     <span className="product-to-cart" onClick={this.addToBasket}><i className="icon ion-bag"></i>Add to Cart</span>

@@ -16,11 +16,19 @@ export function setAllElementsSelectedPropertyToFalse(array) {
     });
 }
 
+export function selectElementInArray(index, values, multipleSelection) {
+    let array = [...values];
+    if (!multipleSelection) {
+        array = setAllElementsSelectedPropertyToFalse(array);
+    }
+    array[index] = setSelectedProperty(array[index]);
+    return array;
+}
+
 export function getSelected(selected) {
     if (!selected) {
         return false;
-    }
-    else {
+    } else {
         return selected;
     }
 }
@@ -33,5 +41,5 @@ export function setSelectedClass(isSelected) {
 
 //from https://www.jacklmoore.com/notes/rounding-in-javascript/
 export function round(value, decimals) {
-    return Number(Math.round(value+'e'+decimals)+'e-'+decimals);
+    return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);
 }

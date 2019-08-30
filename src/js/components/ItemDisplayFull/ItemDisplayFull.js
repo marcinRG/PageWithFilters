@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { addItemToBasket, updateItemCount } from '../../ReduxSettings/actions/basketActions';
 import connect from 'react-redux/es/connect/connect';
+import { Link } from 'react-router-dom';
 
 class ItemDisplayFull extends Component {
     constructor(props) {

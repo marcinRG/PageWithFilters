@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Tag } from './Tag';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
-import { setAllElementsSelectedPropertyToFalse, setSelectedProperty } from '../utils';
+import { selectElementInArray} from '../utils';
 import { changeSelectedTag, resetSelectedTags } from '../../ReduxSettings/actions/tagsFilterActions';
 
 class TagList extends Component {
@@ -15,12 +15,7 @@ class TagList extends Component {
         };
 
         this.change = (i) => {
-            let array = [...this.state.values];
-            if (!this.state.multipleSelection) {
-                array = setAllElementsSelectedPropertyToFalse(array);
-            }
-            array[i] = setSelectedProperty(array[i]);
-            this.setState({ values: array });
+            this.setState({ values: selectElementInArray(i,this.state.values,this.state.multipleSelection)});
             this.props.changeSelected(this.state.values);
         }
     }

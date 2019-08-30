@@ -208,7 +208,6 @@ export const AppData = {
         items: {}
     },
     products: {
-        selectedItems: {},
         items: {
             1: {
                 id: 1,
@@ -395,7 +394,7 @@ export const AppData = {
             },
             9: {
                 id: 9,
-                name: ' C\'est N\'est Pas Une Pipe',
+                name: 'C\'est N\'est Pas Une Pipe',
                 brand: 'Field',
                 details: `    Aperiam eaque expedita harum labore maiores nam, sunt ullam voluptate. Aliquam dolore doloremque facere nobis
         optio vero? Accusantium amet dolorem eligendi eos id ipsam necessitatibus omnis temporibus tenetur. Molestias,
@@ -1217,7 +1216,13 @@ export const AppData = {
         settings: {
             itemsPerPage: 10,
             currentPage: 1,
-            sortMethod: sortMethodsNames.SORT_BY_NAME_ASC
+            sortMethod: 0,
+            sortMethodList: [
+                sortMethodsNames.SORT_BY_NAME_ASC,
+                sortMethodsNames.SORT_BY_NAME_DESC,
+                sortMethodsNames.SORT_BY_PRICE_ASC,
+                sortMethodsNames.SORT_BY_PRICE_DESC,
+            ]
         }
     },
 };

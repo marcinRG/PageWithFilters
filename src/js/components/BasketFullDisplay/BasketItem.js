@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { round } from '../utils';
+import { Link } from 'react-router-dom';
 
 export function BasketItem(props) {
     const addOne = () => {
@@ -24,7 +25,10 @@ export function BasketItem(props) {
         <div className="row-container item">
             <img className="item-image" src={'../' + props.item.imagePath} alt={props.item.name}/>
             <div className="item-detail">
-                <h4 className="item-name">{props.item.name}</h4>
+                <Link to={'/item/' + props.item.id}>
+                    <h4 className="item-name">{props.item.name}</h4>
+                </Link>
+
                 <div className="item-additional-info">
                     <span>{props.item.brand}, {props.item.color.name}, {props.item.size}</span>
                     <span>price per one: {props.item.price}</span>

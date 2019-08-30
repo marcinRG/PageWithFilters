@@ -1,40 +1,32 @@
 import React, { Component } from 'react';
 import { Filters } from '../ProductFilter/Filters';
-import { AppData } from '../../data/AppData';
 import Product from './Product';
 import { ProductSortMethodSelector } from '../ProductSortMethodSelector/ProductSortMethodSelector';
 import { ProductsCount } from '../ProductsCount/ProductsCount';
 import { getPageNumber, PageSelector } from '../PageSelector/PageSelector';
 import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
+import { bindActionCreators } from 'redux';
+import { changeCurrentPage, changeSortMethod } from '../../ReduxSettings/actions/productsActions';
+import { getFilteredProducts } from '../../selectors/productSelectors';
 
-export class ProductsDisplay extends Component {
+class ProductsDisplay extends Component {
     constructor(props) {
         super(props);
-        this.filterMethods = props.settings.filterMethods;
-        this.state = {
-            selectedFilterMethod: 0,
-            productsPerPage: props.settings.productsPerPage,
-            selectedPage: 1,
-            count: 51
-        };
-
         this.changePage = (pageNumber) => {
+            const prods = this.props.products;
             if (pageNumber) {
-                this.setState({
-                    selectedPage: pageNumber
-                });
+                this.props.changeCurrentPage(pageNumber);
             } else {
-                if (this.state.selectedPage < getPageNumber(this.state.count, this.state.productsPerPage)) {
-                    this.setState((previousState) => {
-                        return {
-                            selectedPage: previousState.selectedPage + 1
-                        };
-                    })
+                if (prods.settings.currentPage < getPageNumber(Object.entries(prods.items).length,
+                        prods.settings.itemsPerPage)) {
+                    this.props.changeCurrentPage(prods.settings.currentPage + 1);
                 }
             }
         };
+
         this.changeOrder = (number) => {
-            console.log(number);
+            this.props.changeSortMethod(number);
         };
     }
 
@@ -44,19 +36,21 @@ export class ProductsDisplay extends Component {
                 <Filters/>
                 <div className="main-element">
                     <div className="result-filter">
-                        <ProductSortMethodSelector methods={this.filterMethods}
-                                                   selectedMethod={this.state.selectedFilterMethod}
+                        <ProductSortMethodSelector methods={this.props.products.settings.sortMethodList}
+                                                   selectedMethod={this.props.products.settings.sortMethod}
                                                    action={this.changeOrder}/>
-                        <ProductsCount selectedPage={this.state.selectedPage} count={this.state.count}
-                                       itemsPerPage={this.state.productsPerPage}/>
+                        <ProductsCount selectedPage={this.props.products.settings.currentPage}
+                                       count={Object.entries(this.props.products.items).length}
+                                       itemsPerPage={this.props.products.settings.itemsPerPage}/>
                     </div>
                     <div className="products">
-                        {Object.keys(AppData.products.items).map((id)=>
-                           <Product item={AppData.products.items[id]}  key={id} />
+                        {this.props.filteredProducts.map((obj,i) =>
+                            <Product item={obj} key={i}/>
                         )}
                     </div>
-                    <PageSelector selectedPage={this.state.selectedPage} count={this.state.count}
-                                  itemsPerPage={this.state.productsPerPage}
+                    <PageSelector selectedPage={this.props.products.settings.currentPage}
+                                  count={Object.entries(this.props.products.items).length}
+                                  itemsPerPage={this.props.products.settings.itemsPerPage}
                                   action={this.changePage}/>
                 </div>
             </section>
@@ -65,5 +59,31 @@ export class ProductsDisplay extends Component {
 }
 
 ProductsDisplay.propTypes = {
-    settings: PropTypes.object.isRequired
+    products: PropTypes.object.isRequired,
+    categories: PropTypes.object.isRequired,
+    sizes: PropTypes.object.isRequired,
+    changeCurrentPage: PropTypes.func.isRequired,
+    changeSortMethod: PropTypes.func.isRequired,
+    filteredProducts: PropTypes.array.isRequired
 };
+
+function mapStateToProps(state) {
+    return {
+        filteredProducts: getFilteredProducts(state.products, state.sizeFilters),
+        products: state.products,
+        categories: state.categoriesFilters,
+        sizes: state.sizeFilters,
+        colors: state.colorFilters,
+        tags: state.tagFilters,
+        brands: state.brandsFilters
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        changeSortMethod: bindActionCreators(changeSortMethod, dispatch),
+        changeCurrentPage: bindActionCreators(changeCurrentPage, dispatch),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProductsDisplay);
