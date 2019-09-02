@@ -69,7 +69,8 @@ ProductsDisplay.propTypes = {
 
 function mapStateToProps(state) {
     return {
-        filteredProducts: getFilteredProducts(state.products, state.sizeFilters),
+        filteredProducts: getFilteredProducts(state.products, state.sizeFilters, state.brandsFilters,
+            state.categoriesFilters, state.colorFilters, state.tagFilters),
         products: state.products,
         categories: state.categoriesFilters,
         sizes: state.sizeFilters,

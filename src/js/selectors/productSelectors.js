@@ -45,12 +45,41 @@ function getSortMethod(sortName) {
     }
 }
 
-export function getFilteredProducts(products) {
+//getFilteredProducts(state.products, state.sizeFilters, state.brandsFilters,
+//    state.categoriesFilters, state.colorFilters, state.tagFilters),
+
+export function getFilteredProducts(products, sizes, brands, categories, colors, tags) {
+    const sizesArray = getSelectedValuesAsArray(sizes);
+    // const brandsArray = getSelectedValuesAsArray(brands);
+    // const categoriesArray = getSelectedValuesAsArray(categories);
+    // const colorsArray = getSelectedValuesAsArray(colors);
+    // const tagsArray = getSelectedValuesAsArray(tags);
+    // console.log('---@@@@@@@---');
+    // console.log('---XXXXXXXX---');
+
     const productsAsArray = Object.values(products.items);
+    console.log(filterSelectedSizes(productsAsArray,sizesArray));
     const sortMethod = products.settings.sortMethodList[products.settings.sortMethod];
-    return getSortedList(productsAsArray,sortMethod);
+    return getSortedList(productsAsArray, sortMethod);
 }
 
 function getSortedList(array, sortMethod) {
     return array.sort(getSortMethod(sortMethod));
+}
+
+function filterSelectedSizes(itemsArray,selectedSizesArray) {
+    return itemsArray.filter(item=>{
+        console.log(selectedSizesArray);
+        console.log(item.size);
+        console.log(selectedSizesArray.includes(item.size));
+        return selectedSizesArray.includes(item.size);
+    });
+}
+
+function getSelectedValuesAsArray(obj) {
+    return Object.values(obj.values).filter(elem => {
+        return elem.selected;
+    }).map(elem => {
+        return elem.name;
+    });
 }
