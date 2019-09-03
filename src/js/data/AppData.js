@@ -91,15 +91,15 @@ export const AppData = {
             multiSelect: false,
             values: [
                 {
-                    name: 'Small',
+                    name: 'small',
                     value: 12
                 },
                 {
-                    name: 'Medium',
+                    name: 'medium',
                     value: 5
                 },
                 {
-                    name: 'Big',
+                    name: 'big',
                     value: 9
                 }
             ]
@@ -136,7 +136,7 @@ export const AppData = {
 
         },
         tags: {
-            multiSelect: true,
+            multiSelect: false,
             values: [{ name: 'Simple' }, { name: 'Minimalism' }, { name: 'Furniture' }, { name: 'White' },
                 { name: 'Black' }, { name: 'Accessories' }]
         },
@@ -176,10 +176,6 @@ export const AppData = {
         categories: {
             multiSelect: false,
             values: [
-                {
-                    name: 'All products',
-                    value: 50
-                },
                 {
                     name: 'Living',
                     value: 12

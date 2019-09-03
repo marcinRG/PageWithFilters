@@ -4,7 +4,7 @@ import { ColorPicker } from './ColorPicker';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import { changeSelectedColor, resetSelectedColors } from '../../ReduxSettings/actions/colorsFilterActions';
-import { setAllElementsSelectedPropertyToFalse, setSelectedProperty } from '../utils';
+import { selectElementInArray } from '../utils';
 
 class ColorList extends Component {
     constructor(props) {
@@ -15,13 +15,7 @@ class ColorList extends Component {
         };
 
         this.change = (i) => {
-            console.log('color change');
-            let array = [...this.state.values];
-            if (!this.state.multipleSelection) {
-                array = setAllElementsSelectedPropertyToFalse(array);
-            }
-            array[i] = setSelectedProperty(array[i]);
-            this.setState({ values: array });
+            this.setState({ values: selectElementInArray(i,this.state.values,this.state.multipleSelection)});
             this.props.changeSelected(this.state.values);
         }
     }

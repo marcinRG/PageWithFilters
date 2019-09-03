@@ -40,7 +40,7 @@ class ProductsDisplay extends Component {
                                                    selectedMethod={this.props.products.settings.sortMethod}
                                                    action={this.changeOrder}/>
                         <ProductsCount selectedPage={this.props.products.settings.currentPage}
-                                       count={Object.entries(this.props.products.items).length}
+                                       count={this.props.filteredProducts.length}
                                        itemsPerPage={this.props.products.settings.itemsPerPage}/>
                     </div>
                     <div className="products">
@@ -49,7 +49,7 @@ class ProductsDisplay extends Component {
                         )}
                     </div>
                     <PageSelector selectedPage={this.props.products.settings.currentPage}
-                                  count={Object.entries(this.props.products.items).length}
+                                  count={this.props.filteredProducts.length}
                                   itemsPerPage={this.props.products.settings.itemsPerPage}
                                   action={this.changePage}/>
                 </div>
@@ -60,8 +60,6 @@ class ProductsDisplay extends Component {
 
 ProductsDisplay.propTypes = {
     products: PropTypes.object.isRequired,
-    categories: PropTypes.object.isRequired,
-    sizes: PropTypes.object.isRequired,
     changeCurrentPage: PropTypes.func.isRequired,
     changeSortMethod: PropTypes.func.isRequired,
     filteredProducts: PropTypes.array.isRequired
@@ -72,11 +70,6 @@ function mapStateToProps(state) {
         filteredProducts: getFilteredProducts(state.products, state.sizeFilters, state.brandsFilters,
             state.categoriesFilters, state.colorFilters, state.tagFilters),
         products: state.products,
-        categories: state.categoriesFilters,
-        sizes: state.sizeFilters,
-        colors: state.colorFilters,
-        tags: state.tagFilters,
-        brands: state.brandsFilters
     };
 }
 

@@ -45,34 +45,54 @@ function getSortMethod(sortName) {
     }
 }
 
-//getFilteredProducts(state.products, state.sizeFilters, state.brandsFilters,
-//    state.categoriesFilters, state.colorFilters, state.tagFilters),
-
 export function getFilteredProducts(products, sizes, brands, categories, colors, tags) {
     const sizesArray = getSelectedValuesAsArray(sizes);
-    // const brandsArray = getSelectedValuesAsArray(brands);
-    // const categoriesArray = getSelectedValuesAsArray(categories);
-    // const colorsArray = getSelectedValuesAsArray(colors);
-    // const tagsArray = getSelectedValuesAsArray(tags);
-    // console.log('---@@@@@@@---');
-    // console.log('---XXXXXXXX---');
-
+    const brandsArray = getSelectedValuesAsArray(brands);
+    const colorsArray = getSelectedValuesAsArray(colors);
+    const categoriesArray = getSelectedValuesAsArray(categories);
+    const tagsArray = getSelectedValuesAsArray(tags);
     const productsAsArray = Object.values(products.items);
-    console.log(filterSelectedSizes(productsAsArray,sizesArray));
+    const productsSizeFiltered = filterSelectedSizes(productsAsArray, sizesArray);
+    const productsBrandsFiltered = filterSelectedBrands(productsSizeFiltered, brandsArray);
+    const productsCategoriesFiltered = filterSelectedCategories(productsBrandsFiltered, categoriesArray);
+    const productsColorsFiltered = filterSelectedColors(productsCategoriesFiltered, colorsArray);
+    const productsTagsFiltered = filterSelectedTags(productsColorsFiltered, tagsArray);
     const sortMethod = products.settings.sortMethodList[products.settings.sortMethod];
-    return getSortedList(productsAsArray, sortMethod);
+    return getSortedList(productsTagsFiltered, sortMethod);
 }
 
 function getSortedList(array, sortMethod) {
     return array.sort(getSortMethod(sortMethod));
 }
 
-function filterSelectedSizes(itemsArray,selectedSizesArray) {
+function filterItemsArray(itemsArray,selectedArray, propertyName) {
     return itemsArray.filter(item=>{
-        console.log(selectedSizesArray);
-        console.log(item.size);
-        console.log(selectedSizesArray.includes(item.size));
-        return selectedSizesArray.includes(item.size);
+        return (selectedArray.includes(item[propertyName]) || !selectedArray.length);
+    });
+}
+
+function filterSelectedSizes(itemsArray,selectedSizesArray) {
+    return filterItemsArray(itemsArray,selectedSizesArray, 'size');
+}
+
+function filterSelectedBrands(itemsArray,selectedBrandsArray) {
+    return filterItemsArray(itemsArray,selectedBrandsArray, 'brand');
+}
+
+function filterSelectedCategories(itemsArray,selectedCategoriesArray) {
+    return filterItemsArray(itemsArray,selectedCategoriesArray, 'category');
+}
+
+function filterSelectedColors(itemsArray,selectedColorsArray) {
+    return itemsArray.filter(item=>{
+        return (selectedColorsArray.includes(item.color.name) || !selectedColorsArray.length);
+    });
+}
+
+function filterSelectedTags(itemsArray,selectedTagsArray) {
+    return itemsArray.filter(item=>{
+        const tag = selectedTagsArray[0] || '';
+        return (item.tags.includes(tag) || !selectedTagsArray.length);
     });
 }
 
