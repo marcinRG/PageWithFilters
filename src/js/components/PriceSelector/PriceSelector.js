@@ -13,50 +13,46 @@ class PriceSelector extends Component {
         this.inputMaxRef = React.createRef();
         this.backgroundBeamRef = React.createRef();
         this.progressBeamRef = React.createRef();
-        this.pointerSize = props.pointerSize;
+        this.pointerSize = this.props.pointerSize;
 
         this.state = {
-            minValue: props.min,
-            maxValue: props.max,
-            x1: props.min,
-            x2: props.max,
             isMouseDown: false
         };
 
-        this.changeMinValue = (keyEvent) => {
-            return this.changeValueOnInput(keyEvent, this.inputMinRef.current, 'min', this.setUIAndStateX1);
-        };
-
-        this.changeMaxValue = (keyEvent) => {
-            return this.changeValueOnInput(keyEvent, this.inputMaxRef.current, 'max', this.setUIAndStateX2);
-        };
-
-        this.setUIAndStateX1 = (value) => {
-            this.setUIElements(value, this.pointerMinRef.current, this.inputMinRef.current);
-            this.setBeamLengthAndOffset({ offset: value });
-            this.setState({
-                x1: value
-            });
-            this.props.setMinRange((value-0));
-        };
-
-        this.setUIAndStateX2 = (value) => {
-            this.setUIElements(value, this.pointerMaxRef.current, this.inputMaxRef.current);
-            this.setBeamLengthAndOffset({ width: value });
-            this.setState({
-                x2: value
-            });
-            this.props.setMaxRange((value-0));
-        };
-
-        this.change = () => {
-            this.changeSize();
-        }
+        // this.changeMinValue = (keyEvent) => {
+        //     //return this.changeValueOnInput(keyEvent, this.inputMinRef.current, 'min', this.setUIAndStateX1);
+        // };
+        //
+        // this.changeMaxValue = (keyEvent) => {
+        //     //return this.changeValueOnInput(keyEvent, this.inputMaxRef.current, 'max', this.setUIAndStateX2);
+        // };
+        //
+        // this.setUIAndStateX1 = (value) => {
+        //     // this.setUIElements(value, this.pointerMinRef.current, this.inputMinRef.current);
+        //     // this.setBeamLengthAndOffset({ offset: value });
+        //     // this.setState({
+        //     //     x1: value
+        //     // });
+        //     // this.props.setMinRange((value-0));
+        // };
+        //
+        // this.setUIAndStateX2 = (value) => {
+        //     // this.setUIElements(value, this.pointerMaxRef.current, this.inputMaxRef.current);
+        //     // this.setBeamLengthAndOffset({ width: value });
+        //     // this.setState({
+        //     //     x2: value
+        //     // });
+        //     // this.props.setMaxRange((value-0));
+        // };
+        //
+        // this.change = () => {
+        //     // this.changeSize();
+        // }
 
     }
 
     componentWillUnmount() {
-        window.removeEventListener('resize', this.change);
+        // window.removeEventListener('resize', this.change);
     }
 
     getSliderMinMaxWidth() {
@@ -66,26 +62,26 @@ class PriceSelector extends Component {
     }
 
     changeSize() {
-        this.setPointerPosition(this.pointerMinRef.current, this.state.x1);
-        this.setPointerPosition(this.pointerMaxRef.current, this.state.x2);
+        this.setPointerPosition(this.pointerMinRef.current, this.props.min);
+        this.setPointerPosition(this.pointerMaxRef.current, this.props.max);
         this.setBeamLengthAndOffset();
     }
 
     getPointerValue() {
-        const minMax = this.getSliderMinMaxWidth();
-        const pointerValue = transformation(this.pointerSize + minMax.minWidth, minMax.minWidth,
-            minMax.maxWidth, this.state.minValue, this.state.maxValue);
-        return pointerValue;
+        // const minMax = this.getSliderMinMaxWidth();
+        // const pointerValue = transformation(this.pointerSize + minMax.minWidth, minMax.minWidth,
+        //     minMax.maxWidth, this.state.minValue, this.state.maxValue);
+        // return pointerValue;
     }
 
     setUIElements(value, pointer, input) {
-        this.setPointerPosition(pointer, value);
-        input.value = value;
+        // this.setPointerPosition(pointer, value);
+        // input.value = value;
     }
 
     setBeamLengthAndOffset(valuePair) {
-        let offset = this.state.x1;
-        let width = this.state.x2;
+        let offset = this.props.min;
+        let width = this.props.max;
         if (valuePair) {
             if (valuePair.offset) {
                 offset = valuePair.offset;
@@ -100,50 +96,50 @@ class PriceSelector extends Component {
         const widthPx = width - offset - this.pointerSize;
         const offsetPx = offset - minMax.minWidth + this.pointerSize;
         if (widthPx && offsetPx) {
-            this.progressBeamRef.current.style.left = offsetPx + 'px';
-            this.progressBeamRef.current.style.width = widthPx + 'px';
+             this.progressBeamRef.current.style.left = offsetPx + 'px';
+             this.progressBeamRef.current.style.width = widthPx + 'px';
         }
     }
 
     changeValueOnInput(keyEvent, input, name, func) {
-        if (keyEvent.which == 13 || keyEvent.keyCode == 13) {
-            let val = input.value;
-            val = this.getLimitedValues(val, name);
-            func(val);
-            return false;
-        }
-        return true;
+        // if (keyEvent.which == 13 || keyEvent.keyCode == 13) {
+        //     let val = input.value;
+        //     val = this.getLimitedValues(val, name);
+        //     func(val);
+        //     return false;
+        // }
+        // return true;
     }
 
     changeValueOnPointerMove(mouseEvent, name, func) {
         if (this.state.isMouseDown) {
-            const minMax = this.getSliderMinMaxWidth();
-            let position = mouseEvent.clientX;
-            position = this.getLimitedPosition(position, name, minMax);
-            const value = transformation(position, minMax.minWidth,
-                minMax.maxWidth, this.state.minValue, this.state.maxValue);
-            func(value);
+             const minMax = this.getSliderMinMaxWidth();
+             let position = mouseEvent.clientX;
+             position = this.getLimitedPosition(position, name, minMax);
+        //     const value = transformation(position, minMax.minWidth,
+        //         minMax.maxWidth, this.state.minValue, this.state.maxValue);
+        //     func(value);
         }
     }
 
     getLimitedPosition(position, name, minMax) {
-        if (name === 'min') {
-            const maxPosition = transformation(this.state.x2, this.state.minValue, this.state.maxValue,
-                minMax.minWidth, minMax.maxWidth);
-            return limitValues(position, minMax.minWidth, (maxPosition - this.pointerSize));
-        } else {
-            const minPosition = transformation(this.state.x1, this.state.minValue, this.state.maxValue,
-                minMax.minWidth, minMax.maxWidth);
-            return limitValues(position, (minPosition + this.pointerSize), minMax.maxWidth);
-        }
+        // if (name === 'min') {
+        //     const maxPosition = transformation(this.state.x2, this.state.minValue, this.state.maxValue,
+        //         minMax.minWidth, minMax.maxWidth);
+        //     return limitValues(position, minMax.minWidth, (maxPosition - this.pointerSize));
+        // } else {
+        //     const minPosition = transformation(this.state.x1, this.state.minValue, this.state.maxValue,
+        //         minMax.minWidth, minMax.maxWidth);
+        //     return limitValues(position, (minPosition + this.pointerSize), minMax.maxWidth);
+        // }
     }
 
     getLimitedValues(value, name) {
-        const pointerValue = this.getPointerValue();
-        if (name === 'max') {
-            return limitValues(value, (this.state.x1 - this.state.minValue + pointerValue), this.state.maxValue);
-        }
-        return limitValues(value, this.state.minValue, this.state.x2 - pointerValue + this.state.minValue);
+        // const pointerValue = this.getPointerValue();
+        // if (name === 'max') {
+        //     return limitValues(value, (this.state.x1 - this.state.minValue + pointerValue), this.state.maxValue);
+        // }
+        // return limitValues(value, this.state.minValue, this.state.x2 - pointerValue + this.state.minValue);
     }
 
     componentDidMount() {
@@ -162,8 +158,8 @@ class PriceSelector extends Component {
 
     getPointerPosition(element, value) {
         const minMax = this.getSliderMinMaxWidth();
-        return transformation(value, this.state.minValue, this.state.maxValue,
-            minMax.minWidth, minMax.maxWidth);
+        return transformation(value, this.props.lowerBound, this.props.upperBound,
+             minMax.minWidth, minMax.maxWidth);
     }
 
     setPointerPosition(element, value) {
@@ -176,8 +172,8 @@ class PriceSelector extends Component {
     }
 
     fillInputs() {
-        this.inputMinRef.current.value = this.state.x1;
-        this.inputMaxRef.current.value = this.state.x2;
+        this.inputMinRef.current.value = this.props.min;
+        this.inputMaxRef.current.value = this.props.max;
     }
 
     setMouseUpDownLeaveListener(element) {
@@ -217,6 +213,8 @@ class PriceSelector extends Component {
 PriceSelector.propTypes = {
     min: PropTypes.number.isRequired,
     max: PropTypes.number.isRequired,
+    lowerBound: PropTypes.number.isRequired,
+    upperBound: PropTypes.number.isRequired,
     pointerSize: PropTypes.number.isRequired,
     setMaxRange: PropTypes.func.isRequired,
     setMinRange: PropTypes.func.isRequired
@@ -226,6 +224,8 @@ function mapStateToProps(state) {
     return {
         min: state.priceFilters.min,
         max: state.priceFilters.max,
+        lowerBound: state.priceFilters.lowerBound,
+        upperBound: state.priceFilters.upperBound,
         pointerSize: state.priceFilters.pointerSize
     };
 }

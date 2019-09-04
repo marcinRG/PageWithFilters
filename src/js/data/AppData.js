@@ -83,8 +83,10 @@ export const AppData = {
     },
     filters: {
         prices: {
-            max: 1900,
-            min: 5,
+            lowerBound: 5,
+            upperBound: 1900,
+            max: 800,
+            min: 300,
             pointerSize: 20
         },
         sizes: {
