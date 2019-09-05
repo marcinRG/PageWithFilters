@@ -85,8 +85,8 @@ export const AppData = {
         prices: {
             lowerBound: 5,
             upperBound: 1900,
-            max: 800,
-            min: 300,
+            max: 1900,
+            min: 5,
             pointerSize: 20
         },
         sizes: {

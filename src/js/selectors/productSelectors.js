@@ -1,6 +1,6 @@
 import { sortMethodsNames } from '../data/sortMethodsNames';
 
-export function getFilteredProducts(products, sizes, brands, categories, colors, tags) {
+export function getFilteredProducts(products, sizes, brands, categories, colors, tags, prices) {
     const sizesArray = getSelectedValuesAsArray(sizes);
     const brandsArray = getSelectedValuesAsArray(brands);
     const colorsArray = getSelectedValuesAsArray(colors);
@@ -11,14 +11,15 @@ export function getFilteredProducts(products, sizes, brands, categories, colors,
     const itemsWithBrandsFilter = filterSelectedBrands(itemsWithSizeFilter, brandsArray);
     const itemsWithCategoriesFilter = filterSelectedCategories(itemsWithBrandsFilter, categoriesArray);
     const itemsWithColorsFilter = filterSelectedColors(itemsWithCategoriesFilter, colorsArray);
-    const productsWithTagsFilter = filterSelectedTags(itemsWithColorsFilter, tagsArray);
+    const itemsWithTagsFilter = filterSelectedTags(itemsWithColorsFilter, tagsArray);
+    const itemsWithPricesFilter = filterSelectedPrices(itemsWithTagsFilter, prices);
     const sortMethod = products.settings.sortMethodList[products.settings.sortMethod];
-    return getSortedList(productsWithTagsFilter, sortMethod);
+    return getSortedList(itemsWithPricesFilter, sortMethod);
 }
 
 export function sliceResultsArray(itemsArray, settings) {
-        return itemsArray.slice((settings.currentPage - 1) * settings.itemsPerPage,
-            (settings.currentPage) * settings.itemsPerPage);
+    return itemsArray.slice((settings.currentPage - 1) * settings.itemsPerPage,
+        (settings.currentPage) * settings.itemsPerPage);
 }
 
 function getSortedList(array, sortMethod) {
@@ -41,6 +42,13 @@ function filterSelectedBrands(itemsArray, selectedBrandsArray) {
 
 function filterSelectedCategories(itemsArray, selectedCategoriesArray) {
     return filterItemsArray(itemsArray, selectedCategoriesArray, 'category');
+}
+
+function filterSelectedPrices(itemsArray, pricesSettings) {
+    return itemsArray.filter(item => {
+        const price = item.price - 0;
+        return (price >= pricesSettings.min && price <= pricesSettings.max);
+    });
 }
 
 function filterSelectedColors(itemsArray, selectedColorsArray) {

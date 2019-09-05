@@ -5,8 +5,8 @@ export const actionNames = {
     UPDATE_ITEM_COUNT: 'UPDATE_ITEM_COUNT',
 
     //item's filter constants
-    SET_MAX_PRICE_RANGE: 'set max price',
-    SET_MIN_PRICE_RANGE: 'set min price',
+    SET_MAX_PRICE_RANGE: 'SET MAX PRICE',
+    SET_MIN_PRICE_RANGE: 'SET MIN PRICE',
 
     CHANGE_SELECTED_SIZE: 'CHANGE_SELECTED_SIZE',
     RESET_SELECTED_SIZES: 'RESET_SELECTED_SIZES',

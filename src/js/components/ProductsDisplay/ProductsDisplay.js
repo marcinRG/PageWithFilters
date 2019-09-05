@@ -71,7 +71,7 @@ ProductsDisplay.propTypes = {
 
 function mapStateToProps(state) {
     const items = getFilteredProducts(state.products, state.sizeFilters, state.brandsFilters,
-        state.categoriesFilters, state.colorFilters, state.tagFilters);
+        state.categoriesFilters, state.colorFilters, state.tagFilters, state.priceFilters);
     const currentPage = sliceResultsArray(items, state.products.settings);
 
     return {
