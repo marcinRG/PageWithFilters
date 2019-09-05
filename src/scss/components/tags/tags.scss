@@ -3,7 +3,7 @@
 @import '../../common';
 
 .tags-list {
-  padding: 0 0 1.5em;
+  padding: 0;
 
   li {
     @include selected;

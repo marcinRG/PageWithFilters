@@ -13,3 +13,10 @@ export function addMinPriceRange(value) {
         min: value,
     }
 }
+
+export function resetPricesSelection(value) {
+    return {
+        type: actionNames.RESET_PRICES_RANGES,
+        value
+    }
+}

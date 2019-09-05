@@ -21,8 +21,4 @@ const mainReducer = combineReducers({
     products: productsReducers
 });
 
-//const mainReducer = initReducer;
-//const mainReducer = filterReducers;
-
 export default mainReducer;
-

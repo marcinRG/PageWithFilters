@@ -30,6 +30,7 @@ class ColorList extends Component {
                                          selected={element.selected} id={i} action={this.change}/>
                         )}
                     </ul>
+                <div className="reset-wrapper"><button className="reset-button">Reset</button></div>
             </div>);
     }
 }

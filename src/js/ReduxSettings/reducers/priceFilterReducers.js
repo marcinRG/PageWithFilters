@@ -9,6 +9,9 @@ export function priceFilterReducers(state = AppData.filters.prices, action) {
         case actionNames.SET_MAX_PRICE_RANGE: {
             return Object.assign({}, state, { max: action.max });
         }
+        case actionNames.RESET_PRICES_RANGES: {
+            return Object.assign({}, state, { min: action.value.min }, { max: action.value.max });
+        }
         default: {
             return state;
         }

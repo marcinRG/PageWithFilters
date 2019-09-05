@@ -30,6 +30,7 @@ class SizesList extends Component {
                         selected={element.selected} action={this.change} id={i}/>
                     )}
                 </ul>
+                <div className="reset-wrapper"><button className="reset-button">Reset</button></div>
             </div>);
     }
 }

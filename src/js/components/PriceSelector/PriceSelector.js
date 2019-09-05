@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux';
-import { addMaxPriceRange, addMinPriceRange } from '../../ReduxSettings/actions/priceFilterActions';
+import {
+    addMaxPriceRange,
+    addMinPriceRange,
+    resetPricesSelection
+} from '../../ReduxSettings/actions/priceFilterActions';
 
 class PriceSelector extends Component {
     constructor(props) {
@@ -27,20 +31,24 @@ class PriceSelector extends Component {
         };
 
         this.setUIAndStateMin = (value) => {
-              this.setUIElements(value, this.pointerMinRef.current, this.inputMinRef.current);
-              this.setBeamLengthAndOffset({ offset: value });
-              this.props.setMin((value-0));
+            this.setUIElements(value, this.pointerMinRef.current, this.inputMinRef.current);
+            this.setBeamLengthAndOffset({ offset: value });
+            this.props.setMin((value - 0));
         };
 
         this.setUIAndStateMax = (value) => {
             this.setUIElements(value, this.pointerMaxRef.current, this.inputMaxRef.current);
             this.setBeamLengthAndOffset({ width: value });
-            this.props.setMax((value-0));
+            this.props.setMax((value - 0));
         };
 
         this.change = () => {
             this.changeSize();
-        }
+        };
+
+        this.reset = () => {
+            this.resetSelection();
+        };
 
     }
 
@@ -50,8 +58,17 @@ class PriceSelector extends Component {
 
     getSliderMinMaxWidth() {
         const beamElem = this.backgroundBeamRef.current;
-        const minMax = getMinMaxWidth(beamElem, this.props.pointerSize);
-        return minMax;
+        return getMinMaxWidth(beamElem, this.props.pointerSize);
+    }
+
+    resetSelection() {
+        this.setUIElements(this.props.lowerBound, this.pointerMinRef.current, this.inputMinRef.current);
+        this.setUIElements(this.props.upperBound, this.pointerMaxRef.current, this.inputMaxRef.current);
+        this.setBeamLengthAndOffset();
+        this.props.reset({
+            min: this.props.lowerBound,
+            max: this.props.upperBound
+        })
     }
 
     changeSize() {
@@ -63,7 +80,7 @@ class PriceSelector extends Component {
     getPointerValue() {
         const minMax = this.getSliderMinMaxWidth();
         const pointerValue = transformation(this.props.pointerSize + minMax.minWidth, minMax.minWidth,
-           minMax.maxWidth, this.props.lowerBound, this.props.upperBound);
+            minMax.maxWidth, this.props.lowerBound, this.props.upperBound);
         return pointerValue;
     }
 
@@ -73,8 +90,8 @@ class PriceSelector extends Component {
     }
 
     setBeamLengthAndOffset(valuePair) {
-        let offset = this.props.min;
-        let width = this.props.max;
+        let offset = this.props.lowerBound;
+        let width = this.props.upperBound;
         if (valuePair) {
             if (valuePair.offset) {
                 offset = valuePair.offset;
@@ -95,7 +112,7 @@ class PriceSelector extends Component {
     }
 
     changeValueOnInput(keyEvent, input, name, func) {
-        if (keyEvent.which == 13 || keyEvent.keyCode == 13) {
+        if (keyEvent.which === 13 || keyEvent.keyCode === 13) {
             let val = input.value;
             val = this.getLimitedValues(val, name);
             func(val);
@@ -130,7 +147,7 @@ class PriceSelector extends Component {
     getLimitedValues(value, name) {
         const pointerValue = this.getPointerValue();
         if (name === 'max') {
-             return limitValues(value, (this.props.min - this.props.lowerBound + pointerValue), this.props.upperBound);
+            return limitValues(value, (this.props.min - this.props.lowerBound + pointerValue), this.props.upperBound);
         }
         return limitValues(value, this.props.lowerBound, this.props.max - pointerValue + this.props.lowerBound);
     }
@@ -198,6 +215,9 @@ class PriceSelector extends Component {
                     <input className="input-value" type="text" ref={this.inputMaxRef}
                            onKeyDown={this.changeMaxValue}/>
                 </div>
+                <div className="reset-wrapper">
+                    <button className="reset-button" onClick={this.reset}>Reset</button>
+                </div>
             </div>
         );
     }
@@ -210,7 +230,8 @@ PriceSelector.propTypes = {
     upperBound: PropTypes.number.isRequired,
     pointerSize: PropTypes.number.isRequired,
     setMax: PropTypes.func.isRequired,
-    setMin: PropTypes.func.isRequired
+    setMin: PropTypes.func.isRequired,
+    reset: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
@@ -226,7 +247,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         setMax: bindActionCreators(addMaxPriceRange, dispatch),
-        setMin: bindActionCreators(addMinPriceRange, dispatch)
+        setMin: bindActionCreators(addMinPriceRange, dispatch),
+        reset: bindActionCreators(resetPricesSelection, dispatch),
     }
 }
 

@@ -1,0 +1,5 @@
+poprawić komponent Slider,
+towar "lubiany"
+dodać możliwość resetowania filtrów - 1/6
+dodać możliwość dodania towaru do koszyka ze strony towaru
+mobil
