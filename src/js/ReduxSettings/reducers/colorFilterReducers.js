@@ -6,6 +6,10 @@ export function colorFilterReducers(state = AppData.filters.colors, action) {
         case actionNames.CHANGE_SELECTED_COLOR: {
             return Object.assign({}, state, { values: [...action.value] });
         }
+        case actionNames.RESET_SELECTED_COLORS: {
+            return Object.assign({}, state, { values: [...action.value] });
+        }
+
         default: {
             return state;
         }

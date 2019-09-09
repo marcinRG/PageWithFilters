@@ -90,24 +90,24 @@ export const AppData = {
             pointerSize: 20
         },
         sizes: {
-            multiSelect: false,
+            multiSelect: true,
             values: [
                 {
                     name: 'small',
-                    value: 12
+                    value: 11
                 },
                 {
                     name: 'medium',
-                    value: 5
+                    value: 27
                 },
                 {
                     name: 'big',
-                    value: 9
+                    value: 16
                 }
             ]
         },
         colors: {
-            multiSelect: false,
+            multiSelect: true,
             values: [
                 {
                     name: 'red',
@@ -147,31 +147,31 @@ export const AppData = {
             values: [
                 {
                     name: 'Banshu Hamono',
-                    value: 12
-                },
-                {
-                    name: 'Bower',
-                    value: 7
-                },
-                {
-                    name: 'Green',
-                    value: 19
-                },
-                {
-                    name: 'ElevenPlus',
-                    value: 11
-                },
-                {
-                    name: 'Field',
-                    value: 8
-                },
-                {
-                    name: 'Henry Wilson',
                     value: 4
                 },
                 {
+                    name: 'Bower',
+                    value: 3
+                },
+                {
+                    name: 'Green',
+                    value: 10
+                },
+                {
+                    name: 'ElevenPlus',
+                    value: 10
+                },
+                {
+                    name: 'Field',
+                    value: 10
+                },
+                {
+                    name: 'Henry Wilson',
+                    value: 3
+                },
+                {
                     name: 'XeMenu',
-                    value: 2
+                    value: 3
                 }
             ]
         },
@@ -180,23 +180,23 @@ export const AppData = {
             values: [
                 {
                     name: 'Living',
-                    value: 12
-                },
-                {
-                    name: 'Dining',
-                    value: 25
-                },
-                {
-                    name: 'Furniture',
                     value: 5
                 },
                 {
+                    name: 'Dining',
+                    value: 8
+                },
+                {
+                    name: 'Furniture',
+                    value: 20
+                },
+                {
                     name: 'Lighting',
-                    value: 9
+                    value: 3
                 },
                 {
                     name: 'Accessories',
-                    value: 11
+                    value: 7
                 },
             ]
         }

@@ -6,6 +6,9 @@ export function brandsFilterReducers(state = AppData.filters.brands, action) {
         case actionNames.CHANGE_SELECTED_BRAND: {
             return Object.assign({}, state, { values: [...action.value] });
         }
+        case actionNames.RESET_SELECTED_BRANDS: {
+            return Object.assign({}, state, { values: [...action.value] });
+        }
         default: {
             return state;
         }

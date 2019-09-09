@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Tag } from './Tag';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
-import { selectElementInArray} from '../utils';
+import { selectElementInArray, setAllElementsSelectedPropertyToFalse } from '../utils';
 import { changeSelectedTag, resetSelectedTags } from '../../ReduxSettings/actions/tagsFilterActions';
 
 class TagList extends Component {
@@ -17,7 +17,13 @@ class TagList extends Component {
         this.change = (i) => {
             this.setState({ values: selectElementInArray(i,this.state.values,this.state.multipleSelection)});
             this.props.changeSelected(this.state.values);
-        }
+        };
+
+        this.reset = () => {
+            const resetArray = setAllElementsSelectedPropertyToFalse(this.props.values);
+            this.props.resetSelected(resetArray);
+        };
+
     }
 
     render() {
@@ -31,7 +37,7 @@ class TagList extends Component {
                                      selected={element.selected} action={this.change} id={i}/>
                             )}
                         </ul>
-                        <div className="reset-wrapper"><button className="reset-button">Reset</button></div>
+                        <div className="reset-wrapper"><button className="reset-button" onClick={this.reset}>Reset</button></div>
                     </div>
                 </div>);
     }

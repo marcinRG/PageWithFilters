@@ -3,7 +3,7 @@ import { NameValuePair } from '../NameValuePair/NameValuePair';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
-import { selectElementInArray} from '../utils';
+import { selectElementInArray, setAllElementsSelectedPropertyToFalse } from '../utils';
 import { changeSelectedCategory, resetSelectedCategories } from '../../ReduxSettings/actions/categoriesFilterActions';
 
 class CategoriesList extends Component {
@@ -18,7 +18,13 @@ class CategoriesList extends Component {
         this.change = (i) => {
             this.setState({ values: selectElementInArray(i,this.state.values,this.state.multipleSelection)});
             this.props.changeSelected(this.state.values);
-        }
+        };
+
+        this.reset = () => {
+            const resetArray = setAllElementsSelectedPropertyToFalse(this.props.values);
+            this.props.resetSelected(resetArray);
+        };
+
     }
 
     render() {
@@ -32,7 +38,7 @@ class CategoriesList extends Component {
                                            selected={element.selected} action={this.change} id={i}/>
                         )}
                     </ul>
-                    <div className="reset-wrapper"><button className="reset-button">Reset</button></div>
+                    <div className="reset-wrapper"><button className="reset-button" onClick={this.reset}>Reset</button></div>
                 </div>
             </div>
         );

@@ -6,6 +6,11 @@ export function sizeFilterReducers(state = AppData.filters.sizes, action) {
         case actionNames.CHANGE_SELECTED_SIZE: {
             return Object.assign({}, state, { values: [...action.value] });
         }
+
+        case actionNames.RESET_SELECTED_SIZES: {
+            return Object.assign({}, state, { values: [...action.value] });
+        }
+
         default: {
             return state;
         }

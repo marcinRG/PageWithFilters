@@ -4,15 +4,17 @@ import { Link } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import { addItemToBasket, updateItemCount } from '../../ReduxSettings/actions/basketActions';
+import { getItemCount } from '../utils';
 
 class Product extends Component {
     constructor(props) {
         super(props);
+
         this.addToBasket = () => {
             if (this.props.items) {
                 if (this.props.items[this.props.item.id]) {
                     this.props.updateCount({
-                        count: this.getItemCount() + 1,
+                        count: getItemCount(this.props.items,this.props.item.id) + 1,
                         id: this.props.item.id
                     });
                 } else {
@@ -21,11 +23,6 @@ class Product extends Component {
                 }
             }
         }
-    }
-
-    getItemCount() {
-        return this.props.items[this.props.item.id].count ?
-            this.props.items[this.props.item.id].count : 0;
     }
 
     render() {

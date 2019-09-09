@@ -39,6 +39,10 @@ export function setSelectedClass(isSelected) {
     }
 }
 
+export function getItemCount(items, ItemId) {
+    return items[ItemId].count ? items[ItemId].count : 0;
+}
+
 //from https://www.jacklmoore.com/notes/rounding-in-javascript/
 export function round(value, decimals) {
     return Number(Math.round(value + 'e' + decimals) + 'e-' + decimals);

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { addItemToBasket, updateItemCount } from '../../ReduxSettings/actions/basketActions';
 import connect from 'react-redux/es/connect/connect';
 import { Link } from 'react-router-dom';
+import { getItemCount } from '../utils';
 
 class ItemDisplayFull extends Component {
     constructor(props) {
@@ -14,6 +15,21 @@ class ItemDisplayFull extends Component {
                 item: Object.assign({}, this.props.items[id])
             };
         }
+
+        this.addToBasket = () => {
+            if (this.props.items) {
+                if (this.props.basket[this.state.item.id]) {
+                    this.props.updateCount({
+                        count: getItemCount(this.props.basket, this.state.item.id) + 1,
+                        id: this.state.item.id
+                    });
+                } else {
+                    const item = Object.assign({}, this.state.item, { count: 1 });
+                    this.props.addToBasket(item);
+                }
+            }
+        }
+
     }
 
     render() {
@@ -45,7 +61,9 @@ class ItemDisplayFull extends Component {
                     </div>
                     <div className="row">
                         <span className="item-price">{this.state.item.price}</span>
-                        <button className="item-add-to-basket"><i className="icon ion-bag"></i>Add to Cart</button>
+                        <button className="item-add-to-basket" onClick={this.addToBasket}><i
+                            className="icon ion-bag"></i>Add to Cart
+                        </button>
                     </div>
                 </div>
             </div>);
@@ -55,6 +73,7 @@ class ItemDisplayFull extends Component {
 function mapStateToProps(state) {
     return {
         items: state.products.items,
+        basket: state.basket.items
     };
 }
 
@@ -70,4 +89,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(ItemDisplayFull);
 ItemDisplayFull.propTypes = {
     match: PropTypes.object,
     items: PropTypes.object,
+    basket: PropTypes.object,
+    addToBasket: PropTypes.func.isRequired,
+    updateCount: PropTypes.func.isRequired
 };

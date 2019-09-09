@@ -4,7 +4,7 @@ import { ColorPicker } from './ColorPicker';
 import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import { changeSelectedColor, resetSelectedColors } from '../../ReduxSettings/actions/colorsFilterActions';
-import { selectElementInArray } from '../utils';
+import { selectElementInArray, setAllElementsSelectedPropertyToFalse } from '../utils';
 
 class ColorList extends Component {
     constructor(props) {
@@ -17,7 +17,13 @@ class ColorList extends Component {
         this.change = (i) => {
             this.setState({ values: selectElementInArray(i,this.state.values,this.state.multipleSelection)});
             this.props.changeSelected(this.state.values);
-        }
+        };
+
+        this.reset = () => {
+            const resetArray = setAllElementsSelectedPropertyToFalse(this.props.values);
+            this.props.resetSelected(resetArray);
+        };
+
     }
 
     render() {
@@ -30,7 +36,7 @@ class ColorList extends Component {
                                          selected={element.selected} id={i} action={this.change}/>
                         )}
                     </ul>
-                <div className="reset-wrapper"><button className="reset-button">Reset</button></div>
+                <div className="reset-wrapper"><button className="reset-button" onClick={this.reset}>Reset</button></div>
             </div>);
     }
 }

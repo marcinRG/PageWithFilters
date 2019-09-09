@@ -6,6 +6,11 @@ export function categoryFilterReducers(state = AppData.filters.categories, actio
         case actionNames.CHANGE_SELECTED_CATEGORY: {
             return Object.assign({}, state, { values: [...action.value] });
         }
+
+        case actionNames.RESET_SELECTED_CATEGORIES: {
+            return Object.assign({}, state, { values: [...action.value] });
+        }
+
         default: {
             return state;
         }
