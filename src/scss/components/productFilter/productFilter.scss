@@ -7,7 +7,14 @@
   float: left;
   font-size: 1.5em;
   padding-top: 1em;
-  padding-left: 1em;
+  padding-left: 0;
+
+  @media screen {
+    @media (min-width: $media-br-2) {
+      padding-left: 1em;
+    }
+  }
+
 
   .filter-container {
     background-color: white;

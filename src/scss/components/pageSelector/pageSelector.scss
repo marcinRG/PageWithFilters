@@ -4,8 +4,14 @@
 
 .page-filter {
   @include block-border-box;
-  padding: 1em 0 0 2em;
+  padding: 1em 0 0;
   overflow: hidden;
+
+  @media screen {
+    @media (min-width: $media-br-1) {
+      padding: 1em 0 0 2em;
+    }
+  }
 
   &::after {
     clear: both;
@@ -17,9 +23,17 @@
     li {
       font-size: 1.2em;
       display: inline-block;
-      padding: .5em 1em;
+      padding: .5em .5em;
       color: $lighter-text;
       cursor: pointer;
+
+      @media screen {
+        @media (min-width: $media-br-1) {
+          padding: .5em 1em;
+        }
+      }
+
+
 
       &.active {
         color: $text-color;

@@ -12,6 +12,11 @@ export function productsReducers(state=AppData.products, action) {
             return Object.assign({}, state, {settings: settings});
         }
 
+        case actionNames.CHANGE_FAVORITE_PROPERTY: {
+            const updatedItems = Object.assign({}, state.items, {[action.value.id]: action.value});
+            return Object.assign({}, state, {items: updatedItems});
+        }
+
         default: {
             return state;
         }

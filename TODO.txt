@@ -1,3 +1,4 @@
 poprawić komponent Slider,
-towar "lubiany"
-mobil
+mobil - item display
+zmienic Router
+dodac deply do webpacka

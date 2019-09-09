@@ -5,8 +5,9 @@ import { bindActionCreators } from 'redux';
 import connect from 'react-redux/es/connect/connect';
 import { addItemToBasket, updateItemCount } from '../../ReduxSettings/actions/basketActions';
 import { getItemCount } from '../utils';
+import { changeFavoriteProperty } from '../../ReduxSettings/actions/productsActions';
 
-class Product extends Component {
+class ItemDisplayShort extends Component {
     constructor(props) {
         super(props);
 
@@ -14,7 +15,7 @@ class Product extends Component {
             if (this.props.items) {
                 if (this.props.items[this.props.item.id]) {
                     this.props.updateCount({
-                        count: getItemCount(this.props.items,this.props.item.id) + 1,
+                        count: getItemCount(this.props.items, this.props.item.id) + 1,
                         id: this.props.item.id
                     });
                 } else {
@@ -22,7 +23,15 @@ class Product extends Component {
                     this.props.addToBasket(item);
                 }
             }
-        }
+        };
+
+        this.changeFavorite = () => {
+            if (this.props.items) {
+                const item = Object.assign({}, this.props.item, { isFavorite: !this.props.item.isFavorite});
+                this.props.changeFavorite(item);
+            }
+        };
+
     }
 
     render() {
@@ -30,7 +39,7 @@ class Product extends Component {
             <div className="product-info">
                 <div className="product-upper-info">
                     <span className={toggleNewClass(this.props.item.isNew)}>New</span>
-                    <span className="fav-info"><i
+                    <span className="fav-info" onClick={this.changeFavorite}><i
                         className={toggleFavoriteClass(this.props.item.isFavorite)}></i></span>
                 </div>
                 <Link to={'/item/' + this.props.item.id}>
@@ -42,7 +51,6 @@ class Product extends Component {
                     </Link>
                 </h5>
 
-                {/*<h5 className="product-name">{this.props.item.name}</h5>*/}
                 <div className="product-lower-info">
                     <span className="product-price">{this.props.item.price}</span>
                     <span className="product-to-cart" onClick={this.addToBasket}><i className="icon ion-bag"></i>Add to Cart</span>
@@ -77,15 +85,16 @@ function mapDispatchToProps(dispatch) {
     return {
         addToBasket: bindActionCreators(addItemToBasket, dispatch),
         updateCount: bindActionCreators(updateItemCount, dispatch),
+        changeFavorite: bindActionCreators(changeFavoriteProperty, dispatch),
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemDisplayShort);
 
-Product.propTypes = {
+ItemDisplayShort.propTypes = {
     item: PropTypes.object.isRequired,
     items: PropTypes.object,
     addToBasket: PropTypes.func.isRequired,
-    updateCount: PropTypes.func.isRequired
+    updateCount: PropTypes.func.isRequired,
+    changeFavorite: PropTypes.func.isRequired
 };
-

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Filters } from '../ProductFilter/Filters';
-import Product from './Product';
 import { ProductSortMethodSelector } from '../ProductSortMethodSelector/ProductSortMethodSelector';
 import { ProductsCount } from '../ProductsCount/ProductsCount';
 import { getPageNumber, PageSelector } from '../PageSelector/PageSelector';
@@ -9,6 +8,7 @@ import connect from 'react-redux/es/connect/connect';
 import { bindActionCreators } from 'redux';
 import { changeCurrentPage, changeSortMethod } from '../../ReduxSettings/actions/productsActions';
 import { getFilteredProducts, sliceResultsArray } from '../../selectors/productSelectors';
+import ItemDisplayShort from '../ItemDisplayShort/ItemDisplayShort';
 
 class ProductsDisplay extends Component {
     constructor(props) {
@@ -48,7 +48,7 @@ class ProductsDisplay extends Component {
                     </div>
                     <div className="products">
                         {this.props.page.map((obj, i) =>
-                            <Product item={obj} key={i}/>
+                            <ItemDisplayShort item={obj} key={i}/>
                         )}
                     </div>
                     <PageSelector selectedPage={this.props.products.settings.currentPage}

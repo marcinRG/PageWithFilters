@@ -7,11 +7,11 @@ export function basketReducers(state = AppData.basket, action) {
             const updatedItems = Object.assign({}, state.items, {[action.value.id]:action.value});
             return Object.assign({}, state, {items: updatedItems});
         }
+
         case actionNames.UPDATE_ITEM_COUNT: {
             const obj = Object.assign({},state.items[action.value.id],{count: action.value.count});
             const updatedItems = Object.assign({}, state.items, {[action.value.id]: obj});
             return Object.assign({}, state, {items: updatedItems});
-
         }
 
         case actionNames.REMOVE_FROM_BASKET: {

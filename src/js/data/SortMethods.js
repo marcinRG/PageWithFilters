@@ -1,4 +1,4 @@
-export const sortMethodsNames = {
+export const sortMethods = {
     SORT_BY_NAME_ASC: 'name asc',
     SORT_BY_NAME_DESC: 'name desc',
     SORT_BY_PRICE_ASC: 'price asc',

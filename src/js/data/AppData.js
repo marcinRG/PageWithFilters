@@ -47,7 +47,7 @@ import imgP47 from './../../images/items/47-min.png';
 import img1 from './../../images/slides/1.png';
 import img2 from './../../images/slides/2.png';
 import img3 from './../../images/slides/3.png';
-import { sortMethodsNames } from './sortMethodsNames';
+import { sortMethods } from './sortMethods';
 
 export const AppData = {
     slider: {
@@ -1216,10 +1216,10 @@ export const AppData = {
             currentPage: 1,
             sortMethod: 0,
             sortMethodList: [
-                sortMethodsNames.SORT_BY_NAME_ASC,
-                sortMethodsNames.SORT_BY_NAME_DESC,
-                sortMethodsNames.SORT_BY_PRICE_ASC,
-                sortMethodsNames.SORT_BY_PRICE_DESC,
+                sortMethods.SORT_BY_NAME_ASC,
+                sortMethods.SORT_BY_NAME_DESC,
+                sortMethods.SORT_BY_PRICE_ASC,
+                sortMethods.SORT_BY_PRICE_DESC,
             ]
         }
     },

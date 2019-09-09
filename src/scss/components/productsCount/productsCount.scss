@@ -3,8 +3,16 @@
 @import '../../common';
 
 .results-count {
+
+  display: none;
   float: right;
   padding-top: 2em;
+
+  @media screen {
+    @media (min-width: $media-br-0) {
+      display: block;
+    }
+  }
 
   & span {
     margin: 0 .1em;

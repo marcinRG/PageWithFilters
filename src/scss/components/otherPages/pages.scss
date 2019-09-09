@@ -14,8 +14,15 @@
     @include block-border-box;
     width: 100%;
     overflow: hidden;
-    padding: 3em;
+    padding: .25em;
     margin: 0 auto;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        padding: 3em;
+      }
+    }
+
 
     &:nth-child(odd) {
       background-color: $background-color;
@@ -37,36 +44,82 @@
     .img {
       @include block-border-box;
       float: left;
-      width: 50%;
+      width: 100%;
       height: auto;
 
+      @media screen {
+        @media (min-width: $media-br-2) {
+          width: 50%;
+        }
+      }
+
       img {
-        margin: 0 auto 3em;
+        margin: 3em auto;
         display: block;
         top: 0;
         left: 0;
-        width: 80%;
+        width: 90%;
+
+        @media screen {
+          @media (min-width: $media-br-2) {
+            width: 80%;
+            margin: 0 auto 3em;
+          }
+        }
+
       }
     }
 
     .description {
       @include block-border-box;
       float: right;
-      width: 50%;
+      width: 100%;
+
+      @media screen {
+        @media (min-width: $media-br-2) {
+          width: 50%;
+        }
+      }
+
 
       h4 {
         @include block-border-box;
         font-weight: normal;
-        font-size: 2em;
+        font-size: 1.2em;
         margin: 0;
-        padding: 0 20px;
+        padding: 0;
+
+        @media screen {
+          @media (min-width: $media-br-2) {
+            font-size: 2em;
+            padding: 0 20px;
+          }
+        }
+
       }
 
       p {
-        font-size: 1.2em;
-        padding: .5em 20px;
+        font-size: .8em;
+        padding: .25em;
         text-align: justify;
-        width: 70%;
+        width: 100%;
+
+
+        @media screen {
+          @media (min-width: $media-br-2) {
+            font-size: 1.2em;
+            padding: .5em 20px;
+          }
+        }
+
+        @media screen {
+          @media (min-width: $media-br-3) {
+            width: 70%;
+            font-size: 1.2em;
+            padding: .5em 20px;
+          }
+        }
+
       }
     }
   }
@@ -113,17 +166,32 @@
     .contact-form {
       @include set-to-zero;
       @include block-border-box;
-      width: 50%;
+      width: 100%;
       float: left;
+
+      @media screen {
+        @media (min-width: $media-br-2) {
+          width: 50%;
+        }
+      }
+
     }
 
     .address {
       @include block-border-box;
       padding-left: 2em;
       padding-top: .5em;
-      width: 50%;
+      display: none;
       float: right;
       font-weight: normal;
+
+      @media screen {
+        @media (min-width: $media-br-2) {
+          width: 50%;
+          display: block;
+        }
+      }
+
 
       label,
       p,

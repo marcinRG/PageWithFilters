@@ -7,6 +7,7 @@ import {
     addMinPriceRange,
     resetPricesSelection
 } from '../../ReduxSettings/actions/priceFilterActions';
+import { sortParamNames } from '../../data/SortParamNames';
 
 class PriceSelector extends Component {
     constructor(props) {
@@ -23,11 +24,11 @@ class PriceSelector extends Component {
         };
 
         this.changeMinValue = (keyEvent) => {
-            return this.changeValueOnInput(keyEvent, this.inputMinRef.current, 'min', this.setUIAndStateMin);
+            return this.changeValueOnInput(keyEvent, this.inputMinRef.current, sortParamNames.MIN, this.setUIAndStateMin);
         };
 
         this.changeMaxValue = (keyEvent) => {
-            return this.changeValueOnInput(keyEvent, this.inputMaxRef.current, 'max', this.setUIAndStateMax);
+            return this.changeValueOnInput(keyEvent, this.inputMaxRef.current, sortParamNames.MAX, this.setUIAndStateMax);
         };
 
         this.setUIAndStateMin = (value) => {
@@ -133,7 +134,7 @@ class PriceSelector extends Component {
     }
 
     getLimitedPosition(position, name, minMax) {
-        if (name === 'min') {
+        if (name === sortParamNames.MIN) {
             const maxPosition = transformation(this.props.max, this.props.lowerBound, this.props.upperBound,
                 minMax.minWidth, minMax.maxWidth);
             return limitValues(position, minMax.minWidth, (maxPosition - this.props.pointerSize));
@@ -146,7 +147,7 @@ class PriceSelector extends Component {
 
     getLimitedValues(value, name) {
         const pointerValue = this.getPointerValue();
-        if (name === 'max') {
+        if (name === sortParamNames.MAX) {
             return limitValues(value, (this.props.min - this.props.lowerBound + pointerValue), this.props.upperBound);
         }
         return limitValues(value, this.props.lowerBound, this.props.max - pointerValue + this.props.lowerBound);
@@ -159,10 +160,10 @@ class PriceSelector extends Component {
         this.setMouseUpDownLeaveListener(this.pointerMinRef.current);
         this.setMouseUpDownLeaveListener(this.pointerMaxRef.current);
         this.pointerMinRef.current.addEventListener('mousemove', (mouseEvent) => {
-            this.changeValueOnPointerMove(mouseEvent, 'min', this.setUIAndStateMin);
+            this.changeValueOnPointerMove(mouseEvent, sortParamNames.MIN, this.setUIAndStateMin);
         });
         this.pointerMaxRef.current.addEventListener('mousemove', (mouseEvent) => {
-            this.changeValueOnPointerMove(mouseEvent, 'max', this.setUIAndStateMax);
+            this.changeValueOnPointerMove(mouseEvent, sortParamNames.MAX, this.setUIAndStateMax);
         });
     }
 

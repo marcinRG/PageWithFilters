@@ -12,3 +12,10 @@ export function changeCurrentPage(value) {
         value
     }
 }
+
+export function changeFavoriteProperty(value) {
+    return {
+        type: actionNames.CHANGE_FAVORITE_PROPERTY,
+        value
+    }
+}

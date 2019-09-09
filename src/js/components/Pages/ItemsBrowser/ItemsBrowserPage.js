@@ -1,6 +1,5 @@
 import React from 'react';
 import ProductsDisplay from '../../ProductsDisplay/ProductsDisplay';
-import { AppSettings } from '../../../data/AppSettings';
 import { SmallForm } from '../../pageElements/SmallForm';
 
 export function ItemsBrowserPage() {

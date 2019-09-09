@@ -14,9 +14,22 @@
 
   .side-element {
     @include block-border-box;
-    width: 20%;
     float: left;
     padding: 0 .5em;
+    display: none;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        display: block;
+        width: 35%;
+      }
+
+      @media (min-width: $media-br-3) {
+        display: block;
+        width: 20%;
+      }
+
+    }
 
     .filters {
       border-bottom: 2px solid $lighter-text;
@@ -47,13 +60,28 @@
   }
 
   .main-element {
-    width: 80%;
+    width: 100%;
     float: right;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        display: block;
+        width: 65%;
+      }
+
+      @media (min-width: $media-br-3) {
+        display: block;
+        width: 80%;
+      }
+    }
+
+
 
     .result-filter {
       @include block-border-box;
       width: 100%;
       overflow: hidden;
+      height: 60px;
 
       &::after {
         clear: both;
@@ -77,6 +105,8 @@
           float: right;
           font-size: 1.5em;
           font-weight: 700;
+          padding: .1em;
+          cursor: pointer;
         }
 
         .new-info {
@@ -94,6 +124,7 @@
         @include block-border-box;
         width: 100%;
         overflow: hidden;
+        padding: .1em;
 
         &::after {
           clear: both;
@@ -124,17 +155,35 @@
 
       .product-info {
         @include block-border-box;
-        width: 50%;
-        padding: 2em;
+        width: 100%;
+        padding: 0 .1em;
         float: left;
         background-color: $background-color;
-        border: 2em solid white;
-        border-right: 0;
-        border-bottom: 0;
+        border: 10px solid white;
+        border-left: 0;
+        border-radius: 0;
+
+        @media screen {
+          @media (min-width: $media-br-2) {
+            display: block;
+            padding: 2em;
+            border: 2em solid white;
+            border-right: 0;
+            border-bottom: 0;
+            width: 50%;
+          }
+        }
+
 
         a {
-          font-size: 1.5em;
+          font-size: 1.2em;
           text-decoration: none;
+
+          @media screen {
+            @media (min-width: $media-br-2) {
+              font-size: 1.5em;
+            }
+          }
         }
 
       }

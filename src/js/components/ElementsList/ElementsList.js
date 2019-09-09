@@ -31,24 +31,6 @@ class ElementsList extends Component {
     }
 }
 
-function setSelectedProperty(obj) {
-    if (obj.hasOwnProperty('selected')) {
-        obj['selected'] = !obj['selected'];
-    } else {
-        obj.selected = true;
-    }
-    return obj;
-}
-
-function setAllElementsSelectedPropertyToFalse(array) {
-   return array.map((element) => {
-        if (element.selected) {
-            delete element.selected;
-        }
-        return element;
-    });
-}
-
 ElementsList.propTypes = {
     values: PropTypes.array.isRequired,
     multipleSelection: PropTypes.bool.isRequired,
@@ -57,4 +39,3 @@ ElementsList.propTypes = {
     changeSelected: PropTypes.func.isRequired,
     resetSelected: PropTypes.func
 };
-

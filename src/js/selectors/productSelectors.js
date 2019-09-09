@@ -1,4 +1,4 @@
-import { sortMethodsNames } from '../data/sortMethodsNames';
+import { sortMethods } from '../data/sortMethods';
 
 export function getFilteredProducts(products, sizes, brands, categories, colors, tags, prices) {
     const sizesArray = getSelectedValuesAsArray(sizes);
@@ -74,7 +74,7 @@ function getSelectedValuesAsArray(obj) {
 
 function getSortMethod(sortName) {
     switch (sortName) {
-        case sortMethodsNames.SORT_BY_NAME_ASC: {
+        case sortMethods.SORT_BY_NAME_ASC: {
             return function compare(a, b) {
                 if (a.name >= b.name) {
                     return 1
@@ -83,7 +83,7 @@ function getSortMethod(sortName) {
                 }
             }
         }
-        case sortMethodsNames.SORT_BY_NAME_DESC: {
+        case sortMethods.SORT_BY_NAME_DESC: {
             return function compare(a, b) {
                 if (a.name <= b.name) {
                     return 1
@@ -92,7 +92,7 @@ function getSortMethod(sortName) {
                 }
             }
         }
-        case sortMethodsNames.SORT_BY_PRICE_ASC: {
+        case sortMethods.SORT_BY_PRICE_ASC: {
             return function compare(a, b) {
                 const price1 = a.price - 0;
                 const price2 = b.price - 0;
@@ -103,7 +103,7 @@ function getSortMethod(sortName) {
                 }
             }
         }
-        case sortMethodsNames.SORT_BY_PRICE_DESC: {
+        case sortMethods.SORT_BY_PRICE_DESC: {
             return function compare(a, b) {
                 const price1 = a.price - 0;
                 const price2 = b.price - 0;
