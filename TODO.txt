@@ -1,4 +1,3 @@
-poprawić komponent Slider,
-mobil - item display
+poprawić komponent Slider,PriceSelector
 zmienic Router
-dodac deply do webpacka
+dodac deploy path do webpacka

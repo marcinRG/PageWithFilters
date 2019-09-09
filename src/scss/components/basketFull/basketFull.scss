@@ -34,6 +34,14 @@
 
     &.right {
       float: right;
+      width: 35%;
+
+      @media screen {
+        @media (min-width: $media-br-1) {
+          width: 15%;
+        }
+      }
+
     }
   }
 
@@ -89,12 +97,19 @@
   .item-price {
     @include set-to-zero;
     @include block-border-box;
-    width: 15%;
+    width: 35%;
     float: right;
     font-size: 1.5em;
     font-weight: normal;
     color: $light-text;
     padding: .2em;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        width: 15%;
+      }
+    }
+
   }
 
   .item-additional-info {
@@ -188,13 +203,27 @@
     @include block-border-box;
     cursor: pointer;
     width: 100%;
-    font-size: 1em;
-    padding: .5em 1em;
+    font-size: .5em;
+    padding: .2em;
     margin-top: 1em;
     outline: 0;
     float: left;
     border: 3px solid $black-color;
     background-color: white;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        font-size: .7em;
+      }
+    }
+
+    @media screen {
+      @media (min-width: $media-br-3) {
+        font-size: 1em;
+        padding: .5em 1em;
+      }
+    }
+
 
     i {
       margin-right: .3em;

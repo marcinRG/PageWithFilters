@@ -19,8 +19,10 @@
   }
 
   .item-name {
+    @include block-border-box;
     font-size: 2em;
     font-weight: normal;
+    margin: 0;
   }
 
   .title {
@@ -67,13 +69,25 @@
       @include set-to-zero;
       @include block-border-box;
       cursor: pointer;
-      width: 25%;
+      width: 50%;
       font-size: 1.2em;
       padding: .5em 1em;
       outline: 0;
       float: right;
       border: 3px solid $black-color;
       background-color: white;
+
+      @media screen {
+        @media (min-width: $media-br-1) {
+          width: 40%;
+        }
+      }
+
+      @media screen {
+        @media (min-width: $media-br-3) {
+          width: 25%;
+        }
+      }
 
       i {
         margin-right: .3em;
@@ -82,34 +96,60 @@
 
   }
 
-
-
   .item-details {
     font-size: 1.2em;
-    width: 70%;
+    width: 90%;
     text-align: justify;
+
+    @media screen {
+      @media (min-width: $media-br-2) {
+        width: 70%;
+      }
+    }
+
   }
 
   .image-container {
     @include set-to-zero;
     @include block-border-box;
-    width: 35%;
+    width: 100%;
     float: left;
     display: block;
     text-align: center;
 
+    @media screen {
+      @media (min-width: $media-br-1) {
+        width: 35%;
+      }
+    }
+
     .item-image {
-      max-width: 90%;
+      max-width: 95%;
       height: auto;
-      margin: 5% 0;
+      margin: 0;
+
+      @media screen {
+        @media (min-width: $media-br-1) {
+          margin: 5% 0;
+          max-width: 90%;
+        }
+      }
+
     }
   }
 
   .item-detail {
     @include set-to-zero;
     @include block-border-box;
-    width: 65%;
+    width: 100%;
     float: left;
+
+    @media screen {
+      @media (min-width: $media-br-1) {
+        width: 65%;
+      }
+    }
+
   }
 
 }
