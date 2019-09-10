@@ -1,3 +1,0 @@
-poprawić komponent Slider,PriceSelector
-zmienic Router
-
