@@ -12,6 +12,10 @@ module.exports = merge(common, {
         compress: true,
         port: 4580
     },
+    output: {
+        path: path.join(__dirname, outputPath),
+        filename: '[name].[hash].js'
+    },
     module: {
         rules: [
             {
@@ -36,17 +40,10 @@ module.exports = merge(common, {
                 exclude: /node_modules/,
                 use: [
                     { loader: 'style-loader'},
-                    //{ loader: MiniCssExtractPlugin.loader },
                     { loader: 'css-loader' },
                     { loader: 'sass-loader' }
                 ]
             },
         ],
     },
-    // plugins: [
-    //     new MiniCssExtractPlugin({
-    //         path: path.join(__dirname, outputPath),
-    //         filename: '[name].[contentHash].css'
-    //     })
-    // ]
 });

@@ -10,16 +10,13 @@ class Slider extends Component {
         super(props);
         this.slidesRef = React.createRef();
         this.timerId;
-        this.autoPlay = props.settings.autoPlay;
-        this.delay = props.settings.delay;
-        const firstSlide = this.setFirstImage(props.settings);
+        const firstSlide = this.setFirstImage(this.props.settings);
         this.state = {
             currentSlide: firstSlide,
             sliderWidth: 0
         };
 
-        this.continuous = props.settings.continuous;
-        this.images = this.prepareImagesArray(props.images, this.continuous);
+        this.images = this.prepareImagesArray(this.props.images, this.props.settings.continuous);
 
         this.nextImgButton = () => {
             this.next(findNextElem, 'up');
@@ -53,7 +50,7 @@ class Slider extends Component {
     }
 
     getFirstOrLast(direction) {
-        if (this.continuous) {
+        if (this.props.settings.continuous) {
             if (direction === 'up') {
                 if ((this.state.currentSlide === this.images.length - 2)) {
                     return 1;
@@ -94,7 +91,7 @@ class Slider extends Component {
     }
 
     getSlideNumber() {
-        if (this.continuous) {
+        if (this.props.settings.continuous) {
             return this.state.currentSlide;
         } else {
             return this.state.currentSlide + 1;
@@ -102,8 +99,8 @@ class Slider extends Component {
     }
 
     autoPlaySlides() {
-        if (this.autoPlay) {
-            this.timerId = executeInFuture(this.timerId, this.nextImgButton, this.delay);
+        if (this.props.settings.autoPlay) {
+            this.timerId = executeInFuture(this.timerId, this.nextImgButton, this.props.settings.delay);
         }
     }
 

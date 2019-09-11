@@ -1,6 +1,6 @@
 import style from './scss/style.scss';
 
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navbar } from './js/components/Navbar/Navbar';
@@ -17,7 +17,7 @@ import BasketFullDisplay from './js/components/BasketFullDisplay/BasketFullDispl
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
+        <Router hashType="slash">
             <Navbar/>
             <Slider/>
             <Route exact={true} path="/" component={ItemsBrowserPage}></Route>

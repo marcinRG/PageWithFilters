@@ -37,7 +37,7 @@ class ItemDisplayFull extends Component {
             <div className="item-display">
                 <h3 className="item-title">Item details</h3>
                 <div className="image-container">
-                    <img className="item-image" src={'../' + this.state.item.imagePath} alt={this.state.item.name}/>
+                    <img className="item-image" src={this.state.item.imagePath} alt={this.state.item.name}/>
                 </div>
                 <div className="item-detail">
                     <h4 className="detail item-name">{this.state.item.name}</h4>

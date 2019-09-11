@@ -23,7 +23,7 @@ export function BasketItem(props) {
     return (
 
         <div className="row-container item">
-            <img className="item-image" src={'../' + props.item.imagePath} alt={props.item.name}/>
+            <img className="item-image" src={props.item.imagePath} alt={props.item.name}/>
             <div className="item-detail">
                 <Link to={'/item/' + props.item.id}>
                     <h4 className="item-name">{props.item.name}</h4>

@@ -65,7 +65,10 @@ class PriceSelector extends Component {
     resetSelection() {
         this.setUIElements(this.props.lowerBound, this.pointerMinRef.current, this.inputMinRef.current);
         this.setUIElements(this.props.upperBound, this.pointerMaxRef.current, this.inputMaxRef.current);
-        this.setBeamLengthAndOffset();
+        this.setBeamLengthAndOffset({
+            offset: this.props.lowerBound,
+            width: this.props.upperBound
+        });
         this.props.reset({
             min: this.props.lowerBound,
             max: this.props.upperBound
@@ -91,8 +94,8 @@ class PriceSelector extends Component {
     }
 
     setBeamLengthAndOffset(valuePair) {
-        let offset = this.props.lowerBound;
-        let width = this.props.upperBound;
+        let offset = this.props.min;
+        let width = this.props.max;
         if (valuePair) {
             if (valuePair.offset) {
                 offset = valuePair.offset;
@@ -116,6 +119,7 @@ class PriceSelector extends Component {
         if (keyEvent.which === 13 || keyEvent.keyCode === 13) {
             let val = input.value;
             val = this.getLimitedValues(val, name);
+            console.log(val);
             func(val);
             return false;
         }
